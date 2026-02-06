@@ -467,7 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   spawnInterval: 0.01
   maxEnemies: 500
-  eliteWeight: 0.1
+  eliteWeight: 0.01
   innerRadius: 10
   outerRadius: 15
   enemyPrefab: {fileID: 5133047631111552902, guid: 69df0ee3bdbb23e43bf3954bf9509a90, type: 3}
