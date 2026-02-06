@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class Game : MonoBehaviour
     
     public static Game Instance { get; private set; }
 
-    public EnemySpawner enemySpawner;
+    [Header("Game State")]
+    public EnemyManager enemyManager;
     public Player player;
     
     private GameState _state;
