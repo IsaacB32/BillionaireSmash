@@ -73,15 +73,12 @@ public class EnemyManager : MonoBehaviour
     #endregion
     
     #region ObjectPoolerMethods
-
-    public Enemy Get() => _pool.Get();
-
+    
     public void Release(Enemy enemy)
     {
         _pool.Release(enemy);
         _activeEnemies--;
     } 
-
     
     #endregion
 }

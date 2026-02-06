@@ -433,9 +433,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1523006927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3268e5ca60a8f824b8c9fbd46a6f0695, type: 3}
+  m_Script: {fileID: 11500000, guid: 46c8f9dc55342930dac8d98599285c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  movement_speed: 10
+  _bodyReference: {fileID: 0}
+  gun: {fileID: 0}
 --- !u!1 &1795705078
 GameObject:
   m_ObjectHideFlags: 0

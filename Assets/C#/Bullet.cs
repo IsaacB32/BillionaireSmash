@@ -4,26 +4,36 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 1.5f;
-    [SerializeField] private float bulletLifeTime = 1f;
+    [SerializeField] private float maxLifeTime = 1f;
 
-    private void Start()
+    private float _timer;
+    private Gun _gun;
+    
+    public void Init(Gun gub)
     {
-        Invoke(nameof(Destory), bulletLifeTime);
+        _gun = gub;
+        _timer = maxLifeTime;
     }
-
-    private void FixedUpdate()
+    
+    private void Update()
     {
+        _timer -= Time.deltaTime;
+        if (_timer <= 0f) Release();
+        
         transform.position += transform.right * speed * Time.deltaTime * 10;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         //get hurt
-        Destory();
+        Release();
     }
 
-    private void Destory()
+    private void Release()
     {
-        //do pooling
+        if (gameObject.activeSelf && _gun != null)
+        {
+            _gun.Release(this);
+        }    
     }
 }
