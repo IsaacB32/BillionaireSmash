@@ -19,14 +19,14 @@ public class EnemyManager : MonoBehaviour
 
     private float _spawnTimer = 0f;
     private int _activeEnemies = 0;
-    private IObjectPool<GameObject> _pool;
+    private IObjectPool<Enemy> _pool;
     
     void Awake() {
-        _pool = new ObjectPool<GameObject>(
-            CreateEnemy,
-            OnTakeFromPool,
-            OnReleaseToPool,
-            OnDestroyObject,
+        _pool = new ObjectPool<Enemy>(
+            () => Instantiate(enemyPrefab).GetComponent<Enemy>(),
+            e => e.gameObject.SetActive(true),
+            e => e.gameObject.SetActive(false),
+            e => Destroy(e.gameObject),
             true,
             objectPoolDefaultCapacity,
             objectPoolMaxCapacity
@@ -52,9 +52,14 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
+        Enemy enemy = _pool.Get();
+
+        bool isElite = Random.value < eliteWeight;
+        enemy.Initialize(isElite);
+        
         Vector2 spawnPos = GetRandomPointInDonut(innerRadius, outerRadius);
-        GameObject enemy = _pool.Get();
         enemy.transform.position = spawnPos;
+        
         _activeEnemies++;
     }
 
@@ -68,14 +73,10 @@ public class EnemyManager : MonoBehaviour
     #endregion
     
     #region ObjectPoolerMethods
-    GameObject CreateEnemy() => Instantiate(enemyPrefab);
-    void OnTakeFromPool(GameObject enemy) => enemy.SetActive(true);
-    void OnReleaseToPool(GameObject enemy) => enemy.SetActive(false);
-    void OnDestroyObject(GameObject enemy) => Destroy(enemy);
-    
-    public GameObject Get() => _pool.Get();
 
-    public void Release(GameObject enemy)
+    public Enemy Get() => _pool.Get();
+
+    public void Release(Enemy enemy)
     {
         _pool.Release(enemy);
         _activeEnemies--;
