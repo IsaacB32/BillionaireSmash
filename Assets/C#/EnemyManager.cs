@@ -76,8 +76,11 @@ public class EnemyManager : MonoBehaviour
     
     public void Release(Enemy enemy)
     {
-        _pool.Release(enemy);
-        _activeEnemies--;
+        if (enemy.gameObject.activeSelf && _pool != null)
+        {
+            _pool.Release(enemy);
+            _activeEnemies--;
+        }
     } 
     
     #endregion
