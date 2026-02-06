@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 3789311877304151943}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   movement_speed: 10
+  max_health: 2
   _fireTimerInterval: 0.1
   _bodyReference: {fileID: 5565219392397582849}
 --- !u!50 &3789311877304151943
@@ -298,7 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab11746b6e6bdf600883e922c339badf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  _bulletPrefab: {fileID: 6160134398579993188, guid: 3ea3586ced7361acc8a6e5221b1c7561, type: 3}
+  bulletPrefab: {fileID: 0}
+  objectPoolDefaultCapacity: 100
+  objectPoolMaxCapacity: 500
 --- !u!1001 &178473967344244763
 PrefabInstance:
   m_ObjectHideFlags: 0

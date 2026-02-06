@@ -1,8 +1,12 @@
+using System.Collections;
 using C_.ScriptableObjects;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
 {
+    public bool isDying;
+    
     [SerializeField] private EnemyData normalData;
     [SerializeField] private EnemyData eliteData;
     
@@ -27,6 +31,8 @@ public class Enemy : MonoBehaviour
     
     void OnEnable()
     {
+        isDying = false;
+        _spriteRenderer.color = Color.white;
         _currentTtl = maxTtl;
         _playerTransform = Game.Instance.player.transform;
         _animator.Play("Run", 0, 0f);
@@ -46,7 +52,11 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         _currentTtl -= Time.deltaTime;
-        if (_currentTtl <= 0) Die();
+        if (_currentTtl <= 0 && !isDying)
+        {
+            isDying = true;
+            Game.Instance.StartCoroutine(Die());
+        }
 
         /*transform.position = Vector3.MoveTowards(
             transform.position, 
@@ -58,8 +68,12 @@ public class Enemy : MonoBehaviour
         Vector2 moveDir = ((Vector2)_playerTransform.position - _rb.position).normalized;
         Vector2 finalVelocity = (moveDir + separation).normalized * _currentStats.speed;
         _rb.MovePosition(_rb.position + finalVelocity * Time.fixedDeltaTime);
-        
-        if (Vector3.Distance(transform.position, Game.Instance.player.transform.position) < distanceThreshold) Die();
+
+        if (Vector3.Distance(transform.position, Game.Instance.player.transform.position) < distanceThreshold && !isDying)
+        {
+            isDying = true;
+            Game.Instance.StartCoroutine(Die());
+        }
 
         _spriteRenderer.flipX = _playerTransform.position.x < transform.position.x;
     }
@@ -79,8 +93,24 @@ public class Enemy : MonoBehaviour
         return separationVec;
     }
 
-    void Die()
+    public IEnumerator Die()
     {
+        float deathDuration = 0.2f;
+        Vector2 knockbackDir = (transform.position - _playerTransform.position).normalized;
+        float knockbackForce = 2f;
+
+        float elapsed = 0f;
+        while (elapsed < deathDuration)
+        {
+            elapsed += Time.deltaTime;
+            float percent = elapsed / deathDuration;
+
+            transform.Translate(knockbackDir * knockbackForce * Time.deltaTime);
+
+            _spriteRenderer.color = (Mathf.FloorToInt(elapsed * 20) % 2 == 0) ? Color.white : Color.red;
+
+            yield return null;
+        }
         Game.Instance.enemyManager.Release(this);
     }
 }

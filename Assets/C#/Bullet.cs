@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -22,10 +21,18 @@ public class Bullet : MonoBehaviour
         
         transform.position += transform.right * speed * Time.deltaTime * 10;
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
+    
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        //get hurt
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy e = other.gameObject.GetComponent<Enemy>();
+            if (!e.isDying)
+            {
+                e.isDying = true;
+                Game.Instance.StartCoroutine(e.Die());
+            }
+        }
         Release();
     }
 
