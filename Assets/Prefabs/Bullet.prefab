@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11f27a96b5b05e10b5fe5005a775784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  speed: 1
+  speed: 1.5
   bulletLifeTime: 1
 --- !u!1 &7898115593792498900
 GameObject:

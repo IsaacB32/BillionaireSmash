@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 3c9cd0a666e1960e680a14acc2faceb6
+guid: 0657d0c5083347258b51605193248f06
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1300386552625829504
-    second: glop-run_0
-  - first:
-      213: 7751307264450581225
-    second: glop-run_1
-  - first:
-      213: -6786136725971043582
-    second: glop-run_2
-  - first:
-      213: 6234115212173030571
-    second: glop-run_3
+      213: 1787986867585880059
+    second: Cowboy_texture_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: glop-run_0
+      name: Cowboy_texture_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 27
-        height: 29
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,74 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08615fb0ea6eb0210800000000000000
-      internalID: 1300386552625829504
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: glop-run_1
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 0
-        width: 29
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9e25b7a83ec229b60800000000000000
-      internalID: 7751307264450581225
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: glop-run_2
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 0
-        width: 27
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 20b734b2a9cc2d1a0800000000000000
-      internalID: -6786136725971043582
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: glop-run_3
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 1
-        width: 25
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ba4be6671c6048650800000000000000
-      internalID: 6234115212173030571
+      spriteID: bff0589359430d810800000000000000
+      internalID: 1787986867585880059
       vertices: []
       indices: 
       edges: []
@@ -210,10 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      glop-run_0: 1300386552625829504
-      glop-run_1: 7751307264450581225
-      glop-run_2: -6786136725971043582
-      glop-run_3: 6234115212173030571
+      Cowboy_texture_0: 1787986867585880059
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
