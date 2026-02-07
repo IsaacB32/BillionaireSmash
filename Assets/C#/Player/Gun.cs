@@ -14,8 +14,19 @@ public class Gun : MonoBehaviour
    private IObjectPool<Bullet> _pool;
    
    //Bullet Powerups
-   private BulletStats stats;
-   public void SetBulletStats(BulletStats s) {stats = s;}
+   public BulletStats stats; //default stats
+   public void SetBulletStats(BulletStats s)
+   {
+      stats.size += s.size;
+      stats.speed += s.speed;
+      stats.pierce += s.pierce;
+      stats.fire += s.fire;
+      stats.electric += s.electric;
+      stats.slowing += s.slowing;
+      stats.chain += s.chain;
+      stats.explode += s.explode;
+   }
+   public BulletStats GetStats() {return stats;}
    
    [Header("Gun Styles")]
    private GunStyleType _activeStyle = GunStyleType.Default;
@@ -33,7 +44,6 @@ public class Gun : MonoBehaviour
    
    [Space]
    [Header("Charge Shot")]
-   public float chargeHoldTimeMax = 1f;
    public SpriteRenderer chargeIndicator;
    private float _startChargeSize = 0.01f;
    private float _chargeGrowthRate = 2.3f;
@@ -52,7 +62,7 @@ public class Gun : MonoBehaviour
          objectPoolDefaultCapacity,
          objectPoolMaxCapacity
       );
-      SwitchActiveStyle(_activeStyle);
+      SwitchActiveStyle(_activeStyle, _chargeGrowthRate);
       HideCharge();
    }
    
@@ -76,7 +86,6 @@ public class Gun : MonoBehaviour
    public void CreateBullet(Vector3 pos, Quaternion rot)
    {
       Bullet bullet = _pool.Get();
-      bullet.SetStats(stats);
       bullet.transform.position = pos;
       bullet.transform.rotation = rot;
       bullet.Init(this);
@@ -162,8 +171,7 @@ public class Gun : MonoBehaviour
    public void FireEnded()
    {
       Bullet bullet = _pool.Get();
-      bullet.SetStats(stats);
-      bullet.OverrideSizeSpeed(chargeIndicator.transform.localScale.x, 1/chargeIndicator.transform.localScale.x);
+      bullet.OverrideSizeSpeed(chargeIndicator.transform.localScale.x, -1/chargeIndicator.transform.localScale.x);
       bullet.transform.position = transform.position;
       bullet.transform.rotation = transform.rotation;
       bullet.Init(this);

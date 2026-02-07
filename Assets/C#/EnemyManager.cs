@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
+    public LayerMask enemyMask;
+    
     [Header("Spawn Settings")]
     [SerializeField] private float spawnInterval;
     [SerializeField] private int maxEnemies;

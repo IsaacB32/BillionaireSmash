@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,6 +18,8 @@ public class Game : MonoBehaviour
     [Header("Game State")]
     public EnemyManager enemyManager;
     public Player player;
+
+    [SerializeField] private TextMeshProUGUI moneyTextUI;
     
     private GameState _state;
     
@@ -24,5 +27,10 @@ public class Game : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(this);
+    }
+
+    public void UpdateMoneyUI(int val)
+    {
+        moneyTextUI.text = $"${val}";
     }
 }
