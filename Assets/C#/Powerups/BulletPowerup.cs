@@ -11,12 +11,12 @@ public class BulletPowerup : Powerup
 [System.Serializable]
 public struct BulletStats
 {
-    public float size { private set; get; }
-    public float speed { private set; get; }
-    public float pierce { private set; get; }
-    public float fire { private set; get; }
-    public float electric { private set; get; }
-    public float slowing { private set; get; } 
-    public float chain { private set; get; }
-    public float explode { private set; get; }
+    public float size;
+    public float speed;
+    public int pierce;
+    public float fire;
+    public float electric;
+    public float slowing; 
+    public int chain;
+    public float explode;
 }
