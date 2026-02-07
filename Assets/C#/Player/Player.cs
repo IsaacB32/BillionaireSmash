@@ -170,7 +170,6 @@ public class Player : MonoBehaviour
         current_health--;
         healthtext.text = current_health.ToString();
         StartCoroutine(Invincible());
-
     }
 
     IEnumerator Invincible()
