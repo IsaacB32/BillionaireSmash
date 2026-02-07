@@ -2134,6 +2134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game
   enemyManager: {fileID: 920347209}
   player: {fileID: 1713544314782406558}
+  moneyTextUI: {fileID: 1945216348}
 --- !u!4 &805309224
 Transform:
   m_ObjectHideFlags: 0
@@ -120900,6 +120901,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512f2cc8a07aa7244928d08096cfde0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
   spawnInterval: 0.5
   maxEnemies: 500
   eliteWeight: 0.01

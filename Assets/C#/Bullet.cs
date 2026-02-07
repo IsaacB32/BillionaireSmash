@@ -86,7 +86,7 @@ public class Bullet : MonoBehaviour
     {
         while (_chain != 0)
         {
-            Physics2D.OverlapCircle(transform.position, _chainRadius, );
+            //Physics2D.OverlapCircle(transform.position, _chainRadius, );
         } 
     }
 }
