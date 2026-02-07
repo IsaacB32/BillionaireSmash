@@ -35,7 +35,7 @@ Material:
     - _RippleStrength: 0.02
     - _Variation: 0.05
     m_Colors:
-    - _BaseColor: {r: 0.3647059, g: 0.6862745, b: 0.5529412, a: 1}
+    - _BaseColor: {r: 0.41960788, g: 0.627451, b: 0.9960785, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
