@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     
     [SerializeField] private float maxTtl = 5f;
     [SerializeField] private float distanceThreshold = 0.5f;
+
+    [SerializeField] private GameObject _bloodSplat;
     
     private EnemyData _currentStats;
     private float _health;
@@ -37,6 +39,7 @@ public class Enemy : MonoBehaviour
         _playerTransform = Game.Instance.player.transform;
         _animator.Play("Run", 0, 0f);
         _animator.speed = Random.Range(0.8f, 1.2f);
+        _bloodSplat.SetActive(false);
     }
     
     public void Initialize(bool isElite)
@@ -98,6 +101,8 @@ public class Enemy : MonoBehaviour
         float deathDuration = 0.2f;
         Vector2 knockbackDir = (transform.position - _playerTransform.position).normalized;
         float knockbackForce = 2f;
+        
+        // _bloodSplat.SetActive(true);
 
         float elapsed = 0f;
         while (elapsed < deathDuration)

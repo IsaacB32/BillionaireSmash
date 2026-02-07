@@ -5,7 +5,6 @@ using UnityEngine.Rendering;
 
 public enum PlayerState {
     Idle,
-    Standing,
     Moving
 }
 public class Player : MonoBehaviour
@@ -25,7 +24,7 @@ public class Player : MonoBehaviour
     }
     
     [Header("References")]
-    [SerializeField] private GameObject _bodyReference;
+    [SerializeField] private GameObject _indicator;
     private PlayerAnimations _animations;
     private Gun _gun;
     private PlayerPowerups _playerPowerups;
@@ -80,9 +79,9 @@ public class Player : MonoBehaviour
         mouseScreenPos.y -= startingScreenPos.y;
         
         _rotation_angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
-        Vector3 rotation_temp = _bodyReference.transform.localEulerAngles;
-        rotation_temp.z = -_rotation_angle;
-        _bodyReference.transform.localEulerAngles = rotation_temp;
+        Vector3 rotation_temp = _indicator.transform.localEulerAngles;
+        rotation_temp.z = _rotation_angle;
+        _indicator.transform.localEulerAngles = rotation_temp;
     }
 
     public void FireGun(InputAction.CallbackContext context)
@@ -103,15 +102,7 @@ public class Player : MonoBehaviour
         _rigidbody2D.linearVelocity = _move_direction * movement_speed * Time.deltaTime * 50;
         Rotate();
         
-        if (_move_direction == Vector2.zero)
-        {
-            _idleTimer += Time.deltaTime;
-            if (_idleTimer >= _idleTimerMax)
-            {
-                movementState = PlayerState.Idle;
-            }
-            movementState = PlayerState.Standing;
-        }
+        if (_move_direction == Vector2.zero)  movementState = PlayerState.Idle;
 
         if (_holdingFire)
         {

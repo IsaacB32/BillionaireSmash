@@ -103,8 +103,8 @@ public class Gun : MonoBehaviour
          case GunStyleType.Shotgun:
             _FireMethod = ShotgunFire;
             break;
-         case GunStyleType.SemiAutomatic:
-            _FireMethod = SemiAutomaticFire;
+         case GunStyleType.AllDirections:
+            _FireMethod = AllDirectionFire;
             break;
          case GunStyleType.DuelBarrel:
             _FireMethod = DuelBarrelFire;
@@ -138,14 +138,17 @@ public class Gun : MonoBehaviour
       CreateBullet(transform.position, rot);
    }
 
-   public void SemiAutomaticFire()
+   public void AllDirectionFire()
    {
-      
+      CreateBullet(transform.position, transform.rotation);
+      CreateBullet(_behindSpawn.position, transform.rotation);
+      CreateBullet(_leftSpawn.position, transform.rotation);
+      CreateBullet(_rightSpawn.position, transform.rotation);
    }
 
    public void RocketFire()
    {
-      
+      throw new NotImplementedException();
    }
 
    public void DuelBarrelFire()
@@ -188,7 +191,7 @@ public enum GunStyleType
 {
     Default,
     Shotgun,
-    SemiAutomatic, 
+    AllDirections, 
     RocketLauncher, 
     DuelBarrel,
     TwinShot,
