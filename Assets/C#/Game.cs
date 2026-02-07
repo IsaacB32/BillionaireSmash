@@ -53,7 +53,7 @@ public class Game : MonoBehaviour
 
     public void UpdateMoneyUI(int val)
     {
-        // moneyTextUI.text = $"${val}";
+        moneyTextUI.text = $"${val}";
     }
 
     public void Pause()
