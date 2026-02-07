@@ -8,10 +8,27 @@ public class Bullet : MonoBehaviour
     private float _timer;
     private Gun _gun;
     
+    #region Pool
     public void Init(Gun gub)
     {
         _gun = gub;
         _timer = maxLifeTime;
+    }
+
+    private void Release()
+    {
+        if (gameObject.activeSelf && _gun != null)
+        {
+            _gun.Release(this);
+        }    
+    }
+    #endregion
+
+    public void SetStats(BulletStats stats)
+    {
+        speed = stats.speed == 0 ? speed : stats.speed;
+        transform.localScale = Vector3.one * (stats.size == 0 ? transform.localScale.x : stats.size);
+        //TODO stats
     }
     
     private void Update()
@@ -34,13 +51,5 @@ public class Bullet : MonoBehaviour
             }
         }
         Release();
-    }
-
-    private void Release()
-    {
-        if (gameObject.activeSelf && _gun != null)
-        {
-            _gun.Release(this);
-        }    
     }
 }

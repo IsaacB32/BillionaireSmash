@@ -18,11 +18,15 @@ public class PlayerPowerups : MonoBehaviour
         {
             case PowerupType.StatBoost:
                 StatPowerup sp = (StatPowerup)p;
-                _player.SetUpgradeStats(sp.speed,sp.health,sp.fireRate);
+                _player.SetUpgradeStats(sp.speed,sp.health);
                 break;
             case PowerupType.BulletModifer:
+                BulletPowerup bp = (BulletPowerup)p;
+                _player.UpgradeBullets(bp.stats);
                 break;
             case PowerupType.GunModifier:
+                GunPowerup gp = (GunPowerup)p;
+                _player.UpgradeGun(gp.style, gp.rateFire);
                 break;
         }
     }
