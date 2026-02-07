@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,18 +12,12 @@ public class Player : MonoBehaviour
 {
     [Header("Properties")]
     public float movement_speed = 10f;
-    public int max_health = 2;
     public int money;
-    private int current_health;
+    public int current_health = 2;
     [SerializeField] private float _fireTimerInterval = 0.1f;
     private float _defaultFireTimer;
-
-    public void setMaxHealth(int h)
-    {
-        if (h == 0) return;
-        max_health = h;
-        current_health = max_health;
-    }
+    [SerializeField] private float _invincibleTime = 0.33f;
+    private bool _canBeHurt = true;
     
     [Header("References")]
     [SerializeField] private GameObject _indicator;
@@ -29,6 +25,7 @@ public class Player : MonoBehaviour
     private Gun _gun;
     private PlayerPowerups _playerPowerups;
     [SerializeField] private GameObject _explodePrefab;
+    [SerializeField] private TextMeshProUGUI healthtext;
     
     private Rigidbody2D _rigidbody2D;
     private Vector2 _move_direction;
@@ -38,6 +35,7 @@ public class Player : MonoBehaviour
     private float _fireTimer;
 
     private bool _freeze = false;
+    
 
     private PlayerState _currentMovementState;
     public PlayerState movementState
@@ -56,6 +54,7 @@ public class Player : MonoBehaviour
         _gun = GetComponentInChildren<Gun>();
         _playerPowerups = GetComponent<PlayerPowerups>();
         _defaultFireTimer = _fireTimerInterval;
+        healthtext.text = current_health.ToString();
     }
 
     #region Input
@@ -128,7 +127,7 @@ public class Player : MonoBehaviour
     public void SetUpgradeStats(float newSpeed, int newHealth)
     {
         if (newSpeed != 0) movement_speed += newSpeed;
-        setMaxHealth(newHealth);
+        IncreaseHealth(newHealth);
     }
 
     public void UpgradeBullets(BulletStats stats)
@@ -145,4 +144,39 @@ public class Player : MonoBehaviour
     
     public GameObject GetExplode() { return _explodePrefab; }
     public GunStyleType GetStyle() {return _gun.GetActiveStyle();}
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.gameObject.CompareTag("Enemy")) return;
+        DecreaseHealth();
+        if (current_health <= 0)
+        {
+            Game.Instance.GameOver();
+        }
+    }
+    
+    //UI text in the player script -- why? because i don't care
+    public void IncreaseHealth(int h)
+    {
+        if (h == 0) return;
+        current_health += h;
+        healthtext.text = current_health.ToString();
+    }
+
+    public void DecreaseHealth()
+    {
+        if (!_canBeHurt) return;
+        
+        current_health--;
+        healthtext.text = current_health.ToString();
+        StartCoroutine(Invincible());
+
+    }
+
+    IEnumerator Invincible()
+    {
+        _canBeHurt = false;
+        yield return new WaitForSeconds(_invincibleTime);
+        _canBeHurt = true;
+    }
 }
