@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_freeze) return;
+        if (_freeze || Game.Instance.state != Game.GameState.Playing) return;
         
         _rigidbody2D.linearVelocity = _move_direction * movement_speed * Time.deltaTime * 50;
         Rotate();

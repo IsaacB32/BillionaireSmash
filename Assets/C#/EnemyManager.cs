@@ -37,6 +37,8 @@ public class EnemyManager : MonoBehaviour
     
     void Update()
     {
+        if (Game.Instance.state != Game.GameState.Playing) return;
+        
         _spawnTimer += Time.deltaTime;
 
         if (CanSpawn())

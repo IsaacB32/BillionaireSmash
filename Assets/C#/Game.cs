@@ -30,6 +30,9 @@ public class Game : MonoBehaviour
     [Header("Powerup")]
     [SerializeField] private int _killedForPowerup = 20;
 
+    [Header("Canvas Groups")]
+    [SerializeField] private CanvasGroup mainMenuCanvas;
+
     public GameState state { private set; get; }
     public int enemiesKilled { private set; get; }
     private int _totalKilled = 0;
@@ -49,6 +52,8 @@ public class Game : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(this);
+
+        state = GameState.Menu;
     }
 
     public void UpdateMoneyUI(int val)
@@ -70,6 +75,18 @@ public class Game : MonoBehaviour
 
     public void GameOver()
     {
+        state = GameState.Lose;
+    }
+
+    public void StartGame()
+    {
+        state = GameState.Playing;
+
         
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

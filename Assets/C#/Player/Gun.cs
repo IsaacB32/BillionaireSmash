@@ -75,6 +75,7 @@ public class Gun : MonoBehaviour
    
    public void Fire()
    {
+      if (Game.Instance.state != Game.GameState.Playing) return;
       _FireMethod.Invoke();
    }
    
