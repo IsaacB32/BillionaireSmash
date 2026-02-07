@@ -9,6 +9,7 @@ namespace C_.ScriptableObjects
         public float speed;
         public Color spriteColor;
         public float scale = 1f;
+        public int value;
         public GameObject dropPrefab;
     }
 }

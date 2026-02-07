@@ -17,4 +17,5 @@ MonoBehaviour:
   speed: 3
   spriteColor: {r: 1, g: 1, b: 1, a: 1}
   scale: 5
+  value: 1
   dropPrefab: {fileID: 0}
