@@ -70,14 +70,15 @@ public class Player : MonoBehaviour
 
     private void Rotate()
     {
-        Vector2 mouseScreenPos = new Vector2(Mouse.current.position.x.ReadValue(), Mouse.current.position.y.ReadValue());
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector2 startingScreenPos = Camera.main.WorldToScreenPoint(transform.position);
+        
         mouseScreenPos.x -= startingScreenPos.x;
         mouseScreenPos.y -= startingScreenPos.y;
-        _rotation_angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
         
+        _rotation_angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
         Vector3 rotation_temp = _bodyReference.transform.localEulerAngles;
-        rotation_temp.z = _rotation_angle;
+        rotation_temp.z = -_rotation_angle;
         _bodyReference.transform.localEulerAngles = rotation_temp;
     }
 
