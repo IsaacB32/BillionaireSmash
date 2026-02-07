@@ -85,7 +85,11 @@ public class Player : MonoBehaviour
     public void FireGun(InputAction.CallbackContext context)
     {
         if (context.performed) _holdingFire = true;
-        else if (context.canceled) _holdingFire = false;
+        else if (context.canceled)
+        {
+            _holdingFire = false;
+            _gun.FireEnded();
+        }
     }
     #endregion
 
@@ -117,15 +121,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    #region Powerup Upgrades
     public void AttachPowerup(Powerup p)
     {
         _playerPowerups.AttachPowerup(p);
     }
-
-    public void SetUpgradeStats(float newSpeed, int newHealth, float newFireInterval)
+    
+    public void SetUpgradeStats(float newSpeed, int newHealth)
     {
         movement_speed = newSpeed == 0 ? movement_speed : newSpeed;
         setMaxHealth(newHealth);
-        _fireTimerInterval = newFireInterval;
     }
+
+    public void UpgradeBullets(BulletStats stats)
+    {
+        _gun.SetBulletStats(stats);
+    }
+
+    public void UpgradeGun(GunStyleType gunType, float rateFire, float growthRate)
+    {
+        _gun.SwitchActiveStyle(gunType, growthRate);
+        _fireTimerInterval = rateFire == 0 ? _fireTimerInterval : rateFire;
+    }
+    #endregion
 }

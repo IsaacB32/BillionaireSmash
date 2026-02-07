@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab11746b6e6bdf600883e922c339badf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gun
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 6160134398579993188, guid: 3ea3586ced7361acc8a6e5221b1c7561, type: 3}
   objectPoolDefaultCapacity: 100
   objectPoolMaxCapacity: 500
 --- !u!1001 &178473967344244763
