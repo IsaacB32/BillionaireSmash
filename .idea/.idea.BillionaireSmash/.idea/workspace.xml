@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="32a8f4ba-1e6c-4954-8802-3fead40a8b8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BillionaireSmash/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BillionaireSmash/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/tileset/water_tileset.aseprite.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/tileset/water_tileset.aseprite.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/ScriptableObjects/Tile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#/ScriptableObjects/Tile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/TilesetAutobuilder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor/TilesetAutobuilder.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +113,7 @@
       <workItem from="1770360835683" duration="81000" />
       <workItem from="1770360931869" duration="8734000" />
       <workItem from="1770405036958" duration="1238000" />
-      <workItem from="1770433683593" duration="305000" />
+      <workItem from="1770433683593" duration="2571000" />
     </task>
     <servers />
   </component>
