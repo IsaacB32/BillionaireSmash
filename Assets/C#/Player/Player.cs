@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
         _rigidbody2D = GetComponentInChildren<Rigidbody2D>();
         _animations = GetComponentInChildren<PlayerAnimations>();
         _gun = GetComponentInChildren<Gun>();
+        _playerPowerups = GetComponent<PlayerPowerups>();
     }
 
     #region Input
@@ -86,6 +87,7 @@ public class Player : MonoBehaviour
 
     public void FireGun(InputAction.CallbackContext context)
     {
+        if (Game.Instance.state == Game.GameState.Paused) return;
         if (context.performed) _holdingFire = true;
         else if (context.canceled)
         {

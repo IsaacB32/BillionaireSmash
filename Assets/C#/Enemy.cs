@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour
         Vector2 knockbackDir = (transform.position - _playerTransform.position).normalized;
         float knockbackForce = 2f;
         
-        // _bloodSplat.SetActive(true);
+        _bloodSplat.SetActive(true);
 
         float elapsed = 0f;
         while (elapsed < deathDuration)
@@ -117,6 +117,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
+        Game.Instance.IncreaseEnemyKilled();
         Game.Instance.player.money += _currentStats.value;
         Game.Instance.UpdateMoneyUI(Game.Instance.player.money);
         Game.Instance.enemyManager.Release(this);
