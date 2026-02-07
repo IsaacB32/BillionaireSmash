@@ -30,6 +30,11 @@ public class Bullet : MonoBehaviour
         transform.localScale = Vector3.one * (stats.size == 0 ? transform.localScale.x : stats.size);
         //TODO stats
     }
+
+    public void OverrideSizeSpeed(float sizeOverride, float speedOverride)
+    {
+        transform.localScale += Vector3.one * sizeOverride;
+    }
     
     private void Update()
     {

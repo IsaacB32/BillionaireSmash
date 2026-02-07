@@ -26,7 +26,7 @@ public class PlayerPowerups : MonoBehaviour
                 break;
             case PowerupType.GunModifier:
                 GunPowerup gp = (GunPowerup)p;
-                _player.UpgradeGun(gp.style, gp.rateFire);
+                _player.UpgradeGun(gp.style, gp.rateFire, gp.chargeGrowthRate);
                 break;
         }
     }
