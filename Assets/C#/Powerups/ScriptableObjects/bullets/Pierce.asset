@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletPowerup
   type: 1
   powerup_name: Penetrate
-  icon: {fileID: 0}
+  icon: {fileID: 4029480744475401341, guid: e93049f8df403b84da6dee2b1b851008, type: 3}
   description: bullets will hit multiple enemies
   stats:
     size: 0

@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatPowerup
   type: 0
   powerup_name: Health 1
-  icon: {fileID: 0}
+  icon: {fileID: 7462486409742756418, guid: 88c3515b3006328f3b404d6057b1eb6a, type: 3}
   description: increase health by 1
   health: 1
   speed: 0
-  fireRate: 0

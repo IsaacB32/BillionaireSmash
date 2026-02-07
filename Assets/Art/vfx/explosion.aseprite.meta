@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e93049f8df403b84da6dee2b1b851008
+guid: 38f6363ed9a760319acc0c1a46b8865d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,72 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: piercing-shot
+  - name: Frame_0
     originalName: 
-    pivot: {x: 0.4736842, y: -0.11111112}
+    pivot: {x: 0.53846157, y: -1.4166666}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 100
+      width: 13
+      height: 12
+    spriteID: cb136c1e3d95749908911c13485500e5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 100}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.50000006, y: -0.23333333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 4
+      width: 34
+      height: 30
+    spriteID: 924cb9e88ed91bd278e878416e557784
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 4}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.48780486, y: -0.11111112}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 56
+      width: 41
+      height: 36
+    spriteID: d4a6d981b6ae269b6b8b9b192c713936
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 56}
+  - name: Frame_3
+    originalName: 
+    pivot: {x: 0.4893617, y: -0.045454547}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +200,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 19
-      height: 18
-    spriteID: 52f86c46039b2c78289b5ca03764dad5
+      width: 47
+      height: 44
+    spriteID: ff6dfa09337403e3b8236126c0410c99
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +216,52 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 4115170376
+      value0: 339848825
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: piercing-shot
+    name: explosion
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: piercing-shot
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 3
+        x: 17
+        y: 17
+        width: 13
+        height: 12
+      spriteId: cb136c1e3d95749908911c13485500e5
+    - name: Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 7
+        y: 7
+        width: 34
+        height: 30
+      spriteId: 924cb9e88ed91bd278e878416e557784
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 4
+        y: 4
+        width: 41
+        height: 36
+      spriteId: d4a6d981b6ae269b6b8b9b192c713936
+    - name: Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 1
         y: 2
-        width: 19
-        height: 18
-      spriteId: 52f86c46039b2c78289b5ca03764dad5
+        width: 47
+        height: 44
+      spriteId: ff6dfa09337403e3b8236126c0410c99
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +271,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 24, y: 24}
-  previousTextureSize: {x: 32, y: 32}
+  canvasSize: {x: 48, y: 48}
+  previousTextureSize: {x: 128, y: 128}
