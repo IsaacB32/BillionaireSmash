@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e93049f8df403b84da6dee2b1b851008
+guid: d180f956eece2f7649066710abf512e7
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: piercing-shot
+  - name: upgrade
     originalName: 
-    pivot: {x: 0.4736842, y: -0.11111112}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 19
-      height: 18
-    spriteID: 52f86c46039b2c78289b5ca03764dad5
+      width: 24
+      height: 24
+    spriteID: 5b5789bb909401943935855737f8f2b4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 4115170376
+      value0: 3607284354
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: piercing-shot
+    name: upgrade
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: piercing-shot
+    - name: upgrade
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 3
-        y: 2
-        width: 19
-        height: 18
-      spriteId: 52f86c46039b2c78289b5ca03764dad5
+        x: 0
+        y: 0
+        width: 24
+        height: 24
+      spriteId: 5b5789bb909401943935855737f8f2b4
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

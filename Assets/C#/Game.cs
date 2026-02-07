@@ -67,4 +67,9 @@ public class Game : MonoBehaviour
         Time.timeScale = 1;
         SwitchGameState(GameState.Playing);
     }
+
+    public void GameOver()
+    {
+        
+    }
 }

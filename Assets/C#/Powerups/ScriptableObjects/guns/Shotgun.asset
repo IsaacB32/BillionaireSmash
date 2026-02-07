@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerup
   type: 2
   powerup_name: shot gun
-  icon: {fileID: 0}
+  icon: {fileID: -5114693518655718196, guid: cd336afa93e52ef7692bb7bb811b5313, type: 3}
   description: look ma! three bullets
   style: 1
   rateFire: 0.19
