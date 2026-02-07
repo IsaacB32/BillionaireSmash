@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -6,17 +7,19 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float maxLifeTime = 1f;
     
     [Header("Bullet Tweeks")]
-    [SerializeField] private float _chainRadius = 2f;
+    [SerializeField] private float _chainRadius = 200f;
     
     //powerup 
     private int _pierceCounter;
     private int _chain;
+    private float _explode;
 
     private float _timer;
     private Gun _gun;
 
     private float _defaultSpeed;
     private float _defaultSize;
+    private int _defaultPierce;
     
     #region Pool
     public void Init(Gun gub)
@@ -28,6 +31,7 @@ public class Bullet : MonoBehaviour
         transform.localScale = _gun.GetStats().size * Vector3.one;
         _pierceCounter = _gun.GetStats().pierce;
         _chain = _gun.GetStats().chain;
+        _explode = _gun.GetStats().explode;
     }
 
     private void Release()
@@ -41,20 +45,15 @@ public class Bullet : MonoBehaviour
     }
     #endregion
 
-    // public void SetStats(BulletStats stats)
-    // {
-    //     speed = stats.speed == 0 ? speed : stats.speed;
-    //     transform.localScale = Vector3.one * (stats.size == 0 ? transform.localScale.x : stats.size);
-    //     //TODO stats
-    // }
-
-    public void OverrideSizeSpeed(float sizeOverride, float speedOverride)
+    public void OverrideSizeSpeed(float sizeOverride, float speedOverride, int pierceOverride)
     {
         _defaultSize = transform.localScale.x;
         _defaultSpeed = speed;
+        _defaultPierce = _pierceCounter;
         
         transform.localScale += Vector3.one * sizeOverride;
         speed += Mathf.Clamp(speedOverride, 0.1f, 100f);
+        _pierceCounter += pierceOverride;
     }
     
     private void Update()
@@ -71,7 +70,8 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             hit = true;
-            ChainAttack();
+            ChainAttack(other.collider);
+            ExplodeAttack();
             Enemy e = other.gameObject.GetComponent<Enemy>();
             if (!e.isDying)
             {
@@ -79,14 +79,40 @@ public class Bullet : MonoBehaviour
                 Game.Instance.StartCoroutine(e.Die());
             }
         }
-        if (hit && _pierceCounter-- == 0) Release();
+        if (_chain == 0 && hit && --_pierceCounter <= 0) Release();
     }
 
-    private void ChainAttack()
+    private void ChainAttack(Collider2D hit)
     {
-        while (_chain != 0)
+        if (_chain == 0) return;
+        List<Collider2D> hitObjects = new List<Collider2D>();
+        hitObjects.Add(hit);
+        
+        Collider2D[] enemy = Physics2D.OverlapCircleAll(transform.position, _chainRadius, Game.Instance.enemyManager.enemyMask);
+        for (int i = 0; i < enemy.Length; i++)
         {
-            Physics2D.OverlapCircle(transform.position, _chainRadius, );
-        } 
+            if (enemy[i] != null && !hitObjects.Contains(enemy[i]))
+            {
+                Vector2 targetPos = enemy[i].transform.position;
+                Vector2 currentPos = transform.position;
+                Vector2 targetDirection = targetPos - currentPos;
+                float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+                    
+                Vector3 rotation_temp = transform.localEulerAngles;
+                rotation_temp.z = angle;
+                transform.localEulerAngles = rotation_temp;
+                _chain--;
+                break;
+            }
+        }
+    }
+
+    private void ExplodeAttack()
+    {
+        if (_explode == 0) return;
+        GameObject o = Instantiate(Game.Instance.player.GetExplode(), transform.position, Quaternion.identity);
+        Explode e = o.GetComponent<Explode>();
+        o.transform.localScale = Vector3.one * _explode;
+        e.ExplodeBomb(_explode);
     }
 }

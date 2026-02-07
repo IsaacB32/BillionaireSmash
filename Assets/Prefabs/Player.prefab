@@ -321,6 +321,7 @@ MonoBehaviour:
   max_health: 2
   _fireTimerInterval: 0.1
   _bodyReference: {fileID: 5565219392397582849}
+  _explodePrefab: {fileID: 6872828568711100598, guid: 339cc0d0af7774ee38b65374efc9f021, type: 3}
 --- !u!50 &3789311877304151943
 Rigidbody2D:
   serializedVersion: 5
@@ -426,9 +427,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.94191784, g: 0.90702504, b: 0.68643075, a: 0.4509804}
+  m_Color: {r: 0.7398123, g: 0.013517442, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -553,7 +554,16 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6160134398579993188, guid: 3ea3586ced7361acc8a6e5221b1c7561, type: 3}
   objectPoolDefaultCapacity: 100
   objectPoolMaxCapacity: 500
-  debugStyle: 6
+  stats:
+    size: 0.2
+    speed: 1.5
+    pierce: 0
+    fire: 0
+    electric: 0
+    slowing: 0
+    chain: 0
+    explode: 0
+  debugStyle: 0
   _behindSpawn: {fileID: 3620841051775480638}
   _leftSpawn: {fileID: 6450312536617510494}
   _rightSpawn: {fileID: 4668219761416188018}

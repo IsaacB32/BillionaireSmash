@@ -170,11 +170,14 @@ public class Gun : MonoBehaviour
    
    public void FireEnded()
    {
+      float scale = chargeIndicator.transform.localScale.x;
+      
       Bullet bullet = _pool.Get();
-      bullet.OverrideSizeSpeed(chargeIndicator.transform.localScale.x, -1/chargeIndicator.transform.localScale.x);
       bullet.transform.position = transform.position;
       bullet.transform.rotation = transform.rotation;
       bullet.Init(this);
+      float percentage = Mathf.Clamp(scale / 1.5f, 0, 1f);
+      bullet.OverrideSizeSpeed(scale * 1.5f, -1/scale, (int)(percentage * 10));
       _activeBullets++;
 
       HideCharge();

@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     private PlayerAnimations _animations;
     private Gun _gun;
     private PlayerPowerups _playerPowerups;
+    [SerializeField] private GameObject _explodePrefab;
     
     private Rigidbody2D _rigidbody2D;
     private Vector2 _move_direction;
@@ -145,4 +146,6 @@ public class Player : MonoBehaviour
         _fireTimerInterval = rateFire == 0 ? _fireTimerInterval : rateFire;
     }
     #endregion
+    
+    public GameObject GetExplode() { return _explodePrefab; }
 }

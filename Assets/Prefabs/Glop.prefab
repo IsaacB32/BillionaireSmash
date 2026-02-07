@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5883835107269168853}
   - component: {fileID: 917813414261836354}
   - component: {fileID: 7171168884717884668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glop
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
   isDying: 0
   normalData: {fileID: 11400000, guid: efd8129420a527548a5b764f82107fe8, type: 2}
   eliteData: {fileID: 11400000, guid: 6c27a2a2fe7aa82499c3c163fe62df0e, type: 2}
-  maxTtl: 5
+  maxTtl: 60
   distanceThreshold: 0.5
 --- !u!95 &5883835107269168853
 Animator:

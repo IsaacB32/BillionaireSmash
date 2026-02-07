@@ -120825,6 +120825,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512f2cc8a07aa7244928d08096cfde0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
   spawnInterval: 0.5
   maxEnemies: 500
   eliteWeight: 0.01
@@ -149372,9 +149375,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4866818671625913297, guid: 1563a8bccb6530f90a04b8f422edbd7b, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 6160134398579993188, guid: 3ea3586ced7361acc8a6e5221b1c7561, type: 3}
+      propertyPath: stats.chain
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866818671625913297, guid: 1563a8bccb6530f90a04b8f422edbd7b, type: 3}
+      propertyPath: stats.pierce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866818671625913297, guid: 1563a8bccb6530f90a04b8f422edbd7b, type: 3}
+      propertyPath: stats.explode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6171437861759058561, guid: 1563a8bccb6530f90a04b8f422edbd7b, type: 3}
       propertyPath: m_Name
       value: Player
