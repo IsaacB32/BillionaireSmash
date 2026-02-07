@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [Header("Properties")]
     public float movement_speed = 10f;
     public int max_health = 2;
+    public int money;
     private int current_health;
     [SerializeField] private float _fireTimerInterval = 0.1f;
 
