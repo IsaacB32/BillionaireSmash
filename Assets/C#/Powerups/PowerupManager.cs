@@ -19,7 +19,21 @@ public class PowerupManager : MonoBehaviour
 
     private Powerup ChoosePowerup()
     {
-        int random = Random.Range(0, powerupList.Count - 1);
+        int random = 0;
+        bool lookForPowerup = true;
+        while (lookForPowerup)
+        {
+            random = Random.Range(0, powerupList.Count - 1);
+            if (powerupList[random].type == PowerupType.GunModifier)
+            {
+                if (((GunPowerup)powerupList[random]).style != Game.Instance.player.GetStyle())
+                {
+                    return powerupList[random];
+                }
+            }
+            else lookForPowerup = false;
+        }
+
         return powerupList[random];
     }
 

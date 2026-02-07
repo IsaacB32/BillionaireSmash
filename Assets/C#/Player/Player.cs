@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public enum PlayerState {
     Idle,
@@ -15,6 +14,7 @@ public class Player : MonoBehaviour
     public int money;
     private int current_health;
     [SerializeField] private float _fireTimerInterval = 0.1f;
+    private float _defaultFireTimer;
 
     public void setMaxHealth(int h)
     {
@@ -33,9 +33,6 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector2 _move_direction;
     private float _rotation_angle;
-
-    private float _idleTimerMax = 2.5f;
-    private float _idleTimer;
     
     private bool _holdingFire = false;
     private float _fireTimer;
@@ -58,6 +55,7 @@ public class Player : MonoBehaviour
         _animations = GetComponentInChildren<PlayerAnimations>();
         _gun = GetComponentInChildren<Gun>();
         _playerPowerups = GetComponent<PlayerPowerups>();
+        _defaultFireTimer = _fireTimerInterval;
     }
 
     #region Input
@@ -67,7 +65,6 @@ public class Player : MonoBehaviour
         if (context.started && !_freeze)
         {
             movementState = PlayerState.Moving;
-            _idleTimer = 0;
         }
     }
 
@@ -87,7 +84,12 @@ public class Player : MonoBehaviour
 
     public void FireGun(InputAction.CallbackContext context)
     {
-        if (Game.Instance.state == Game.GameState.Paused) return;
+        if (Game.Instance.state == Game.GameState.Paused)
+        {
+            _holdingFire = false;
+            return;
+        }
+        
         if (context.performed) _holdingFire = true;
         else if (context.canceled)
         {
@@ -125,7 +127,7 @@ public class Player : MonoBehaviour
     
     public void SetUpgradeStats(float newSpeed, int newHealth)
     {
-        movement_speed = newSpeed == 0 ? movement_speed : newSpeed;
+        if (newSpeed != 0) movement_speed += newSpeed;
         setMaxHealth(newHealth);
     }
 
@@ -137,9 +139,10 @@ public class Player : MonoBehaviour
     public void UpgradeGun(GunStyleType gunType, float rateFire, float growthRate)
     {
         _gun.SwitchActiveStyle(gunType, growthRate);
-        _fireTimerInterval = rateFire == 0 ? _fireTimerInterval : rateFire;
+        _fireTimerInterval = rateFire == 0 ? _defaultFireTimer : rateFire;
     }
     #endregion
     
     public GameObject GetExplode() { return _explodePrefab; }
+    public GunStyleType GetStyle() {return _gun.GetActiveStyle();}
 }

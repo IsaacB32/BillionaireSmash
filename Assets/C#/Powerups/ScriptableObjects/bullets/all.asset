@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cb2786dc6238bf2eb5603f2923730ee, type: 3}
-  m_Name: Explode1
+  m_Name: all
   m_EditorClassIdentifier: Assembly-CSharp::BulletPowerup
   type: 1
-  powerup_name: Explode
+  powerup_name: Everything
   icon: {fileID: 0}
-  description: makes the bullets explode
+  description: little bit of every upgrade, because why not
   stats:
-    size: 0
-    speed: 0
-    pierce: 0
+    size: 0.05
+    speed: 0.8
+    pierce: 1
     fire: 0
     electric: 0
     slowing: 0
-    chain: 0
+    chain: 1
     explode: 1

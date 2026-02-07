@@ -31,6 +31,7 @@ public class Gun : MonoBehaviour
    [Header("Gun Styles")]
    private GunStyleType _activeStyle = GunStyleType.Default;
    private Action _FireMethod;
+   public GunStyleType GetActiveStyle() {return _activeStyle;}
 
    public GunStyleType debugStyle;
 
@@ -141,9 +142,12 @@ public class Gun : MonoBehaviour
    public void AllDirectionFire()
    {
       CreateBullet(transform.position, transform.rotation);
-      CreateBullet(_behindSpawn.position, transform.rotation);
-      CreateBullet(_leftSpawn.position, transform.rotation);
-      CreateBullet(_rightSpawn.position, transform.rotation);
+      Quaternion rot = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 180);
+      CreateBullet(_behindSpawn.position, rot);
+      rot = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
+      CreateBullet(_leftSpawn.position, rot);
+      rot = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 270);
+      CreateBullet(_rightSpawn.position, rot);
    }
 
    public void RocketFire()

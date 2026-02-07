@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1692e0b417007a5d29d4401a783a12b3, type: 3}
-  m_Name: DuelShot
+  m_Name: Shotgun
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerup
   type: 2
-  powerup_name: Duel Barrell
+  powerup_name: shot gun
   icon: {fileID: 0}
-  description: shoot twice as fast
-  style: 4
-  rateFire: 0.8
+  description: look ma! three bullets
+  style: 1
+  rateFire: 0.19
   chargeGrowthRate: 2.3

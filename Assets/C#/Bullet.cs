@@ -79,7 +79,7 @@ public class Bullet : MonoBehaviour
                 Game.Instance.StartCoroutine(e.Die());
             }
         }
-        if (_chain == 0 && hit && --_pierceCounter <= 0) Release();
+        if (_chain == 0 && hit && --_pierceCounter < 0) Release();
     }
 
     private void ChainAttack(Collider2D hit)

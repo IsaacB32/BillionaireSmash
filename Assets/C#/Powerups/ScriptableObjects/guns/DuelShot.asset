@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58ccb00dc0f5ad1f0904d44b7bb8bef5, type: 3}
-  m_Name: SpeedMax1
-  m_EditorClassIdentifier: Assembly-CSharp::StatPowerup
-  type: 0
-  powerup_name: SpeedUp
+  m_Script: {fileID: 11500000, guid: 1692e0b417007a5d29d4401a783a12b3, type: 3}
+  m_Name: DuelShot
+  m_EditorClassIdentifier: Assembly-CSharp::GunPowerup
+  type: 2
+  powerup_name: Double Shot
   icon: {fileID: 0}
-  description: You want to go faster?
-  health: 0
-  speed: 2
+  description: shoot twice as fast
+  style: 4
+  rateFire: 0.17
+  chargeGrowthRate: 2.3
