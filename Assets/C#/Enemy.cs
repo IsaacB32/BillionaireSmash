@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Transform _playerTransform;
     private Rigidbody2D _rb;
+    
+    [SerializeField] private GameObject _splat;
 
     void Awake()
     {
@@ -99,6 +101,8 @@ public class Enemy : MonoBehaviour
         Vector2 knockbackDir = (transform.position - _playerTransform.position).normalized;
         float knockbackForce = 2f;
 
+        Instantiate(_splat, transform.position, Quaternion.identity);
+
         float elapsed = 0f;
         while (elapsed < deathDuration)
         {
@@ -112,6 +116,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
+        Game.Instance.IncreaseEnemyKilled();
         Game.Instance.player.money += _currentStats.value;
         Game.Instance.UpdateMoneyUI(Game.Instance.player.money);
         Game.Instance.enemyManager.Release(this);

@@ -31,6 +31,7 @@ public class Gun : MonoBehaviour
    [Header("Gun Styles")]
    private GunStyleType _activeStyle = GunStyleType.Default;
    private Action _FireMethod;
+   public GunStyleType GetActiveStyle() {return _activeStyle;}
 
    public GunStyleType debugStyle;
 
@@ -103,8 +104,8 @@ public class Gun : MonoBehaviour
          case GunStyleType.Shotgun:
             _FireMethod = ShotgunFire;
             break;
-         case GunStyleType.SemiAutomatic:
-            _FireMethod = SemiAutomaticFire;
+         case GunStyleType.AllDirections:
+            _FireMethod = AllDirectionFire;
             break;
          case GunStyleType.DuelBarrel:
             _FireMethod = DuelBarrelFire;
@@ -138,14 +139,20 @@ public class Gun : MonoBehaviour
       CreateBullet(transform.position, rot);
    }
 
-   public void SemiAutomaticFire()
+   public void AllDirectionFire()
    {
-      
+      CreateBullet(transform.position, transform.rotation);
+      Quaternion rot = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 180);
+      CreateBullet(_behindSpawn.position, rot);
+      rot = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);
+      CreateBullet(_leftSpawn.position, rot);
+      rot = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 270);
+      CreateBullet(_rightSpawn.position, rot);
    }
 
    public void RocketFire()
    {
-      
+      throw new NotImplementedException();
    }
 
    public void DuelBarrelFire()
@@ -170,11 +177,14 @@ public class Gun : MonoBehaviour
    
    public void FireEnded()
    {
+      float scale = chargeIndicator.transform.localScale.x;
+      
       Bullet bullet = _pool.Get();
-      bullet.OverrideSizeSpeed(chargeIndicator.transform.localScale.x, -1/chargeIndicator.transform.localScale.x);
       bullet.transform.position = transform.position;
       bullet.transform.rotation = transform.rotation;
       bullet.Init(this);
+      float percentage = Mathf.Clamp(scale / 1.5f, 0, 1f);
+      bullet.OverrideSizeSpeed(scale * 1.5f, -1/scale, (int)(percentage * 10));
       _activeBullets++;
 
       HideCharge();
@@ -185,7 +195,7 @@ public enum GunStyleType
 {
     Default,
     Shotgun,
-    SemiAutomatic, 
+    AllDirections, 
     RocketLauncher, 
     DuelBarrel,
     TwinShot,

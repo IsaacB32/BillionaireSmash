@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5883835107269168853}
   - component: {fileID: 917813414261836354}
   - component: {fileID: 7171168884717884668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glop
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: 1300386552625829504, guid: 311e73615285d514f86b085e47071966, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -109,8 +109,9 @@ MonoBehaviour:
   isDying: 0
   normalData: {fileID: 11400000, guid: efd8129420a527548a5b764f82107fe8, type: 2}
   eliteData: {fileID: 11400000, guid: 6c27a2a2fe7aa82499c3c163fe62df0e, type: 2}
-  maxTtl: 5
+  maxTtl: 60
   distanceThreshold: 0.5
+  _splat: {fileID: 5683874814784494140, guid: c3c1d5b69e89168bf9c674e2a1dc9951, type: 3}
 --- !u!95 &5883835107269168853
 Animator:
   serializedVersion: 7

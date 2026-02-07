@@ -12,17 +12,39 @@ public class Game : MonoBehaviour
         Win,
         Lose
     }
+
+    public void SwitchGameState(GameState s)
+    {
+        state = s;
+    }
     
     public static Game Instance { get; private set; }
 
     [Header("Game State")]
     public EnemyManager enemyManager;
     public Player player;
+    public PowerupManager powerup;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     
-    private GameState _state;
-    
+    [Header("Powerup")]
+    [SerializeField] private int _killedForPowerup = 20;
+
+    public GameState state { private set; get; }
+    public int enemiesKilled { private set; get; }
+    private int _totalKilled = 0;
+
+    public void IncreaseEnemyKilled()
+    {
+        enemiesKilled++;
+        _totalKilled++;
+        if (enemiesKilled > _killedForPowerup)
+        {
+            powerup.ShowPowerupChoices();
+            enemiesKilled = 0;
+        }
+    }
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -31,6 +53,18 @@ public class Game : MonoBehaviour
 
     public void UpdateMoneyUI(int val)
     {
-        moneyTextUI.text = $"${val}";
+        // moneyTextUI.text = $"${val}";
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        SwitchGameState(GameState.Paused);
+    }
+
+    public void Unpause()
+    {
+        Time.timeScale = 1;
+        SwitchGameState(GameState.Playing);
     }
 }

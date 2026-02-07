@@ -1,11 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public enum PlayerState {
     Idle,
-    Standing,
     Moving
 }
 public class Player : MonoBehaviour
@@ -16,6 +14,7 @@ public class Player : MonoBehaviour
     public int money;
     private int current_health;
     [SerializeField] private float _fireTimerInterval = 0.1f;
+    private float _defaultFireTimer;
 
     public void setMaxHealth(int h)
     {
@@ -25,17 +24,15 @@ public class Player : MonoBehaviour
     }
     
     [Header("References")]
-    [SerializeField] private GameObject _bodyReference;
+    [SerializeField] private GameObject _indicator;
     private PlayerAnimations _animations;
     private Gun _gun;
     private PlayerPowerups _playerPowerups;
+    [SerializeField] private GameObject _explodePrefab;
     
     private Rigidbody2D _rigidbody2D;
     private Vector2 _move_direction;
     private float _rotation_angle;
-
-    private float _idleTimerMax = 2.5f;
-    private float _idleTimer;
     
     private bool _holdingFire = false;
     private float _fireTimer;
@@ -57,6 +54,8 @@ public class Player : MonoBehaviour
         _rigidbody2D = GetComponentInChildren<Rigidbody2D>();
         _animations = GetComponentInChildren<PlayerAnimations>();
         _gun = GetComponentInChildren<Gun>();
+        _playerPowerups = GetComponent<PlayerPowerups>();
+        _defaultFireTimer = _fireTimerInterval;
     }
 
     #region Input
@@ -66,7 +65,6 @@ public class Player : MonoBehaviour
         if (context.started && !_freeze)
         {
             movementState = PlayerState.Moving;
-            _idleTimer = 0;
         }
     }
 
@@ -79,13 +77,19 @@ public class Player : MonoBehaviour
         mouseScreenPos.y -= startingScreenPos.y;
         
         _rotation_angle = Mathf.Atan2(mouseScreenPos.y, mouseScreenPos.x) * Mathf.Rad2Deg;
-        Vector3 rotation_temp = _bodyReference.transform.localEulerAngles;
-        rotation_temp.z = -_rotation_angle;
-        _bodyReference.transform.localEulerAngles = rotation_temp;
+        Vector3 rotation_temp = _indicator.transform.localEulerAngles;
+        rotation_temp.z = _rotation_angle;
+        _indicator.transform.localEulerAngles = rotation_temp;
     }
 
     public void FireGun(InputAction.CallbackContext context)
     {
+        if (Game.Instance.state == Game.GameState.Paused)
+        {
+            _holdingFire = false;
+            return;
+        }
+        
         if (context.performed) _holdingFire = true;
         else if (context.canceled)
         {
@@ -102,15 +106,7 @@ public class Player : MonoBehaviour
         _rigidbody2D.linearVelocity = _move_direction * movement_speed * Time.deltaTime * 50;
         Rotate();
         
-        if (_move_direction == Vector2.zero)
-        {
-            _idleTimer += Time.deltaTime;
-            if (_idleTimer >= _idleTimerMax)
-            {
-                movementState = PlayerState.Idle;
-            }
-            movementState = PlayerState.Standing;
-        }
+        if (_move_direction == Vector2.zero)  movementState = PlayerState.Idle;
 
         if (_holdingFire)
         {
@@ -131,7 +127,7 @@ public class Player : MonoBehaviour
     
     public void SetUpgradeStats(float newSpeed, int newHealth)
     {
-        movement_speed = newSpeed == 0 ? movement_speed : newSpeed;
+        if (newSpeed != 0) movement_speed += newSpeed;
         setMaxHealth(newHealth);
     }
 
@@ -143,7 +139,10 @@ public class Player : MonoBehaviour
     public void UpgradeGun(GunStyleType gunType, float rateFire, float growthRate)
     {
         _gun.SwitchActiveStyle(gunType, growthRate);
-        _fireTimerInterval = rateFire == 0 ? _fireTimerInterval : rateFire;
+        _fireTimerInterval = rateFire == 0 ? _defaultFireTimer : rateFire;
     }
     #endregion
+    
+    public GameObject GetExplode() { return _explodePrefab; }
+    public GunStyleType GetStyle() {return _gun.GetActiveStyle();}
 }

@@ -3,6 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "BulletPowerup", fileName = "BulletPowerup")]
 public class BulletPowerup : Powerup
 {
+    private void OnValidate()
+    {
+        type = PowerupType.BulletModifer;
+    }
     [Header("Bullet Stats")]
     public BulletStats stats;
 }
