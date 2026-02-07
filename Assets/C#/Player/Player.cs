@@ -67,6 +67,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (Game.Instance.state == Game.GameState.Playing) Game.Instance.Pause();
+            else if (Game.Instance.state == Game.GameState.Paused) Game.Instance.Unpause();
+        }
+    }
+
     private void Rotate()
     {
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();

@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
@@ -26,12 +25,14 @@ public class Game : MonoBehaviour
     public PowerupManager powerup;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
+    [SerializeField] private Cursor gameCursor;
     
     [Header("Powerup")]
     [SerializeField] private int _killedForPowerup = 20;
 
     [Header("Canvas Groups")]
     [SerializeField] private CanvasGroup mainMenuCanvas;
+    [SerializeField] private CanvasGroup pauseMenuCanvas;
 
     public GameState state { private set; get; }
     public int enemiesKilled { private set; get; }
@@ -56,6 +57,14 @@ public class Game : MonoBehaviour
         state = GameState.Menu;
     }
 
+    void Update()
+    {
+        if (state == GameState.Playing)
+        {
+            
+        }
+    }
+    
     public void UpdateMoneyUI(int val)
     {
         moneyTextUI.text = $"${val}";
@@ -63,14 +72,30 @@ public class Game : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0;
         SwitchGameState(GameState.Paused);
+
+        pauseMenuCanvas.alpha = 100f;
+        pauseMenuCanvas.interactable = true;
+        pauseMenuCanvas.blocksRaycasts = true;
+
+        UnityEngine.Cursor.visible = true;
+        gameCursor.gameObject.SetActive(false);
+        
+        Time.timeScale = 0;
     }
 
     public void Unpause()
     {
-        Time.timeScale = 1;
         SwitchGameState(GameState.Playing);
+
+        pauseMenuCanvas.alpha = 0f;
+        pauseMenuCanvas.interactable = false;
+        pauseMenuCanvas.blocksRaycasts = false;
+
+        UnityEngine.Cursor.visible = false;
+        gameCursor.gameObject.SetActive(true);
+        
+        Time.timeScale = 1;
     }
 
     public void GameOver()
@@ -82,7 +107,8 @@ public class Game : MonoBehaviour
     {
         state = GameState.Playing;
 
-        
+        LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
+        UnityEngine.Cursor.visible = false;
     }
 
     public void QuitGame()
