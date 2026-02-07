@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 652835ab76ec3995abca0cff4c563f9a
+=======
+guid: c759e4db264387746849f6e25417197c
+>>>>>>> 95074a08b2f997338da30b853fceb1e3c3ab537a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -139,7 +143,11 @@ ScriptedImporter:
       y: 4
       width: 22
       height: 18
+<<<<<<< HEAD
     spriteID: 2b89251aae5cb178e98df963a800df00
+=======
+    spriteID: b64d7882edcdf4a4493b2dc114afe897
+>>>>>>> 95074a08b2f997338da30b853fceb1e3c3ab537a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -171,7 +179,11 @@ ScriptedImporter:
         y: 3
         width: 22
         height: 18
+<<<<<<< HEAD
       spriteId: 2b89251aae5cb178e98df963a800df00
+=======
+      spriteId: b64d7882edcdf4a4493b2dc114afe897
+>>>>>>> 95074a08b2f997338da30b853fceb1e3c3ab537a
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
