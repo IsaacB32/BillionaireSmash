@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip powerupClip;
     public AudioClip gunClip;
     public AudioClip dieClip;
+    public AudioClip instructionTextAppear;
     
     [Header("Voice Lines")]
     public List<AudioClip> voiceLines;
@@ -191,6 +192,13 @@ public class AudioManager : MonoBehaviour
             sfxSource.volume = Random.Range(0.6f, 0.7f);
             sfxSource.PlayOneShot(gunClip);
         }
+    }
+
+    public void PlayInstructionTextAppear(float pitch = -1f)
+    {
+        sfxSource.pitch = (pitch == -1) ? Random.Range(0.7f, 1.3f) : pitch;
+        sfxSource.volume = 0.9f;
+        sfxSource.PlayOneShot(instructionTextAppear);
     }
 
     public void PlayPlayerDie()

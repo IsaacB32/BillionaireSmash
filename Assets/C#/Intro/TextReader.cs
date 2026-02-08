@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,20 +34,21 @@ public class TextReader : MonoBehaviour
    {
       _text.maxVisibleCharacters = 0;
       _text.text = sentence;
-      StartCoroutine(ReadSentence(sentence.Length));
+      int length = Regex.Replace(sentence, @"</?color[^>]*>", "").Length;
+      StartCoroutine(ReadSentence(length));
    }
 
    IEnumerator ReadSentence(int length)
    {
       yield return new WaitForSeconds(.56f);
       
-      while (_text.maxVisibleCharacters < length)
+      while (_text.maxVisibleCharacters <= length)
       {
          _text.maxVisibleCharacters++;
          yield return new WaitForSeconds(_textSpeed);
       }
 
-      yield return new WaitForSeconds(.4f);
+      yield return new WaitForSeconds(.3f);
       EnableButton();
    }
 

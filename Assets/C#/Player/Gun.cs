@@ -188,7 +188,7 @@ public class Gun : MonoBehaviour
       bullet.transform.rotation = transform.rotation;
       bullet.Init(this);
       float percentage = Mathf.Clamp(scale / 1.5f, 0, 1f);
-      bullet.OverrideSizeSpeed(scale * 1.5f, -1/scale, (int)(percentage * 10));
+      bullet.OverrideSizeSpeed(scale * 1.5f, -1/scale, (int)(scale * 10));
       _activeBullets++;
 
       HideCharge();

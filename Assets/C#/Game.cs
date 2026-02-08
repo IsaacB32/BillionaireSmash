@@ -34,7 +34,8 @@ public class Game : MonoBehaviour
     public CameraShake2D cameraShake;
     public TransitionController transition;
     public XPBar XpBar;
-
+    public InstructionText instructions;
+    
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
 
@@ -43,7 +44,7 @@ public class Game : MonoBehaviour
     [SerializeField] private CanvasGroup pauseMenuCanvas;
     [SerializeField] private CanvasGroup gameOverCanvas;
     [SerializeField] private CanvasGroup storyCanvas;
-    
+
     [Header("Game Score Text")]
     [SerializeField] private TextMeshProUGUI highscoreText;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -255,7 +256,8 @@ public class Game : MonoBehaviour
             storyCanvas.blocksRaycasts = false;
             storyCanvas.interactable = false;
             
-            SwitchGameState(GameState.Playing);
+            ShowInstructions();
+            // SwitchGameState(GameState.Playing);
             
             Instance.audioManager.PlayClick();
             LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
@@ -265,6 +267,11 @@ public class Game : MonoBehaviour
             UnityEngine.Cursor.visible = false;
             StartCoroutine(Instance.audioManager.PlayMusic());
         }
+    }
+
+    private void ShowInstructions()
+    {
+        instructions.Show(() => {SwitchGameState(GameState.Playing);});
     }
 
     public void QuitGame()

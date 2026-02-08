@@ -250,7 +250,6 @@ public class Player : MonoBehaviour
         _spriteRenderer.material = _defaultMat;
     }
     
-    //UI text in the player script -- why? because i don't care
     private void IncreaseHealth(int h)
     {
         if (h == 0) return;
