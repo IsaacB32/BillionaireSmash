@@ -67,6 +67,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (Game.Instance.state == Game.GameState.Playing) Game.Instance.Pause();
+            else if (Game.Instance.state == Game.GameState.Paused) Game.Instance.Unpause();
+        }
+    }
+
     private void Rotate()
     {
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
@@ -100,7 +109,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_freeze) return;
+        if (_freeze || Game.Instance.state != Game.GameState.Playing) return;
         
         _rigidbody2D.linearVelocity = _move_direction * movement_speed * Time.deltaTime * 50;
         Rotate();
@@ -115,6 +124,11 @@ public class Player : MonoBehaviour
                 _fireTimer = 0;
             }
             else _fireTimer += Time.deltaTime;
+        }
+
+        if (current_health < 1)
+        {
+            Game.Instance.GameOver();
         }
     }
 
