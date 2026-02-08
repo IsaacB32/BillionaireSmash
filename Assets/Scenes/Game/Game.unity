@@ -11401,8 +11401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22abc09619509ce2b8de20a95e82f0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DynamicDifficult
-  baseKillsPerLevel: 15
-  earlyGrowth: 1
+  baseKillsPerLevel: 17
+  earlyGrowth: 1.1
   lateGrowth: 0.15
   levelText: {fileID: 1014796096}
   startingSpawnInterval: 0.5
@@ -74478,8 +74478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49adc425a957d3f58b81bfce83ce1329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneController
-  _playCutscene: 0
-  _showInstruction: 0
+  _playCutscene: 1
+  _showInstruction: 1
 --- !u!1 &2103524033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2361393911207759033, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
@@ -74841,6 +74841,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8643703783724571, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1130443492987348617, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
