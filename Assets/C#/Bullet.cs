@@ -74,7 +74,7 @@ public class Bullet : MonoBehaviour
             ChainAttack(other.collider);
             ExplodeAttack();
             Enemy e = other.gameObject.GetComponent<Enemy>();
-            if (!e.isDying)
+            if (!e.isDying && --e.currentStats.health <= 0)
             {
                 e.isDying = true;
                 Game.Instance.StartCoroutine(e.Die());
