@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicLoopASource;
     public AudioSource musicLoopBSource;
     public AudioSource sfxSource;
+    public AudioSource explosionSfxSource;
+    public AudioSource enemyHitSfxSource;
     public AudioSource voiceSfxSource;
     public AudioSource heartBeatSource;
     public AudioSource breathingSource;
@@ -146,9 +148,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayExplosion()
     {
-        sfxSource.pitch = Random.Range(0.8f, 1.0f);
-        sfxSource.volume = 0.6f;
-        if (explosionClip) sfxSource.PlayOneShot(explosionClip);
+        explosionSfxSource.pitch = Random.Range(0.8f, 1.0f);
+        explosionSfxSource.volume = 0.8f;
+        if (explosionClip) explosionSfxSource.PlayOneShot(explosionClip);
     }
 
     public void PlayClick()
@@ -160,9 +162,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayEnemyHit()
     {
-        sfxSource.pitch = Random.Range(0.6f, 0.8f);
-        sfxSource.volume = 0.6f;
-        if (hitClip) sfxSource.PlayOneShot(hitClip);
+        enemyHitSfxSource.pitch = Random.Range(0.4f, 0.8f);
+        enemyHitSfxSource.volume = 0.4f;
+        if (hitClip) enemyHitSfxSource.PlayOneShot(hitClip);
     }
 
     public void PlayMoney()
@@ -188,8 +190,8 @@ public class AudioManager : MonoBehaviour
     {
         if (gunClip)
         {
-            sfxSource.pitch = Random.Range(0.2f, 0.8f);
-            sfxSource.volume = Random.Range(0.6f, 0.7f);
+            sfxSource.pitch = Random.Range(0.5f, 0.8f);
+            sfxSource.volume = Random.Range(0.7f, 0.8f);
             sfxSource.PlayOneShot(gunClip);
         }
     }
@@ -203,6 +205,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayPlayerDie()
     {
+        sfxSource.pitch = 0.8f;
+        sfxSource.volume = 0.8f;
         if (dieClip) sfxSource.PlayOneShot(dieClip);
     }
 
