@@ -145,21 +145,21 @@ public class AudioManager : MonoBehaviour
     public void PlayExplosion()
     {
             sfxSource.pitch = Random.Range(0.8f, 1.0f);
-            sfxSource.volume = Random.Range(0.7f, 0.6f);
+            sfxSource.volume = 0.6f;
         if (explosionClip) sfxSource.PlayOneShot(explosionClip);
     }
 
     public void PlayClick()
     {
             sfxSource.pitch = 1.0f;
-            sfxSource.volume = 0.7f;
+            sfxSource.volume = 0.6f;
         if (clickClip) sfxSource.PlayOneShot(clickClip);
     }
 
     public void PlayEnemyHit()
     {
             sfxSource.pitch = Random.Range(0.6f, 0.8f);
-            sfxSource.volume = Random.Range(0.5f, 0.6f);
+            sfxSource.volume = 0.6f;
         if (hitClip) sfxSource.PlayOneShot(hitClip);
     }
 
@@ -173,7 +173,7 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerHit()
     {
             sfxSource.pitch = Random.Range(0.8f, 1.0f);
-            sfxSource.volume = Random.Range(0.6f, 0.7f);
+            sfxSource.volume = 0.6f;
         if (playerHitClip) sfxSource.PlayOneShot(playerHitClip);
     }
 
@@ -187,7 +187,7 @@ public class AudioManager : MonoBehaviour
         if (gunClip)
         {
             sfxSource.pitch = Random.Range(0.2f, 0.8f);
-            sfxSource.volume = Random.Range(0.4f, 0.6f);
+            sfxSource.volume = Random.Range(0.7f, 0.6f);
             sfxSource.PlayOneShot(gunClip);
         }
     }
@@ -195,13 +195,15 @@ public class AudioManager : MonoBehaviour
     public void PlayVoiceLineRandom()
     {
         int rand = Random.Range(1, voiceLines.Count);
-	voiceSfxSource.volume = 0.7f;
+	voiceSfxSource.volume = 0.5f;
         voiceSfxSource.PlayOneShot(voiceLines[rand]);
+	voiceSfxSource.volume = 0.5f;
     }
 
     public void PlayVoiceLineIndex(int index)
     {
-	voiceSfxSource.volume = 0.7f;
+	voiceSfxSource.volume = 0.5f;
         voiceSfxSource.PlayOneShot(voiceLines[index]);
+	voiceSfxSource.volume = 0.5f;
     }
 }

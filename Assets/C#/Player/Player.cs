@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
     {
         if (Game.Instance.state == Game.GameState.Paused)
         {
+        	Game.Instance.audioManager.PlayGunFire();
             _holdingFire = false;
             return;
         }
