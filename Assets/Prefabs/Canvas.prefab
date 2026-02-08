@@ -776,10 +776,10 @@ RectTransform:
   - {fileID: 7746721617505253032}
   - {fileID: 2048683517751141243}
   - {fileID: 7770639804115541603}
-  - {fileID: 6375122600189637467}
   - {fileID: 5518773321307099495}
   - {fileID: 9073026584890307426}
   - {fileID: 1661280693724039821}
+  - {fileID: 6375122600189637467}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

@@ -10822,6 +10822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 805309224}
   - component: {fileID: 805309223}
+  - component: {fileID: 805309225}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -10844,6 +10845,7 @@ MonoBehaviour:
   enemyManager: {fileID: 920347209}
   player: {fileID: 1919725683}
   powerup: {fileID: 2025908982}
+  difficult: {fileID: 805309225}
   moneyTextUI: {fileID: 2441438938525727458}
   gameCursor: {fileID: 1168987558}
   _killedForPowerup: 500
@@ -10865,6 +10867,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &805309225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805309222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22abc09619509ce2b8de20a95e82f0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DynamicDifficult
+  startingKilledForPowerup: 20
+  startingEnemySpawnRate: 0.5
+  _multiplier: 2
 --- !u!1 &854640614
 GameObject:
   m_ObjectHideFlags: 0
@@ -43032,6 +43049,14 @@ PrefabInstance:
     - target: {fileID: 3574800931746806313, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3574800931746806313, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752609631765286914, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7737912999549790717, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: healthtext
