@@ -18,5 +18,5 @@ MonoBehaviour:
   description: shoot twice as fast
   rarity: 100
   style: 4
-  rateFire: 0.17
+  rateFire: 0.18
   chargeGrowthRate: 2.3

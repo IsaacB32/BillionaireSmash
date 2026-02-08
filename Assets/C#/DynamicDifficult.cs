@@ -24,7 +24,6 @@ public class DynamicDifficult : MonoBehaviour
     {
         _level++;
         int killedLevel = Mathf.FloorToInt(startingKilledForPowerup * Mathf.Pow(4.0f, _level + 1) * Mathf.Log(_level + 1) + 19);
-	Debug.Log(killedLevel);
         float spawnRate = (_level != 1) ? 1.0f / (1 + _level) : startingEnemySpawnRate;
         SetLevel(killedLevel, spawnRate);
     }

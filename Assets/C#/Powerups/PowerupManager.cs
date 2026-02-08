@@ -7,8 +7,13 @@ public class PowerupManager : MonoBehaviour
     public List<Powerup> powerupList;
     [SerializeField] private GameObject _powerupUI;
 
+    private List<Powerup> _powerupCache = new List<Powerup>();
+    private int _powerIndex = 0;
+
     public IEnumerator ShowPowerupChoices()
     {
+        _powerIndex = 0;
+        _powerupCache = new List<Powerup>(powerupList);
         Game.Instance.audioManager.PlayPowerUp();
 
         yield return StartCoroutine(ScaleTime(1f, 0f, 0.5f));
@@ -22,29 +27,32 @@ public class PowerupManager : MonoBehaviour
             p.AssignPowerup(ChoosePowerup());
         }
     }
-
+    
     private Powerup ChoosePowerup()
     {
         float totalWeight = 0f;
-        foreach (var powerup in powerupList)  totalWeight += powerup.rarity;
+        foreach (var powerup in _powerupCache)  totalWeight += powerup.rarity;
         float roll = Random.Range(0f, totalWeight);
         
-        foreach (var powerup in powerupList)
+        for (int i = 0; i < _powerupCache.Count; i++)
         {
-            roll -= powerup.rarity;
+            roll -= _powerupCache[i].rarity;
 
             if (roll <= 0f)
             {
-                if (powerup.type == PowerupType.GunModifier)
+                if (_powerupCache[i].type == PowerupType.GunModifier)
                 {
-                    var gunPowerup = (GunPowerup)powerup;
+                    var gunPowerup = (GunPowerup)_powerupCache[i];
                     if (gunPowerup.style == Game.Instance.player.GetStyle())
                     {
                         // reject and retry
                         return ChoosePowerup();
                     }
                 }
-                return powerup;
+
+                Powerup pow = _powerupCache[i];
+                _powerupCache.Remove(_powerupCache[i]);
+                return pow;
             }
         }
         return null; 
