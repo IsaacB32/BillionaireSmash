@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        Game.Instance.IncreaseEnemyKilled();
+        Game.Instance.difficult.IncreaseEnemyKilled();
         Game.Instance.player.money += _currentStats.value;
         Game.Instance.UpdateMoneyUI(Game.Instance.player.money);
         Game.Instance.enemyManager.Release(this);

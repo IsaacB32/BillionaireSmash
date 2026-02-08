@@ -24,26 +24,11 @@ public class Game : MonoBehaviour
     public EnemyManager enemyManager;
     public Player player;
     public PowerupManager powerup;
+    public DynamicDifficult difficult;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     
-    [Header("Powerup")]
-    [SerializeField] private int _killedForPowerup = 20;
-
     public GameState state { private set; get; }
-    public int enemiesKilled { private set; get; }
-    private int _totalKilled = 0;
-
-    public void IncreaseEnemyKilled()
-    {
-        enemiesKilled++;
-        _totalKilled++;
-        if (enemiesKilled > _killedForPowerup)
-        {
-            powerup.ShowPowerupChoices();
-            enemiesKilled = 0;
-        }
-    }
 
     void Awake()
     {

@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     public LayerMask enemyMask;
     
     [Header("Spawn Settings")]
-    [SerializeField] private float spawnInterval;
+    public float spawnInterval;
     [SerializeField] private int maxEnemies;
     [SerializeField] private float eliteWeight = 0.1f;
     [SerializeField] private float innerRadius;
