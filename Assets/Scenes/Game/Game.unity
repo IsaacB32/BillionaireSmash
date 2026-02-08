@@ -43701,6 +43701,10 @@ PrefabInstance:
       propertyPath: stats.size
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 6824389931822443590, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: stats.explode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7737912999549790717, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: _dashTime
       value: 0.3
