@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class DynamicDifficulty : MonoBehaviour
@@ -6,6 +7,7 @@ public class DynamicDifficulty : MonoBehaviour
     [SerializeField] private int baseKillsPerLevel = 20;
     [SerializeField] private float earlyGrowth = 1.25f;   // for very fast early levels
     [SerializeField] private float lateGrowth = 0.15f;    // increase for strong late game taper
+    [SerializeField] private TextMeshProUGUI levelText;
 
     [Header("Enemy Spawning")]
     [SerializeField] private float startingSpawnInterval = 0.5f;
@@ -22,6 +24,7 @@ public class DynamicDifficulty : MonoBehaviour
     {
         RecalculateLevelData();
         ApplySpawnRate();
+        UpdateLevelText();
     }
 
     public void OnEnemyKilled()
@@ -29,6 +32,8 @@ public class DynamicDifficulty : MonoBehaviour
         killsThisLevel++;
         totalKills++;
 
+        Game.Instance.XpBar.UpdateXPBar(killsThisLevel, killsRequired);
+        
         if (killsThisLevel >= killsRequired)
         {
             LevelUp();
@@ -42,7 +47,8 @@ public class DynamicDifficulty : MonoBehaviour
 
         RecalculateLevelData();
         ApplySpawnRate();
-
+        UpdateLevelText();
+        
         StartCoroutine(Game.Instance.powerup.ShowPowerupChoices());
     }
 
@@ -63,6 +69,11 @@ public class DynamicDifficulty : MonoBehaviour
 
         Game.Instance.enemyManager.spawnInterval =
             Mathf.Max(interval, minSpawnInterval);
+    }
+
+    private void UpdateLevelText()
+    {
+        levelText.text = $"Level {level}";
     }
 
     #if UNITY_EDITOR

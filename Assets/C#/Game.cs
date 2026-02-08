@@ -33,6 +33,7 @@ public class Game : MonoBehaviour
     public TextReader textReader;
     public CameraShake2D cameraShake;
     public TransitionController transition;
+    public XPBar XpBar;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
