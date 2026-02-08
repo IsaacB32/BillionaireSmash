@@ -74690,7 +74690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49adc425a957d3f58b81bfce83ce1329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneController
-  _playCutscene: 0
+  _playCutscene: 1
 --- !u!1 &2103524033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2361393911207759033, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
@@ -75073,6 +75073,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -40
       objectReference: {fileID: 0}
+    - target: {fileID: 1433165541466861868, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -195
+      objectReference: {fileID: 0}
     - target: {fileID: 1944954183484136138, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -75183,23 +75187,45 @@ PrefabInstance:
       objectReference: {fileID: 1290067705}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: sentences.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: 'sentences.Array.data[0]'
-      value: 'In the distant year of 2027
+      value: 'the year is 2027
 
-        an evil billionaire is taking
-        over the world'
+        only one billionaire remains on earth
+
+        his
+        name: jonathan capitalist'
       objectReference: {fileID: 0}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: 'sentences.Array.data[1]'
-      value: 'huh ... sounds familiar '
+      value: "with only a small amount of his money \nhe solved world hunger"
       objectReference: {fileID: 0}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: 'sentences.Array.data[2]'
-      value: "only one man, one farmer, can stop their plans \nsave your farm and
-        save the world"
+      value: 'then he created the money monsters
+
+        creatures made entirly
+        out of money'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: 'sentences.Array.data[3]'
+      value: 'the money monsters took over earth
+
+        allowing john to buy all
+        the land
+
+        with plans to build an <color=yellow>ai</color> data center'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: 'sentences.Array.data[4]'
+      value: "as a rural farmer you don't care \nbut now John is coming for your
+        land\nyou have to fight back to survive"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: 'sentences.Array.data[5]'
+      value: things are about to get ugly
       objectReference: {fileID: 0}
     - target: {fileID: 2048683517751141243, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_AnchoredPosition.y
