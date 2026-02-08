@@ -10,7 +10,10 @@ public class CutsceneController : MonoBehaviour
    }
    
    [SerializeField] private bool _playCutscene = true;
+   [SerializeField] private bool _showInstruction = true;
    
    public void DisableCutscene() { _playCutscene = false; }
    public bool GetCutscene() { return _playCutscene; }
+   
+   public bool GetInstructions() { return _showInstruction; }
 }

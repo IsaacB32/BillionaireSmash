@@ -19,6 +19,12 @@ public class InstructionText : MonoBehaviour
 
     public void Show(Action ending)
     {
+        if (!CutsceneController.Instance.GetInstructions())
+        {
+            _canvas.alpha = 0;
+            ending.Invoke();
+            return;
+        }
         _canvas.alpha = 1;
         _text.maxVisibleLines = 1;
         StartCoroutine(ShowText(ending));

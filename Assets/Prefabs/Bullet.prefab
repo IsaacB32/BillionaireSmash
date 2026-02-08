@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5293938462546623083}
   - component: {fileID: 1306753483717557021}
   - component: {fileID: -5184451219486864800}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

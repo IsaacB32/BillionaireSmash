@@ -19,4 +19,4 @@ MonoBehaviour:
   rarity: 80
   style: 6
   rateFire: 0
-  chargeGrowthRate: 1.6
+  chargeGrowthRate: 3

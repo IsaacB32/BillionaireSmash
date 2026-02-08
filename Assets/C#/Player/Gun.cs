@@ -181,6 +181,8 @@ public class Gun : MonoBehaviour
    
    public void FireEnded()
    {
+      if (_activeStyle != GunStyleType.ChargeGun) return;
+      
       float scale = chargeIndicator.transform.localScale.x;
       
       Bullet bullet = _pool.Get();

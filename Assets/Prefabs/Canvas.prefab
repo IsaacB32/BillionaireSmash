@@ -447,7 +447,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc952d751528c3579862a2e20030ab50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InstructionText
-  _showTime: 0.6
+  _showTime: 0.74
 --- !u!225 &493401289730376890
 CanvasGroup:
   m_ObjectHideFlags: 0
