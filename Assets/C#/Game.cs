@@ -35,6 +35,7 @@ public class Game : MonoBehaviour
     [SerializeField] private CanvasGroup mainMenuCanvas;
     [SerializeField] private CanvasGroup pauseMenuCanvas;
     [SerializeField] private CanvasGroup gameOverCanvas;
+    [SerializeField] private CanvasGroup storyCanvas;
     
     [Header("Game Score Text")]
     [SerializeField] private TextMeshProUGUI highscoreText;
