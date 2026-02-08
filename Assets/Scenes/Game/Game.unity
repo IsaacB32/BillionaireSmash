@@ -74137,6 +74137,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d1b91acdf2baf42cbbfc7123874418b0, type: 2}
   - {fileID: 11400000, guid: ea500db71421ce06ba1178100d5fc064, type: 2}
   _powerupUI: {fileID: 2103524033}
+  powerupEnabled: 0
 --- !u!4 &2025908983
 Transform:
   m_ObjectHideFlags: 0
@@ -74477,8 +74478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49adc425a957d3f58b81bfce83ce1329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneController
-  _playCutscene: 1
-  _showInstruction: 1
+  _playCutscene: 0
+  _showInstruction: 0
 --- !u!1 &2103524033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2361393911207759033, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
@@ -74987,7 +74988,7 @@ PrefabInstance:
     - target: {fileID: 5298190325243728499, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
       value: 
-      objectReference: {fileID: 392699817796843677, guid: 4b25e638652da3449922c9f200c9d4bc, type: 3}
+      objectReference: {fileID: -724764980391340393, guid: db9d8aa7a926dc0b1adf93c5860156ce, type: 3}
     - target: {fileID: 5298190325243728499, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

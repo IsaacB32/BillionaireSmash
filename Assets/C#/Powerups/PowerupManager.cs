@@ -10,8 +10,11 @@ public class PowerupManager : MonoBehaviour
     private List<Powerup> _powerupCache = new List<Powerup>();
     private int _powerIndex = 0;
 
+    [HideInInspector] public bool powerupEnabled; 
+
     public IEnumerator ShowPowerupChoices()
     {
+        powerupEnabled = true;
         Game.Instance.cameraShake.PlayModerate();
         _powerIndex = 0;
         _powerupCache = new List<Powerup>(powerupList);
@@ -61,6 +64,7 @@ public class PowerupManager : MonoBehaviour
 
     public void Hide()
     {
+        powerupEnabled = false;
         LeanTween.moveLocal(_powerupUI, new Vector3(0f, -1000f, 0f), 0.5f).setIgnoreTimeScale(true);
         StartCoroutine(ScaleTime(0f, 1f, 0.5f));
     }
@@ -77,6 +81,7 @@ public class PowerupManager : MonoBehaviour
             
             yield return null; 
         }
-        Time.timeScale = endScale;
+        if (endScale == 1f) Game.Instance.Unfreeze();
+        else Game.Instance.Freeze();
     }
 }

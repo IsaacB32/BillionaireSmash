@@ -170,13 +170,12 @@ public class Game : MonoBehaviour
         UnityEngine.Cursor.visible = true;
         gameCursor.gameObject.SetActive(false);
         
-        SwitchGameState(GameState.Paused);
         Freeze();
+        SwitchGameState(GameState.Paused);
     }
 
     public void Unpause()
     {
-        SwitchGameState(GameState.Playing);
 
         Instance.audioManager.PlayClick();
         
@@ -198,6 +197,7 @@ public class Game : MonoBehaviour
 
     public void Unfreeze()
     {
+        if (powerup.powerupEnabled) return;
         Time.timeScale = 1;
     }
     public void GameOver()
