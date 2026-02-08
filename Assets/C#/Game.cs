@@ -36,6 +36,11 @@ public class Game : MonoBehaviour
     [SerializeField] private CanvasGroup mainMenuCanvas;
     [SerializeField] private CanvasGroup pauseMenuCanvas;
     [SerializeField] private CanvasGroup gameOverCanvas;
+    
+    [Header("Game Score Text")]
+    [SerializeField] private TextMeshProUGUI highscoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private int score = 0;
 
     public GameState state { private set; get; }
 
@@ -46,22 +51,18 @@ public class Game : MonoBehaviour
 
         state = GameState.Menu;
         Time.timeScale = 1f;
-    }
-
-    void Update()
-    {
-
+        
+        highscoreText.text = HighScore.Instance.GetScore().ToString();
     }
     
     public void UpdateMoneyUI(int val)
     {
+        score = val;
         moneyTextUI.text = $"${val}";
     }
 
     public void Pause()
     {
-        SwitchGameState(GameState.Paused);
-
         pauseMenuCanvas.alpha = 100f;
         pauseMenuCanvas.interactable = true;
         pauseMenuCanvas.blocksRaycasts = true;
@@ -69,13 +70,11 @@ public class Game : MonoBehaviour
         UnityEngine.Cursor.visible = true;
         gameCursor.gameObject.SetActive(false);
         
-        Time.timeScale = 0;
+        Freeze();
     }
 
     public void Unpause()
     {
-        SwitchGameState(GameState.Playing);
-
         pauseMenuCanvas.alpha = 0f;
         pauseMenuCanvas.interactable = false;
         pauseMenuCanvas.blocksRaycasts = false;
@@ -83,9 +82,20 @@ public class Game : MonoBehaviour
         UnityEngine.Cursor.visible = false;
         gameCursor.gameObject.SetActive(true);
         
-        Time.timeScale = 1;
+        Unfreeze();
     }
 
+    public void Freeze()
+    {
+        SwitchGameState(GameState.Paused);
+        Time.timeScale = 0;
+    }
+
+    public void Unfreeze()
+    {
+        SwitchGameState(GameState.Playing);
+        Time.timeScale = 1;
+    }
     public void GameOver()
     {
         state = GameState.Lose;
@@ -96,6 +106,13 @@ public class Game : MonoBehaviour
         
         UnityEngine.Cursor.visible = true;
         gameCursor.gameObject.SetActive(false);
+
+        if (score > HighScore.Instance.GetScore())
+        {
+            highscoreText.text = score.ToString();
+            HighScore.Instance.NewHighScore(score);
+        }
+        scoreText.text = score.ToString();
 
         Time.timeScale = 0f;
     }
@@ -111,6 +128,8 @@ public class Game : MonoBehaviour
         state = GameState.Playing;
 
         LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
+        mainMenuCanvas.interactable = false;
+        mainMenuCanvas.blocksRaycasts = false;
         UnityEngine.Cursor.visible = false;
     }
 
