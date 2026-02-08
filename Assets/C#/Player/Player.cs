@@ -142,6 +142,8 @@ public class Player : MonoBehaviour
     {
         if (newSpeed != 0) movement_speed += newSpeed;
         IncreaseHealth(newHealth);
+
+        movement_speed = Mathf.Clamp(movement_speed, 0.8f, 100f);
     }
 
     public void UpgradeBullets(BulletStats stats)

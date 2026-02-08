@@ -7,34 +7,31 @@ public class DynamicDifficult : MonoBehaviour
     public int startingKilledForPowerup = 20;
     public float startingEnemySpawnRate = 0.5f;
     
-    private int _killedLevel;
-    private float _enemySpawnRate;
-    
     private int _enemiesKilled;
-    private int _killedForPowerup;
     private int _totalKilled;
-
-    [Header("Function")]
-    [SerializeField] private int _multiplier = 2;
+    
     private int _level = 1;
 
+    private int _killedForPowerup;
+    
+    
     private void Start()
     {
-        _killedLevel = startingKilledForPowerup;
-        _enemySpawnRate = startingEnemySpawnRate;
-        SetLevel();
+        SetLevel(startingKilledForPowerup, startingEnemySpawnRate);
     }
 
     public void IncreaseLevel()
     {
-        _killedLevel = Mathf.FloorToInt(Mathf.Pow(1.75f, _level) + 19);
-        SetLevel();
+        _level++;
+        int killedLevel = Mathf.FloorToInt(Mathf.Pow(1.8f, _level) + 19);
+        float spawnRate = (_level != 1) ? .2f / Mathf.Log(_level) : startingEnemySpawnRate;
+        SetLevel(killedLevel, spawnRate);
     }
 
-    public void SetLevel()
+    public void SetLevel(int killedLevel, float spawnRate)
     {
-        _killedForPowerup = _killedLevel; 
-        Game.Instance.enemyManager.spawnInterval = _enemySpawnRate;
+        _killedForPowerup = killedLevel; 
+        Game.Instance.enemyManager.spawnInterval = spawnRate;
     }
     
     public void IncreaseEnemyKilled()
@@ -45,7 +42,7 @@ public class DynamicDifficult : MonoBehaviour
         {
             Game.Instance.powerup.ShowPowerupChoices();
             _enemiesKilled = 0;
+            IncreaseLevel();
         }
-        IncreaseLevel();
     }
 }

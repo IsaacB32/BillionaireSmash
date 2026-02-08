@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerup
   type: 2
   powerup_name: Shoot Behind
-  icon: {fileID: 0}
+  icon: {fileID: 4673811780347588052, guid: 0564bf9bb6618d676b2ea41d0245d26a, type: 3}
   description: cover your six
   style: 5
   rateFire: 0.15

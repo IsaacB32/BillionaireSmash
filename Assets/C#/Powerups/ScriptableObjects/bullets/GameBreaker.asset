@@ -17,8 +17,8 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: might break the game
   stats:
-    size: 0.1
-    speed: 0.2
+    size: 0.5
+    speed: -0.5
     pierce: 0
     fire: 0
     electric: 0
