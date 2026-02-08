@@ -164,7 +164,7 @@ MonoBehaviour:
   explosionClip: {fileID: 8300000, guid: 292e43e40c55b8b4daa6ec4ce707c023, type: 3}
   clickClip: {fileID: 8300000, guid: dfc47f031480fd744999c3df17a1eb2d, type: 3}
   hitClip: {fileID: 8300000, guid: 33c8660561667034e9e8cea6f0552aef, type: 3}
-  moneyPickupClip: {fileID: 8300000, guid: 5d56a7fc36c05ae4ea69f6cc8477677a, type: 3}
+  moneyPickupClip: {fileID: 8300000, guid: 3b9cce225ed971849a6485b257e5a6ce, type: 3}
   playerHitClip: {fileID: 8300000, guid: 7a54b492c0711f54da4904783698b2eb, type: 3}
   powerupClip: {fileID: 8300000, guid: f89734ece3430234ca8f93484f42d776, type: 3}
   gunClip: {fileID: 8300000, guid: 01ef5113bf2c3ad41b46e8cd29f40cdc, type: 3}
@@ -11349,6 +11349,11 @@ MonoBehaviour:
   highscoreText: {fileID: 2441438938525727460}
   scoreText: {fileID: 2441438938525727459}
   healthText: {fileID: 389331352}
+  dropHeight: 2
+  dropDuration: 0.3
+  baseFloatSpeed: 12
+  floatAcceleration: 6
+  maxFloatSpeed: 50
   damageMaterial: {fileID: 2100000, guid: 7f2e4ca7874dff74d810629d3dde218a, type: 2}
 --- !u!4 &805309224
 Transform:
@@ -44212,9 +44217,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1710732599785864611, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3095364076593737673, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 3481617082095734953, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44274,7 +44283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3574800931746806313, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
-      value: 64
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6824389931822443590, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: stats.size
@@ -74771,7 +74780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49adc425a957d3f58b81bfce83ce1329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneController
-  _playCutscene: 1
+  _playCutscene: 0
 --- !u!1 &2103524033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2361393911207759033, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}

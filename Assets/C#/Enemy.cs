@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour
         _health -= value;
         return _health;
     }
-    public float GetHealth() {return _health;}
 
     private float _currentTtl;
     private Animator _animator;
@@ -117,6 +116,8 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator Die()
     {
+        Game.Instance.SpawnDrop(currentStats.dropPrefab, transform.position, currentStats.value);
+        
         float deathDuration = 0.2f;
         Vector2 knockbackDir = (transform.position - _playerTransform.position).normalized;
         float knockbackForce = 2f;
@@ -135,8 +136,6 @@ public class Enemy : MonoBehaviour
         }
 
         Game.Instance.difficult.IncreaseEnemyKilled();
-        Game.Instance.player.money += currentStats.value;
-        Game.Instance.UpdateMoneyUI(Game.Instance.player.money);
         Game.Instance.enemyManager.Release(this);
         Game.Instance.audioManager.PlayEnemyHit();
         Game.Instance.cameraShake.AddLightShake();

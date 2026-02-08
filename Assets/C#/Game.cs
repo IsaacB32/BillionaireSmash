@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -12,7 +9,6 @@ public class Game : MonoBehaviour
         Menu,
         Paused,
         Playing,
-        Win,
         Lose
     }
 
@@ -53,6 +49,13 @@ public class Game : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthText;
     private int score = 0;
 
+    [Header("Drops")]
+    [SerializeField] private float dropHeight = 2f;
+    [SerializeField] private float dropDuration = 0.3f;
+    [SerializeField] private float baseFloatSpeed = 2.5f;
+    [SerializeField] private float floatAcceleration = 1.5f;
+    [SerializeField] private float maxFloatSpeed = 6f;
+    
     [Header("Misc")]
     public Material damageMaterial;
     
@@ -101,7 +104,52 @@ public class Game : MonoBehaviour
         score = val;
         moneyTextUI.text = $"${val}";
     }
+    
+    public void SpawnDrop(GameObject prefab, Vector2 groundPosition, int value)
+    {
+        GameObject obj = Instantiate(
+            prefab,
+            groundPosition + Vector2.up * dropHeight,
+            Quaternion.identity
+        );
+        obj.GetComponent<Money>().value = value;
 
+        StartCoroutine(DropThenFloat(obj, groundPosition));
+    }
+    
+    private IEnumerator DropThenFloat(GameObject obj, Vector2 groundPosition)
+    {
+        Vector2 startPos = obj.transform.position;
+        float t = 0f;
+
+        while (t < dropDuration)
+        {
+            t += Time.deltaTime;
+            float eased = Mathf.SmoothStep(0f, 1f, t / dropDuration);
+            obj.transform.position = Vector2.Lerp(startPos, groundPosition, eased);
+            yield return null;
+        }
+
+        obj.transform.position = groundPosition;
+
+        yield return new WaitForSeconds(1f);
+
+        float currentSpeed = baseFloatSpeed;
+
+        while (obj != null && player != null)
+        {
+            currentSpeed = Mathf.Min(
+                currentSpeed + floatAcceleration * Time.deltaTime,
+                maxFloatSpeed
+            );
+
+            Vector2 dir = (Instance.player.transform.position - obj.transform.position).normalized;
+            obj.transform.position += (Vector3)(dir * currentSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+    }
+    
     public void Pause()
     {
         SwitchGameState(GameState.Paused);

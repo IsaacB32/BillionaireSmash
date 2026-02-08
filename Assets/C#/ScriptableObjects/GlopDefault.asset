@@ -18,4 +18,4 @@ MonoBehaviour:
   spriteColor: {r: 1, g: 1, b: 1, a: 1}
   scale: 5
   value: 2
-  dropPrefab: {fileID: 0}
+  dropPrefab: {fileID: 8004771401916271572, guid: 7f37ff3b6309d634f8f26f9000d0246a, type: 3}
