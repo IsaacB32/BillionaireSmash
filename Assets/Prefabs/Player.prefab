@@ -292,8 +292,12 @@ MonoBehaviour:
   _canBeHurt: 1
   _dashTime: 0.5
   _defaultDashForce: 5
+  _defaultDashCooldown: 1
   _indicator: {fileID: 6577049706342153276}
   _explodePrefab: {fileID: 6872828568711100598, guid: 339cc0d0af7774ee38b65374efc9f021, type: 3}
+  knockbackForce: 10
+  knockbackDuration: 0.3
+  whiteMat: {fileID: 0}
 --- !u!114 &5935844998000519992
 MonoBehaviour:
   m_ObjectHideFlags: 0

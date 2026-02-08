@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header("Source")]
+    public AudioSource musicTitleSource;
     public AudioSource musicIntroSource;
     public AudioSource musicLoopASource;
     public AudioSource musicLoopBSource;
@@ -13,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource breathingSource;
 
     [Header("Music")]
+    public AudioClip titleMusic;
     public AudioClip introMusic;
     public AudioClip loopMusic;
     
@@ -35,6 +37,14 @@ public class AudioManager : MonoBehaviour
     [Header("Settings")]
     public float healthEffectsStartThreshold = 0.5f;
     public float healthEffectsMaxThreshold = 0.10f;
+
+    void Start()
+    {
+        musicTitleSource.clip = titleMusic;
+        musicTitleSource.volume = 0f;
+        musicTitleSource.Stop();
+        StartCoroutine(FadeTitleMusic(true));
+    }
     
     void Update()
     {
@@ -56,9 +66,49 @@ public class AudioManager : MonoBehaviour
             breathingSource.Play();
         }
     }
+
+    private IEnumerator FadeTitleMusic(bool isIn)
+    {
+        float currentTime = 0f;
+        float startVolume = isIn ? 0f : 0.75f;
+        float targetVolume = isIn ? 0.75f : 0f;
+        float duration = 1f;
+        
+        if (isIn && !musicTitleSource.isPlaying)
+            musicTitleSource.Play();
+        
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            musicTitleSource.volume = Mathf.Lerp(startVolume, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        musicTitleSource.volume = targetVolume;
+        
+        if (!isIn)
+            musicTitleSource.Stop();
+    }
+    
+    private IEnumerator FadeIntroMusicIn(float targetVolume = 0.75f, float duration = 1f)
+    {
+        float t = 0f;
+        musicIntroSource.volume = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            musicIntroSource.volume = Mathf.Lerp(0f, targetVolume, t / duration);
+            yield return null;
+        }
+
+        musicIntroSource.volume = targetVolume;
+    }
     
     public IEnumerator PlayMusic()
     {
+        StartCoroutine(FadeTitleMusic(false));
+        StartCoroutine(FadeIntroMusicIn());
+        
         double introDuration = (double)introMusic.samples / introMusic.frequency;
         double loopDuration  = (double)loopMusic.samples  / loopMusic.frequency;
 
