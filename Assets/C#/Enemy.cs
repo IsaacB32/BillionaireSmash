@@ -16,13 +16,8 @@ public class Enemy : MonoBehaviour
     
     public EnemyData currentStats;
     private float _health;
-
-    public float DecreaseHealth(float value)
-    {
-        _health -= value;
-        return _health;
-    }
-
+    private float _speed;
+    
     private float _currentTtl;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -64,8 +59,9 @@ public class Enemy : MonoBehaviour
     {
         currentStats = isElite ? eliteData : normalData;
         if (isElite) _spriteRenderer.sortingOrder++;
+
+        (_speed, _health) = Game.Instance.difficulty.GetEnemyStats(currentStats.speed, currentStats.health);
         
-        _health = currentStats.health;
         _spriteRenderer.color = currentStats.spriteColor;
         transform.localScale = Vector3.one * currentStats.scale;
     }
@@ -87,7 +83,7 @@ public class Enemy : MonoBehaviour
         
         Vector2 separation = ComputeSeparation();
         Vector2 moveDir = ((Vector2)_playerTransform.position - _rb.position).normalized;
-        Vector2 finalVelocity = (moveDir + separation).normalized * currentStats.speed;
+        Vector2 finalVelocity = (moveDir + separation).normalized * _speed;
         _rb.MovePosition(_rb.position + finalVelocity * Time.fixedDeltaTime);
 
         if (Vector3.Distance(transform.position, Game.Instance.player.transform.position) < distanceThreshold && !isDying)
@@ -117,15 +113,22 @@ public class Enemy : MonoBehaviour
     public IEnumerator Die()
     {
         Game.Instance.SpawnDrop(currentStats.dropPrefab, transform.position, currentStats.value);
+        Game.Instance.enemyManager.CreateSplatter(transform.position);
         
-        float deathDuration = 0.2f;
+        yield return Game.Instance.StartCoroutine(EnemyHit());
+
+        Game.Instance.difficulty.OnEnemyKilled();
+        Game.Instance.enemyManager.ReleaseEnemy(this);
+    }
+
+    private IEnumerator EnemyHit()
+    {
+        float hitDuration = 0.2f;
         Vector2 knockbackDir = (transform.position - _playerTransform.position).normalized;
         float knockbackForce = 2f;
-
-        Game.Instance.enemyManager.CreateSplatter(transform.position);
-
+        
         float elapsed = 0f;
-        while (elapsed < deathDuration)
+        while (elapsed < hitDuration)
         {
             elapsed += Time.deltaTime;
             transform.Translate(knockbackDir * knockbackForce * Time.deltaTime);
@@ -134,12 +137,18 @@ public class Enemy : MonoBehaviour
 
             yield return null;
         }
-
-        Game.Instance.difficulty.OnEnemyKilled();
-        Game.Instance.enemyManager.ReleaseEnemy(this);
+        
         Game.Instance.audioManager.PlayEnemyHit();
         Game.Instance.cameraShake.AddLightShake();
     }
+    
+    public float DecreaseHealth(float value)
+    {
+        _health -= value;
+        Game.Instance.StartCoroutine(EnemyHit());
+        return _health;
+    }
+
     
     
 }

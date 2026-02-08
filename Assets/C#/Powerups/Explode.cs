@@ -19,7 +19,7 @@ public class Explode : MonoBehaviour
         {
             if (!enemy.gameObject.CompareTag("Enemy")) continue;
             Enemy e = enemy.GetComponent<Enemy>();
-            if (!e.isDying && e.DecreaseHealth(2) <= 0) StartCoroutine(e.Die());
+            if (!e.isDying && e.DecreaseHealth(Game.Instance.player.GetDamage() + 5) <= 0) StartCoroutine(e.Die());
         }
         Invoke(nameof(WaitDeath), _lifetime);
     }

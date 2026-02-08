@@ -11406,8 +11406,9 @@ MonoBehaviour:
   lateGrowth: 0.15
   levelText: {fileID: 1014796096}
   startingSpawnInterval: 0.5
-  minSpawnInterval: 0.03
-  spawnCurveStrength: 0.45
+  minSpawnInterval: 0.04
+  spawnCurveStrength: 0.5
+  _enemyStatBoostRate: 3
 --- !u!1 &854640614
 GameObject:
   m_ObjectHideFlags: 0
@@ -44070,6 +44071,14 @@ PrefabInstance:
       propertyPath: stats.explode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7737912999549790717, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: _fireTimerInterval
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737912999549790717, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: _defaultDashCooldown
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7905972372973405618, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -74119,6 +74128,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e338a99edc21bb0fa8d5631b1487c2a0, type: 2}
   - {fileID: 11400000, guid: 833d71486b72c7c6ca15df0c80c030ea, type: 2}
   - {fileID: 11400000, guid: 06f283e011a46eb1390d6a8da1156a4a, type: 2}
+  - {fileID: 11400000, guid: 4e0a68cfd33ad6c8e8bd948a91b8e26f, type: 2}
+  - {fileID: 11400000, guid: 3bc4f44b362bd5f16b8909df3edcfc64, type: 2}
+  - {fileID: 11400000, guid: d1b91acdf2baf42cbbfc7123874418b0, type: 2}
+  - {fileID: 11400000, guid: ea500db71421ce06ba1178100d5fc064, type: 2}
   _powerupUI: {fileID: 2103524033}
 --- !u!4 &2025908983
 Transform:

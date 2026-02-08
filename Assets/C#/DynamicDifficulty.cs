@@ -1,3 +1,4 @@
+using C_.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 
@@ -13,12 +14,23 @@ public class DynamicDifficulty : MonoBehaviour
     [SerializeField] private float startingSpawnInterval = 0.5f;
     [SerializeField] private float minSpawnInterval = 0.03f;
     [SerializeField] private float spawnCurveStrength = 0.42f;
+    [Tooltip("the number of levels before increasing enemy stats")] [SerializeField] private int _enemyStatBoostRate = 3;
 
     private int level = 1;
     private int killsThisLevel;
     private int killsRequired;
 
     private int totalKills;
+
+    public (float, float) GetEnemyStats(float speed, float health)
+    {
+        if (level % _enemyStatBoostRate == 0)
+        {
+            health += 1;
+            speed += 0.7f;
+        }
+        return (speed, health);
+    } 
 
     private void Start()
     {

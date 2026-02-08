@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1cb2786dc6238bf2eb5603f2923730ee, type: 3}
-  m_Name: iNSAINE
+  m_Name: damage
   m_EditorClassIdentifier: Assembly-CSharp::BulletPowerup
   type: 1
-  powerup_name: Break Everything
-  icon: {fileID: -5550272422229637659, guid: 5b8b7ad64fa0aee4e9a2184af932c4cc, type: 3}
-  description: 'you''re going to win '
-  rarity: 1
+  powerup_name: Damage Up
+  icon: {fileID: 3415975805360788524, guid: 7e6d0ed9310555e27b94e3b8f6d102ee, type: 3}
+  description: do more damage
+  rarity: 90
   stats:
-    size: 2
-    speed: 5
-    pierce: 5
-    chain: 5
-    explode: 5
-    damage: 5
+    size: 0
+    speed: 0
+    pierce: 0
+    chain: 0
+    explode: 0
+    damage: 1

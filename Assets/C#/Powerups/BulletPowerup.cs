@@ -20,4 +20,5 @@ public struct BulletStats
     public int pierce;
     public int chain;
     public float explode;
+    public int damage;
 }

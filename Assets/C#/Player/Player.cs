@@ -135,6 +135,7 @@ public class Player : MonoBehaviour
             StartCoroutine(DashCooldown());
             
             _dashMultiplier = _dashForce;
+            StartCoroutine(InvincibleFlash(_dashTime));
             StartCoroutine(Invincible(_dashTime));
             Invoke(nameof(EndDash), _dashTime);
         }
@@ -217,6 +218,8 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag("Enemy")) return;
+        if (!_canBeHurt) return;
+        
         DecreaseHealth(other.gameObject.GetComponent<Enemy>());
         if (currentHealth <= 0)
         {
@@ -274,5 +277,17 @@ public class Player : MonoBehaviour
         _canBeHurt = false;
         yield return new WaitForSeconds(time);
         _canBeHurt = true;
+    }
+
+    IEnumerator InvincibleFlash(float time)
+    {
+        _spriteRenderer.material = whiteMat;
+        yield return new WaitForSeconds(time-.05f);
+        _spriteRenderer.material = _defaultMat;
+    }
+
+    public int GetDamage()
+    {
+        return _gun.GetStats().damage;
     }
 }

@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     private int _pierceCounter;
     private int _chain;
     private float _explode;
+    private int _damage;
 
     private float _timer;
     private Gun _gun;
@@ -20,6 +21,7 @@ public class Bullet : MonoBehaviour
     private float _defaultSpeed;
     private float _defaultSize;
     private int _defaultPierce;
+    private int _defaultDamage;
     private TrailRenderer _trailRenderer;
     
     [SerializeField] private Material whiteMat;
@@ -43,6 +45,7 @@ public class Bullet : MonoBehaviour
         _pierceCounter = _gun.GetStats().pierce;
         _chain = _gun.GetStats().chain;
         _explode = _gun.GetStats().explode;
+        _damage = _gun.GetStats().damage;
     }
 
     private void Release()
@@ -56,15 +59,17 @@ public class Bullet : MonoBehaviour
     }
     #endregion
 
-    public void OverrideSizeSpeed(float sizeOverride, float speedOverride, int pierceOverride)
+    public void OverrideSizeSpeed(float sizeOverride, float speedOverride, int pierceOverride, int damageOverride)
     {
         _defaultSize = transform.localScale.x;
         _defaultSpeed = speed;
         _defaultPierce = _pierceCounter;
+        _defaultDamage = _damage;
         
         transform.localScale += Vector3.one * sizeOverride;
         speed += Mathf.Clamp(speedOverride, 0.1f, 100f);
         _pierceCounter += pierceOverride;
+        _damage += damageOverride;
     }
     
     private void Update()
@@ -89,7 +94,7 @@ public class Bullet : MonoBehaviour
             ChainAttack(other.collider);
             ExplodeAttack();
             Enemy e = other.gameObject.GetComponent<Enemy>();
-            if (!e.isDying && e.DecreaseHealth(1) <= 0)
+            if (!e.isDying && e.DecreaseHealth(_damage) <= 0)
             {
                 e.isDying = true;
                 Game.Instance.StartCoroutine(e.Die());

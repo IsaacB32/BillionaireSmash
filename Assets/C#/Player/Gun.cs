@@ -24,6 +24,7 @@ public class Gun : MonoBehaviour
       stats.pierce += s.pierce;
       stats.chain += s.chain;
       stats.explode += s.explode;
+      stats.damage += s.damage;
    }
    public BulletStats GetStats() {return stats;}
    
@@ -33,8 +34,7 @@ public class Gun : MonoBehaviour
    public GunStyleType GetActiveStyle() {return _activeStyle;}
 
    public GunStyleType debugStyle;
-
-
+   
    [Header("Additional Bullet Spawn")]
    [SerializeField] private Transform _behindSpawn;
    [SerializeField] private Transform _leftSpawn;
@@ -189,8 +189,7 @@ public class Gun : MonoBehaviour
       bullet.transform.position = transform.position;
       bullet.transform.rotation = transform.rotation;
       bullet.Init(this);
-      float percentage = Mathf.Clamp(scale / 1.5f, 0, 1f);
-      bullet.OverrideSizeSpeed(scale * 1.5f, -1/scale, (int)(scale * 10));
+      bullet.OverrideSizeSpeed(scale * 1.5f, -1/scale, (int)(scale * 10), (int)(scale * 4));
       _activeBullets++;
 
       HideCharge();
