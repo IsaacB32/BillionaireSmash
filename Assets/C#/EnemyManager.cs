@@ -77,6 +77,8 @@ public class EnemyManager : MonoBehaviour
         enemy.Initialize(isElite);
         
         Vector2 spawnPos = GetRandomPointInDonut(innerRadius, outerRadius);
+        spawnPos.x = Mathf.Clamp(spawnPos.x, -56f, 56f);
+        spawnPos.y = Mathf.Clamp(spawnPos.y, -50f, 50f);
         enemy.transform.position = spawnPos;
         
         enemy.SetOwningPool(pool); 
