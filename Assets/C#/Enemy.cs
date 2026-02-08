@@ -1,6 +1,7 @@
 using System.Collections;
 using C_.ScriptableObjects;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.Serialization;
 
 public class Enemy : MonoBehaviour
@@ -22,8 +23,20 @@ public class Enemy : MonoBehaviour
     private Transform _playerTransform;
     private Rigidbody2D _rb;
     
+    IObjectPool<Enemy> _owningPool;
+    
     [SerializeField] private GameObject _splat;
 
+    public void SetOwningPool(IObjectPool<Enemy> pool)
+    {
+        _owningPool = pool;
+    }
+
+    public void ReleaseToPool()
+    {
+        _owningPool?.Release(this);
+    }
+    
     void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -121,4 +134,6 @@ public class Enemy : MonoBehaviour
         Game.Instance.audioManager.PlayEnemyHit();
         Game.Instance.cameraShake.AddLightShake();
     }
+    
+    
 }
