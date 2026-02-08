@@ -16,6 +16,7 @@ public class BulletPowerup : Powerup
 public struct BulletStats
 {
     public float size;
+    public float trailSize;
     public float speed;
     public int pierce;
     public int chain;

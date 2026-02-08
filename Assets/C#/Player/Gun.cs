@@ -19,6 +19,8 @@ public class Gun : MonoBehaviour
    {
       stats.size += s.size;
       stats.size = Mathf.Clamp(stats.size, .2f, 100f);
+      stats.trailSize += s.trailSize;
+      stats.trailSize = Mathf.Clamp(stats.trailSize, 0.150f, 1f);
       stats.speed += s.speed;
       stats.speed = Mathf.Clamp(stats.speed, 0.8f, 100f);
       stats.pierce += s.pierce;

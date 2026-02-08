@@ -8,6 +8,8 @@ public class HurtFlash : MonoBehaviour
    [SerializeField] private float _flashTime = 0.2f;
    private SpriteRenderer _sprite;
 
+   private Color _defaultColor;
+   
    private void Start()
    {
       _sprite = GetComponent<SpriteRenderer>();
@@ -21,12 +23,13 @@ public class HurtFlash : MonoBehaviour
    private IEnumerator FlashEffect()
    {
       float elapsed = 0f;
+      _defaultColor = _sprite.color;
       while (elapsed < _flashTime)
       {
          elapsed += Time.deltaTime;
          _sprite.color = (Mathf.FloorToInt(elapsed * 20) % 2 == 0) ? Color.white : Color.red;
          yield return null;
       }
-      _sprite.color = Color.white;
+      _sprite.color = _defaultColor;
    }
 }
