@@ -123,7 +123,14 @@ public class AudioManager : MonoBehaviour
 
     public void PlayGunFire()
     {
-        if (gunClip) sfxSource.PlayOneShot(gunClip);
+        if (gunClip)
+        {
+            sfxSource.pitch = Random.Range(0.8f, 1.2f);
+            sfxSource.volume = Random.Range(0.8f, 1.2f);
+            sfxSource.PlayOneShot(gunClip);
+            sfxSource.pitch = 1f;
+            sfxSource.volume = 1f;
+        }
     }
 
     public void PlayVoiceLineRandom()
