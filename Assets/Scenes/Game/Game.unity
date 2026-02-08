@@ -74770,6 +74770,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 805309223}
+    - target: {fileID: 4035181963443836311, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_text
+      value: Farmers only
+      objectReference: {fileID: 0}
     - target: {fileID: 4308123973650169354, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -74948,7 +74952,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7746721617505253032, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1415998256}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3975886036605752581, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2441438938525727462}
   m_SourcePrefab: {fileID: 100100000, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
 --- !u!114 &2441438938525727458 stripped
 MonoBehaviour:
@@ -74983,6 +74990,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &2441438938525727461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3975886036605752581, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+  m_PrefabInstance: {fileID: 2441438938525727457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2441438938525727462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2441438938525727461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9015668def5ead4db0a06db5de1da22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SequentialBouncingText
+  amplitude: 3
+  frequency: 3
+  characterDelay: 0.08
+  useUnscaledTime: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
