@@ -22,9 +22,6 @@ public class Gun : MonoBehaviour
       stats.speed += s.speed;
       stats.speed = Mathf.Clamp(stats.speed, 0.8f, 100f);
       stats.pierce += s.pierce;
-      stats.fire += s.fire;
-      stats.electric += s.electric;
-      stats.slowing += s.slowing;
       stats.chain += s.chain;
       stats.explode += s.explode;
    }

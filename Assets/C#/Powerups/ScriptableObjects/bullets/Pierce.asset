@@ -16,6 +16,7 @@ MonoBehaviour:
   powerup_name: Penetrate
   icon: {fileID: -880820568355237658, guid: e93049f8df403b84da6dee2b1b851008, type: 3}
   description: bullets will hit multiple enemies
+  rarity: 100
   stats:
     size: 0
     speed: 0

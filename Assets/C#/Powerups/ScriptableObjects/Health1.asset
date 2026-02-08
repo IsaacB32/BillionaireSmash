@@ -16,5 +16,9 @@ MonoBehaviour:
   powerup_name: Health 1
   icon: {fileID: -5081992413100768056, guid: 88c3515b3006328f3b404d6057b1eb6a, type: 3}
   description: increase health by 1
+  rarity: 5
   health: 1
   speed: 0
+  dashForce: 0
+  dashTime: 0
+  dashCooldown: 0

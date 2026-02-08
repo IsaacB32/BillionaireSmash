@@ -16,6 +16,7 @@ MonoBehaviour:
   powerup_name: Fast Bullets
   icon: {fileID: -4336751275934865895, guid: f0914ba2c12e4cc4c825da19d3cdd48d, type: 3}
   description: They move faster now
+  rarity: 100
   stats:
     size: 0
     speed: 0.5

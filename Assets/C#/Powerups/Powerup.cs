@@ -8,6 +8,9 @@ public abstract class Powerup : ScriptableObject
     public string powerup_name;
     public Sprite icon;
     public string description;
+    
+    [Header("Rare")]
+    public float rarity = 100f;
 }
 
 public enum PowerupType

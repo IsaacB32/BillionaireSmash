@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private float _dashMultiplier = 1f;
     private float _dashCooldown;
     private bool _canDash = true;
+    private SpriteRenderer _spriteRenderer;
     
     [Header("References")]
     [SerializeField] private GameObject _indicator;
@@ -43,7 +44,13 @@ public class Player : MonoBehaviour
     private float _fireTimer;
 
     private bool _freeze = false;
-    
+
+    [Header("Knockback")]
+    [SerializeField] private float knockbackForce = 10f;
+    [SerializeField] private float knockbackDuration = 0.3f;
+    [SerializeField] private Material whiteMat;
+    private bool _isKnockedBack =false;
+    private Material _defaultMat;
 
     private PlayerState _currentMovementState;
     public PlayerState movementState
@@ -65,6 +72,9 @@ public class Player : MonoBehaviour
         _dashForce = _defaultDashForce;
         hurtFlash = GetComponentInChildren<HurtFlash>();
         _dashCooldown = _defaultDashCooldown;
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _defaultMat = _spriteRenderer.material;
+
     }
 
     #region Input
@@ -143,7 +153,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_freeze || Game.Instance.state != Game.GameState.Playing) return;
+        if (_freeze || Game.Instance.state != Game.GameState.Playing || _isKnockedBack) return;
         
         _rigidbody2D.linearVelocity = _move_direction * movement_speed * Time.deltaTime * 50 * _dashMultiplier;
         Rotate();
@@ -208,17 +218,43 @@ public class Player : MonoBehaviour
         {
             Game.Instance.GameOver();
         }
+        if (!_isKnockedBack) StartCoroutine(Knockback(other.transform));
+        StartCoroutine(FlashColor());
+    }
+    
+    private IEnumerator Knockback(Transform other)
+    {
+        _isKnockedBack = true;
+        Vector2 knockbackDirection = (_rigidbody2D.position - (Vector2)other.position).normalized;
+        
+        _rigidbody2D.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(knockbackDuration);
+
+        _isKnockedBack = false;
+        _rigidbody2D.linearVelocity = Vector2.zero;
+    }
+
+    private IEnumerator FlashColor()
+    {
+        _spriteRenderer.material = whiteMat;
+        yield return new WaitForSeconds(0.1f);
+        _spriteRenderer.material = _defaultMat;
+        yield return new WaitForSeconds(0.1f);
+        _spriteRenderer.material = whiteMat;
+        yield return new WaitForSeconds(0.1f);
+        _spriteRenderer.material = _defaultMat;
     }
     
     //UI text in the player script -- why? because i don't care
-    public void IncreaseHealth(int h)
+    private void IncreaseHealth(int h)
     {
         if (h == 0) return;
         currentHealth += h;
     }
 
 
-    public void DecreaseHealth(Enemy e)
+    private void DecreaseHealth(Enemy e)
     {
         if (!_canBeHurt) return;
         

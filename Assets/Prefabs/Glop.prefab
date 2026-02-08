@@ -112,6 +112,7 @@ MonoBehaviour:
   eliteData: {fileID: 11400000, guid: 6c27a2a2fe7aa82499c3c163fe62df0e, type: 2}
   maxTtl: 60
   distanceThreshold: 0.5
+  currentStats: {fileID: 0}
   _splat: {fileID: 6153759645244600824, guid: 80fb7b3d1a25546d0b4f8d5df3abc8f6, type: 3}
 --- !u!95 &5883835107269168853
 Animator:
@@ -169,8 +170,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.1
+  m_Offset: {x: 0, y: 0.0018469573}
+  m_Radius: 0.2031647
 --- !u!50 &7171168884717884668
 Rigidbody2D:
   serializedVersion: 5

@@ -16,12 +16,10 @@ MonoBehaviour:
   powerup_name: Everything
   icon: {fileID: -5550272422229637659, guid: 5b8b7ad64fa0aee4e9a2184af932c4cc, type: 3}
   description: little bit of every upgrade, because why not
+  rarity: 6
   stats:
     size: 0.05
     speed: 0.8
     pierce: 1
-    fire: 0
-    electric: 0
-    slowing: 0
     chain: 1
     explode: 1

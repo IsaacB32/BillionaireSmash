@@ -15,8 +15,10 @@ MonoBehaviour:
   type: 0
   powerup_name: Gain more health
   icon: {fileID: -5081992413100768056, guid: 88c3515b3006328f3b404d6057b1eb6a, type: 3}
-  description: double the health as the other upgrade
-  health: 2
+  description: even more health
+  rarity: 70
+  health: 10
   speed: 0
   dashForce: 0
   dashTime: 0
+  dashCooldown: 0

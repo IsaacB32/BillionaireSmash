@@ -16,6 +16,7 @@ MonoBehaviour:
   powerup_name: Huge Bullets
   icon: {fileID: -2310915623682594744, guid: 6b0b12e1087141545aaf46a9ef335723, type: 3}
   description: might break the game
+  rarity: 92
   stats:
     size: 0.5
     speed: -0.5

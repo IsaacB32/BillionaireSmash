@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextReader : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TextReader : MonoBehaviour
    private int _index;
    
    [Header("References")]
-   [SerializeField] private GameObject _nextButton;
+   [SerializeField] private Image _nextButton;
    
    private TextMeshProUGUI _text;
 
@@ -24,7 +25,7 @@ public class TextReader : MonoBehaviour
    public void BeginReading()
    {
       _index = 0;
-      _nextButton.SetActive(false);
+      DisableButton();
       ReadCharacter(sentences[_index]);
    }
 
@@ -45,7 +46,8 @@ public class TextReader : MonoBehaviour
          yield return new WaitForSeconds(_textSpeed);
       }
 
-      _nextButton.SetActive(true);
+      yield return new WaitForSeconds(.4f);
+      EnableButton();
    }
 
    public void NextSentence()
@@ -59,6 +61,19 @@ public class TextReader : MonoBehaviour
          Game.Instance.StartGame();
       }
       else ReadCharacter(sentences[_index]);
-      _nextButton.SetActive(false);
+      DisableButton();
+   }
+
+
+   private void DisableButton()
+   {
+      _nextButton.enabled = false;
+      _nextButton.raycastTarget = false;
+   }
+
+   private void EnableButton()
+   {
+      _nextButton.enabled = true;
+      _nextButton.raycastTarget = true;
    }
 }
