@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletPowerup
   type: 1
   powerup_name: Fast Bullets
-  icon: {fileID: 0}
+  icon: {fileID: -8859949281457516618, guid: cb0ab96b01c69a1caab6e21e7d82cc17, type: 3}
   description: They move faster now
   stats:
     size: 0

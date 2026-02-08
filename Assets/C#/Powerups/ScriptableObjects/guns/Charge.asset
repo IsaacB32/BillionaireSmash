@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerup
   type: 2
   powerup_name: Charge Shot
-  icon: {fileID: 0}
+  icon: {fileID: 6917087049864571415, guid: 270021cbaca91b7c4b6a0b43935e204f, type: 3}
   description: Hold your fire
   style: 6
   rateFire: 0

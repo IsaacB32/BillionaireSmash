@@ -29,9 +29,6 @@ public class Game : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
-    
-    [Header("Powerup")]
-    [SerializeField] private int _killedForPowerup = 20;
 
     [Header("Canvas Groups")]
     [SerializeField] private CanvasGroup mainMenuCanvas;
