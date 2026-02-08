@@ -12,6 +12,7 @@ public class PowerupManager : MonoBehaviour
 
     public IEnumerator ShowPowerupChoices()
     {
+        Game.Instance.cameraShake.PlayModerate();
         _powerIndex = 0;
         _powerupCache = new List<Powerup>(powerupList);
         Game.Instance.audioManager.PlayPowerUp();

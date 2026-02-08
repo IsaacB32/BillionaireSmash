@@ -54,12 +54,9 @@ MonoBehaviour:
   objectPoolDefaultCapacity: 100
   objectPoolMaxCapacity: 500
   stats:
-    size: 0.2
+    size: 0.3
     speed: 1.5
     pierce: 0
-    fire: 0
-    electric: 0
-    slowing: 0
     chain: 0
     explode: 0
   debugStyle: 0
