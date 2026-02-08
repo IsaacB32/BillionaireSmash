@@ -17,9 +17,14 @@ public class Game : MonoBehaviour
         state = s;
         if (state != GameState.Playing)
         {
+            UnityEngine.Cursor.visible = true;
             gameCursor.HideCursor();
         }
-        else gameCursor.ShowCursor();
+        else
+        {
+            UnityEngine.Cursor.visible = false;
+            gameCursor.ShowCursor();
+        }
     }
     
     public static Game Instance { get; private set; }

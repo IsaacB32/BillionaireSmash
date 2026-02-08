@@ -10,6 +10,7 @@ public class Explode : MonoBehaviour
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, radius, Game.Instance.enemyManager.enemyMask);
         foreach (Collider2D enemy in enemies)
         {
+            if (!enemy.gameObject.CompareTag("Enemy")) continue;
             Enemy e = enemy.GetComponent<Enemy>();
             if (!e.isDying && e.DecreaseHealth(2) <= 0) StartCoroutine(e.Die());
         }
