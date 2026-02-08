@@ -4,7 +4,7 @@ using UnityEngine;
 public class DynamicDifficult : MonoBehaviour
 {
     [Header("Stats")] 
-    public int startingKilledForPowerup = 20;
+    public int startingKilledForPowerup = 40;
     public float startingEnemySpawnRate = 0.5f;
     
     private int _enemiesKilled;
@@ -24,7 +24,7 @@ public class DynamicDifficult : MonoBehaviour
     {
         _level++;
         int killedLevel = Mathf.FloorToInt(Mathf.Pow(2.65f, _level) + 19);
-        float spawnRate = (_level != 1) ? .2f / Mathf.Log(_level) : startingEnemySpawnRate;
+        float spawnRate = (_level != 1) ? 1.0f / (1 + _level) : startingEnemySpawnRate;
         SetLevel(killedLevel, spawnRate);
     }
 
