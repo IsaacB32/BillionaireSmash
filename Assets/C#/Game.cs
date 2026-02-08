@@ -27,6 +27,7 @@ public class Game : MonoBehaviour
     public PowerupManager powerup;
     public DynamicDifficult difficult;
     public AudioManager audioManager;
+    public TextReader textReader;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
@@ -155,14 +156,32 @@ public class Game : MonoBehaviour
     
     public void StartGame()
     {
-        state = GameState.Playing;
+        if (CutsceneController.Instance.GetCutscene())
+        {
+            storyCanvas.alpha = 1f;
+            storyCanvas.blocksRaycasts = true;
+            storyCanvas.interactable = true;
+            LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
+            Instance.audioManager.PlayClick();
 
-        Instance.audioManager.PlayClick();
-        LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
-        mainMenuCanvas.interactable = false;
-        mainMenuCanvas.blocksRaycasts = false;
-        UnityEngine.Cursor.visible = false;
-        StartCoroutine(Instance.audioManager.PlayMusic());
+            textReader.BeginReading();
+        }
+        else
+        {
+            storyCanvas.alpha = 0f;
+            storyCanvas.blocksRaycasts = false;
+            storyCanvas.interactable = false;
+            
+            state = GameState.Playing;
+            
+            Instance.audioManager.PlayClick();
+            LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
+            LeanTween.alphaCanvas(storyCanvas, 0f, 0.5f);
+            mainMenuCanvas.interactable = false;
+            mainMenuCanvas.blocksRaycasts = false;
+            UnityEngine.Cursor.visible = false;
+            StartCoroutine(Instance.audioManager.PlayMusic());
+        }
     }
 
     public void QuitGame()

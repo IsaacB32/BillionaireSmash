@@ -11073,6 +11073,7 @@ MonoBehaviour:
   powerup: {fileID: 2025908982}
   difficult: {fileID: 805309225}
   audioManager: {fileID: 62238474}
+  textReader: {fileID: 1228398347}
   moneyTextUI: {fileID: 2441438938525727458}
   gameCursor: {fileID: 1168987558}
   mainMenuCanvas: {fileID: 106336831}
@@ -41804,6 +41805,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbfdc84025ecbe329060d0ea7875138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cursor
+--- !u!114 &1228398347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+  m_PrefabInstance: {fileID: 2441438938525727457}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e1b77448e79037da2ca97aadc86824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TextReader
 --- !u!1 &1474667549
 GameObject:
   m_ObjectHideFlags: 0
@@ -74019,6 +74031,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1956760387500394587, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956760387500394587, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956760387500394587, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: 'sentences.Array.data[0]'
+      value: 'In the distant year of 2027
+
+        An evil billioaire has taken your
+        farm'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: 'sentences.Array.data[1]'
+      value: "only you have the power to get it back \nit's time for farmers only"
+      objectReference: {fileID: 0}
     - target: {fileID: 3278645975172675343, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -74039,10 +74078,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 805309223}
+    - target: {fileID: 6572229645943201643, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7193668137299572377, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 805309223}
+    - target: {fileID: 7669959702938258236, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8141564761668635294, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

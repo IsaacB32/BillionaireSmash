@@ -9,7 +9,7 @@ public class CutsceneController : MonoBehaviour
       DontDestroyOnLoad(gameObject);
    }
    
-   [SerializeField] private bool _playCutscene;
+   [SerializeField] private bool _playCutscene = true;
    
    public void DisableCutscene() { _playCutscene = false; }
    public bool GetCutscene() { return _playCutscene; }
