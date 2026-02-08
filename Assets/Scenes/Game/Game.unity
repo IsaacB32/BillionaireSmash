@@ -75057,6 +75057,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 748522383829524113, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4489106529607773263, guid: 8522128265fc78343ba80d72c94d1bef, type: 3}
     - target: {fileID: 1130443492987348617, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_Transition
       value: 2
@@ -75300,6 +75304,10 @@ PrefabInstance:
       value: -74.00006
       objectReference: {fileID: 0}
     - target: {fileID: 5066311358577244745, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 2724437077249336934, guid: 8522128265fc78343ba80d72c94d1bef, type: 3}
+    - target: {fileID: 5066311358577244745, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 805309223}
@@ -75317,6 +75325,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5147431331209975915, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5187435612819948093, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5278759652095701043, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
