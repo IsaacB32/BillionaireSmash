@@ -130,5 +130,6 @@ public class Bullet : MonoBehaviour
         Explode e = o.GetComponent<Explode>();
         o.transform.localScale = Vector3.one * _explode;
         e.ExplodeBomb(_explode);
+        Game.Instance.audioManager.PlayExplosion();
     }
 }
