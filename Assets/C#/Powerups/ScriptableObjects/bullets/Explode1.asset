@@ -15,14 +15,11 @@ MonoBehaviour:
   type: 1
   powerup_name: Explode
   icon: {fileID: 6431222391550867542, guid: 5686407dd47772548bc58d0650c34c0a, type: 3}
-  description: increase the explosion radius
+  description: bullets explode on hit
   rarity: 100
   stats:
     size: 0
     speed: 0
     pierce: 0
-    fire: 0
-    electric: 0
-    slowing: 0
     chain: 0
     explode: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   type: 2
   powerup_name: Double Shot
   icon: {fileID: 2285163391267070581, guid: 85814af87cfb19f86a2537cf7dfa65ac, type: 3}
-  description: shoot twice as fast
+  description: shoot twice as much
   rarity: 100
   style: 4
   rateFire: 0.18

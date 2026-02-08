@@ -15,14 +15,11 @@ MonoBehaviour:
   type: 1
   powerup_name: Chain Shot
   icon: {fileID: -3266714264308652972, guid: 7e252e27a5a6b634b9a4186a9d903a2a, type: 3}
-  description: continue the chaos
+  description: bullets chain off nearby enemies
   rarity: 100
   stats:
     size: 0
     speed: 0
     pierce: 0
-    fire: 0
-    electric: 0
-    slowing: 0
     chain: 1
     explode: 0
