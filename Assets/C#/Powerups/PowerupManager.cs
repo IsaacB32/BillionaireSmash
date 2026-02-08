@@ -9,6 +9,8 @@ public class PowerupManager : MonoBehaviour
 
     public IEnumerator ShowPowerupChoices()
     {
+        
+        Game.Instance.cameraShake.PlayModerate();
         Game.Instance.audioManager.PlayPowerUp();
 
         yield return StartCoroutine(ScaleTime(1f, 0f, 0.5f));
