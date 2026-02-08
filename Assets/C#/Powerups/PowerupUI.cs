@@ -23,6 +23,5 @@ public class PowerupUI : MonoBehaviour
     {
         Game.Instance.player.AttachPowerup(_attached);
         Game.Instance.powerup.Hide();
-        //hide menu
     }
 }

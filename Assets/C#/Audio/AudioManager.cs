@@ -33,36 +33,37 @@ public class AudioManager : MonoBehaviour
     public IEnumerator PlayMusic()
     {
         double introDuration = (double)introMusic.samples / introMusic.frequency;
-        double loopDuration = (double)loopMusic.samples / loopMusic.frequency;
-        
-        double startTime = AudioSettings.dspTime + 0.1;
-        musicIntroSource.clip = introMusic;
-        musicIntroSource.PlayScheduled(startTime);
-        
-        double nextStartTime = startTime + introDuration - introToLoopOverlap;
-        
-        musicLoopASource.clip = loopMusic;
-        musicLoopASource.PlayScheduled(nextStartTime);
+        double loopDuration  = (double)loopMusic.samples  / loopMusic.frequency;
 
-        bool useSourceA = false;
-        
+        double dspTime = AudioSettings.dspTime;
+        double nextTime = dspTime + 0.1;
+
+        musicIntroSource.clip = introMusic;
+        musicIntroSource.PlayScheduled(nextTime);
+
+        nextTime += introDuration - introToLoopOverlap;
+
+        musicLoopASource.clip = loopMusic;
+        musicLoopBSource.clip = loopMusic;
+
+        AudioSource current = musicLoopASource;
+        AudioSource next    = musicLoopBSource;
+
+        current.PlayScheduled(nextTime);
+
         while (true)
         {
-            double timeUntilSchedule = nextStartTime - AudioSettings.dspTime - 1.0; 
-            if (timeUntilSchedule > 0)
-                yield return new WaitForSecondsRealtime((float)timeUntilSchedule);
+            nextTime += loopDuration - loopToLoopOverlap;
 
-            nextStartTime = nextStartTime + loopDuration - loopToLoopOverlap;
+            while (AudioSettings.dspTime < nextTime - 0.5)
+                yield return null;
 
-            AudioSource activeSource = useSourceA ? musicLoopASource : musicLoopBSource;
-            activeSource.PlayScheduled(nextStartTime);
+            next.PlayScheduled(nextTime);
 
-            useSourceA = !useSourceA;
-
-            yield return new WaitForSecondsRealtime((float)(loopDuration - loopToLoopOverlap - 0.1f));
+            (current, next) = (next, current);
         }
     }
-    
+
     public void PlayExplosion()
     {
         if (explosionClip) sfxSource.PlayOneShot(explosionClip);

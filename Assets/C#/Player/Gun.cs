@@ -18,7 +18,9 @@ public class Gun : MonoBehaviour
    public void SetBulletStats(BulletStats s)
    {
       stats.size += s.size;
+      stats.size = Mathf.Clamp(stats.size, .2f, 100f);
       stats.speed += s.speed;
+      stats.speed = Mathf.Clamp(stats.speed, 0.8f, 100f);
       stats.pierce += s.pierce;
       stats.fire += s.fire;
       stats.electric += s.electric;
