@@ -16,6 +16,7 @@ MonoBehaviour:
   powerup_name: Bigger Bullets
   icon: {fileID: -2310915623682594744, guid: 6b0b12e1087141545aaf46a9ef335723, type: 3}
   description: easier to hit the investors
+  rarity: 100
   stats:
     size: 0.08
     speed: 0

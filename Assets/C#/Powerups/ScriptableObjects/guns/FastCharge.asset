@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1692e0b417007a5d29d4401a783a12b3, type: 3}
-  m_Name: Charge
+  m_Name: FastCharge
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerup
   type: 2
-  powerup_name: Charge Shot
+  powerup_name: Quick Charge
   icon: {fileID: -3882708944152374217, guid: 8e5e78b4e1a4b3a4d81151378f50a413, type: 3}
-  description: Hold your fire
-  rarity: 80
+  description: this one is good I swear
+  rarity: 30
   style: 6
   rateFire: 0
-  chargeGrowthRate: 2
+  chargeGrowthRate: 1

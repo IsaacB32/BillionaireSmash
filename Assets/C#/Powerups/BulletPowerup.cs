@@ -18,9 +18,6 @@ public struct BulletStats
     public float size;
     public float speed;
     public int pierce;
-    public float fire;
-    public float electric;
-    public float slowing; 
     public int chain;
     public float explode;
 }

@@ -19,22 +19,29 @@ public class PowerupManager : MonoBehaviour
 
     private Powerup ChoosePowerup()
     {
-        int random = 0;
-        bool lookForPowerup = true;
-        while (lookForPowerup)
+        float totalWeight = 0f;
+        foreach (var powerup in powerupList)  totalWeight += powerup.rarity;
+        float roll = Random.Range(0f, totalWeight);
+        
+        foreach (var powerup in powerupList)
         {
-            random = Random.Range(0, powerupList.Count - 1);
-            if (powerupList[random].type == PowerupType.GunModifier)
-            {
-                if (((GunPowerup)powerupList[random]).style != Game.Instance.player.GetStyle())
-                {
-                    return powerupList[random];
-                }
-            }
-            else lookForPowerup = false;
-        }
+            roll -= powerup.rarity;
 
-        return powerupList[random];
+            if (roll <= 0f)
+            {
+                if (powerup.type == PowerupType.GunModifier)
+                {
+                    var gunPowerup = (GunPowerup)powerup;
+                    if (gunPowerup.style == Game.Instance.player.GetStyle())
+                    {
+                        // reject and retry
+                        return ChoosePowerup();
+                    }
+                }
+                return powerup;
+            }
+        }
+        return null; 
     }
 
     public void Hide()

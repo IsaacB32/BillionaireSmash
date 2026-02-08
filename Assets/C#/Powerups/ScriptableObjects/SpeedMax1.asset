@@ -16,7 +16,9 @@ MonoBehaviour:
   powerup_name: SpeedUp
   icon: {fileID: -1926619844896239360, guid: 652835ab76ec3995abca0cff4c563f9a, type: 3}
   description: You want to go faster?
+  rarity: 100
   health: 0
   speed: 2
   dashForce: 0
   dashTime: 0
+  dashCooldown: 0

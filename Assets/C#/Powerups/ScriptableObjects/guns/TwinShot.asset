@@ -16,6 +16,7 @@ MonoBehaviour:
   powerup_name: Shoot Behind
   icon: {fileID: 4673811780347588052, guid: 0564bf9bb6618d676b2ea41d0245d26a, type: 3}
   description: cover your six
+  rarity: 100
   style: 5
   rateFire: 0.15
   chargeGrowthRate: 2.3

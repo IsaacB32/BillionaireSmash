@@ -16,6 +16,7 @@ MonoBehaviour:
   powerup_name: shot gun
   icon: {fileID: 5217522686744128329, guid: cd336afa93e52ef7692bb7bb811b5313, type: 3}
   description: look ma! three bullets
+  rarity: 100
   style: 1
   rateFire: 0.19
   chargeGrowthRate: 2.3

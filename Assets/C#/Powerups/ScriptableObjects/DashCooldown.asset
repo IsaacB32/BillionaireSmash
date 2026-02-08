@@ -16,6 +16,7 @@ MonoBehaviour:
   powerup_name: Dash Recovery
   icon: {fileID: 0}
   description: be able to dash faster than before
+  rarity: 100
   health: 0
   speed: 0
   dashForce: 0

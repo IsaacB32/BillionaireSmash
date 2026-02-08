@@ -17,6 +17,11 @@ public class Game : MonoBehaviour
     public void SwitchGameState(GameState s)
     {
         state = s;
+        if (state != GameState.Playing)
+        {
+            cursor.HideCursor();
+        }
+        else cursor.ShowCursor();
     }
     
     public static Game Instance { get; private set; }
@@ -28,6 +33,7 @@ public class Game : MonoBehaviour
     public DynamicDifficult difficult;
     public AudioManager audioManager;
     public TextReader textReader;
+    public Cursor cursor;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
@@ -57,7 +63,7 @@ public class Game : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(this);
 
-        state = GameState.Menu;
+        SwitchGameState(GameState.Menu);
         Time.timeScale = 1f;
     }
 
@@ -104,6 +110,7 @@ public class Game : MonoBehaviour
         UnityEngine.Cursor.visible = true;
         gameCursor.gameObject.SetActive(false);
         
+        SwitchGameState(GameState.Paused);
         Freeze();
     }
 
@@ -120,23 +127,22 @@ public class Game : MonoBehaviour
         UnityEngine.Cursor.visible = false;
         gameCursor.gameObject.SetActive(true);
         
+        SwitchGameState(GameState.Playing);
         Unfreeze();
     }
 
     public void Freeze()
     {
-        SwitchGameState(GameState.Paused);
         Time.timeScale = 0;
     }
 
     public void Unfreeze()
     {
-        SwitchGameState(GameState.Playing);
         Time.timeScale = 1;
     }
     public void GameOver()
     {
-        state = GameState.Lose;
+        SwitchGameState(GameState.Lose);
 
         LeanTween.alphaCanvas(gameOverCanvas, 100f, 0.5f);
         gameOverCanvas.interactable = true;
@@ -159,7 +165,7 @@ public class Game : MonoBehaviour
 
     public void Restart()
     {
-        state = GameState.Menu;
+        SwitchGameState(GameState.Menu);
         Instance.audioManager.PlayClick();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
@@ -176,7 +182,6 @@ public class Game : MonoBehaviour
             
             mainMenuCanvas.interactable = false;
             mainMenuCanvas.blocksRaycasts = false;
-            UnityEngine.Cursor.visible = false;
 
             textReader.BeginReading();
         }
@@ -185,7 +190,7 @@ public class Game : MonoBehaviour
             storyCanvas.blocksRaycasts = false;
             storyCanvas.interactable = false;
             
-            state = GameState.Playing;
+            SwitchGameState(GameState.Playing);
             
             Instance.audioManager.PlayClick();
             LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);

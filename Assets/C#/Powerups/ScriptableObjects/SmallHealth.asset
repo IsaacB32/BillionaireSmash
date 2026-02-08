@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58ccb00dc0f5ad1f0904d44b7bb8bef5, type: 3}
-  m_Name: DashBoost
+  m_Name: SmallHealth
   m_EditorClassIdentifier: Assembly-CSharp::StatPowerup
   type: 0
-  powerup_name: Faster Dash
-  icon: {fileID: -1926619844896239360, guid: 652835ab76ec3995abca0cff4c563f9a, type: 3}
-  description: zoom through enemies
+  powerup_name: Healing
+  icon: {fileID: -5081992413100768056, guid: 88c3515b3006328f3b404d6057b1eb6a, type: 3}
+  description: a small amount of health
   rarity: 100
-  health: 0
+  health: 5
   speed: 0
-  dashForce: 1
+  dashForce: 0
   dashTime: 0
   dashCooldown: 0
