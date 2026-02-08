@@ -10822,7 +10822,6 @@ GameObject:
   m_Component:
   - component: {fileID: 805309224}
   - component: {fileID: 805309223}
-  - component: {fileID: 805309225}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -10845,17 +10844,12 @@ MonoBehaviour:
   enemyManager: {fileID: 920347209}
   player: {fileID: 1919725683}
   powerup: {fileID: 2025908982}
-<<<<<<< HEAD
-  difficult: {fileID: 805309225}
-  moneyTextUI: {fileID: 0}
-=======
   moneyTextUI: {fileID: 2441438938525727458}
   gameCursor: {fileID: 1168987558}
   _killedForPowerup: 500
   mainMenuCanvas: {fileID: 106336831}
   pauseMenuCanvas: {fileID: 370963292}
   gameOverCanvas: {fileID: 2057303991}
->>>>>>> 68b9ebaa13ffaa48ef02c3f34d48fe2ba3b2ce78
 --- !u!4 &805309224
 Transform:
   m_ObjectHideFlags: 0
@@ -10871,21 +10865,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &805309225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805309222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22abc09619509ce2b8de20a95e82f0cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DynamicDifficult
-  startingKilledForPowerup: 20
-  startingEnemySpawnRate: 0.5
-  _multiplier: 2
 --- !u!1 &854640614
 GameObject:
   m_ObjectHideFlags: 0
@@ -73321,10 +73300,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-    - target: {fileID: 5696159970910168321, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
-      propertyPath: m_RaycastTarget
-=======
     - target: {fileID: 3278645975172675343, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -73551,7 +73526,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073026584890307426, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_AnchoredPosition.y
->>>>>>> 68b9ebaa13ffaa48ef02c3f34d48fe2ba3b2ce78
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
