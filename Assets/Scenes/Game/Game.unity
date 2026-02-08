@@ -74725,7 +74725,7 @@ GameObject:
   - component: {fileID: 2099076815}
   - component: {fileID: 2099076817}
   m_Layer: 0
-  m_Name: PERSISTANT
+  m_Name: ---PERSISTENT---
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
