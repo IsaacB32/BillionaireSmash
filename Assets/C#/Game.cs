@@ -25,6 +25,7 @@ public class Game : MonoBehaviour
     public Player player;
     public PowerupManager powerup;
     public DynamicDifficult difficult;
+    public AudioManager audioManager;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
@@ -42,6 +43,9 @@ public class Game : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     private int score = 0;
 
+    private float _voiceLineInterval = 20f;
+    private float _voiceLineTimer = 0f;
+    
     public GameState state { private set; get; }
 
     void Awake()
@@ -54,6 +58,19 @@ public class Game : MonoBehaviour
         
         highscoreText.text = HighScore.Instance.GetScore().ToString();
     }
+
+    void Update()
+    {
+        if (state == GameState.Playing)
+        {
+            _voiceLineTimer += Time.deltaTime;
+            if (_voiceLineTimer >= _voiceLineInterval)
+            {
+                Instance.audioManager.PlayVoiceLineRandom();
+                _voiceLineTimer = 0f;
+            }
+        }
+    }
     
     public void UpdateMoneyUI(int val)
     {
@@ -63,6 +80,10 @@ public class Game : MonoBehaviour
 
     public void Pause()
     {
+        SwitchGameState(GameState.Paused);
+
+        Instance.audioManager.PlayClick();
+        
         pauseMenuCanvas.alpha = 100f;
         pauseMenuCanvas.interactable = true;
         pauseMenuCanvas.blocksRaycasts = true;
@@ -75,6 +96,10 @@ public class Game : MonoBehaviour
 
     public void Unpause()
     {
+        SwitchGameState(GameState.Playing);
+
+        Instance.audioManager.PlayClick();
+        
         pauseMenuCanvas.alpha = 0f;
         pauseMenuCanvas.interactable = false;
         pauseMenuCanvas.blocksRaycasts = false;
@@ -115,11 +140,14 @@ public class Game : MonoBehaviour
         scoreText.text = score.ToString();
 
         Time.timeScale = 0f;
+        
+        Instance.audioManager.PlayVoiceLineIndex(0);
     }
 
     public void Restart()
     {
         state = GameState.Menu;
+        Instance.audioManager.PlayClick();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
@@ -127,14 +155,17 @@ public class Game : MonoBehaviour
     {
         state = GameState.Playing;
 
+        Instance.audioManager.PlayClick();
         LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
         mainMenuCanvas.interactable = false;
         mainMenuCanvas.blocksRaycasts = false;
         UnityEngine.Cursor.visible = false;
+        StartCoroutine(Instance.audioManager.PlayMusic());
     }
 
     public void QuitGame()
     {
+        Instance.audioManager.PlayClick();
         Application.Quit();
     }
 }

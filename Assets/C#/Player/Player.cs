@@ -185,6 +185,7 @@ public class Player : MonoBehaviour
         
         current_health--;
         healthtext.text = current_health.ToString();
+        Game.Instance.audioManager.PlayPlayerHit();
         StartCoroutine(Invincible());
     }
 
