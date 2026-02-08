@@ -10849,6 +10849,7 @@ MonoBehaviour:
   _killedForPowerup: 500
   mainMenuCanvas: {fileID: 106336831}
   pauseMenuCanvas: {fileID: 370963292}
+  gameOverCanvas: {fileID: 2057303991}
 --- !u!4 &805309224
 Transform:
   m_ObjectHideFlags: 0
@@ -73083,6 +73084,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &2057303991 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1782688479861871714, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+  m_PrefabInstance: {fileID: 2441438938525727457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2103524033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2361393911207759033, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
@@ -73378,6 +73384,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5066311358577244745, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 805309223}
+    - target: {fileID: 5066311358577244745, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066311358577244745, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066311358577244745, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5298190325243728499, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -73441,6 +73463,34 @@ PrefabInstance:
     - target: {fileID: 6664607273459578652, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193668137299572377, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193668137299572377, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193668137299572377, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 805309223}
+    - target: {fileID: 7193668137299572377, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193668137299572377, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193668137299572377, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7193668137299572377, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7468504386455345098, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_Alpha

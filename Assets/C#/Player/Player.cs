@@ -125,6 +125,11 @@ public class Player : MonoBehaviour
             }
             else _fireTimer += Time.deltaTime;
         }
+
+        if (current_health < 1)
+        {
+            Game.Instance.GameOver();
+        }
     }
 
     #region Powerup Upgrades

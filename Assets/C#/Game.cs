@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class Game : MonoBehaviour
     [Header("Canvas Groups")]
     [SerializeField] private CanvasGroup mainMenuCanvas;
     [SerializeField] private CanvasGroup pauseMenuCanvas;
+    [SerializeField] private CanvasGroup gameOverCanvas;
 
     public GameState state { private set; get; }
     public int enemiesKilled { private set; get; }
@@ -55,14 +57,12 @@ public class Game : MonoBehaviour
         else Destroy(this);
 
         state = GameState.Menu;
+        Time.timeScale = 1f;
     }
 
     void Update()
     {
-        if (state == GameState.Playing)
-        {
-            
-        }
+
     }
     
     public void UpdateMoneyUI(int val)
@@ -101,8 +101,23 @@ public class Game : MonoBehaviour
     public void GameOver()
     {
         state = GameState.Lose;
+
+        LeanTween.alphaCanvas(gameOverCanvas, 100f, 0.5f);
+        gameOverCanvas.interactable = true;
+        gameOverCanvas.blocksRaycasts = true;
+        
+        UnityEngine.Cursor.visible = true;
+        gameCursor.gameObject.SetActive(false);
+
+        Time.timeScale = 0f;
     }
 
+    public void Restart()
+    {
+        state = GameState.Menu;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
     public void StartGame()
     {
         state = GameState.Playing;
