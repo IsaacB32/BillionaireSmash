@@ -28,7 +28,7 @@ public class Game : MonoBehaviour
     public EnemyManager enemyManager;
     public Player player;
     public PowerupManager powerup;
-    public DynamicDifficult difficult;
+    public DynamicDifficulty difficulty;
     public AudioManager audioManager;
     public TextReader textReader;
     public CameraShake2D cameraShake;

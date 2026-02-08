@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        Game.Instance.difficult.IncreaseEnemyKilled();
+        Game.Instance.difficulty.OnEnemyKilled();
         Game.Instance.enemyManager.Release(this);
         Game.Instance.audioManager.PlayEnemyHit();
         Game.Instance.cameraShake.AddLightShake();

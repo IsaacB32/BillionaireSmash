@@ -11335,7 +11335,7 @@ MonoBehaviour:
   enemyManager: {fileID: 920347209}
   player: {fileID: 1919725683}
   powerup: {fileID: 2025908982}
-  difficult: {fileID: 805309225}
+  difficulty: {fileID: 805309225}
   audioManager: {fileID: 62238474}
   textReader: {fileID: 1779931131}
   cameraShake: {fileID: 240317778}
@@ -11382,8 +11382,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22abc09619509ce2b8de20a95e82f0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DynamicDifficult
-  startingKilledForPowerup: 60
-  startingEnemySpawnRate: 0.5
+  baseKillsPerLevel: 20
+  earlyGrowth: 1.5
+  lateGrowth: 0.15
+  startingSpawnInterval: 0.5
+  minSpawnInterval: 0.15
+  spawnCurveStrength: 0.35
 --- !u!1 &854640614
 GameObject:
   m_ObjectHideFlags: 0
