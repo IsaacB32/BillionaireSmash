@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicLoopASource;
     public AudioSource musicLoopBSource;
     public AudioSource sfxSource;
+    public AudioSource voiceSfxSource;
     public AudioSource heartBeatSource;
     public AudioSource breathingSource;
 
@@ -143,26 +144,36 @@ public class AudioManager : MonoBehaviour
 
     public void PlayExplosion()
     {
+            sfxSource.pitch = Random.Range(0.8f, 1.0f);
+            sfxSource.volume = Random.Range(0.7f, 0.6f);
         if (explosionClip) sfxSource.PlayOneShot(explosionClip);
     }
 
     public void PlayClick()
     {
+            sfxSource.pitch = 1.0f;
+            sfxSource.volume = 0.7f;
         if (clickClip) sfxSource.PlayOneShot(clickClip);
     }
 
     public void PlayEnemyHit()
     {
+            sfxSource.pitch = Random.Range(0.6f, 0.8f);
+            sfxSource.volume = Random.Range(0.5f, 0.6f);
         if (hitClip) sfxSource.PlayOneShot(hitClip);
     }
 
     public void PlayMoney()
     {
+	sfxSource.pitch = 1.0f;
+	sfxSource.volume = 0.8f;
         if (moneyPickupClip) sfxSource.PlayOneShot(moneyPickupClip);
     }
 
     public void PlayPlayerHit()
     {
+            sfxSource.pitch = Random.Range(0.8f, 1.0f);
+            sfxSource.volume = Random.Range(0.6f, 0.7f);
         if (playerHitClip) sfxSource.PlayOneShot(playerHitClip);
     }
 
@@ -175,22 +186,22 @@ public class AudioManager : MonoBehaviour
     {
         if (gunClip)
         {
-            sfxSource.pitch = Random.Range(0.8f, 1.2f);
-            sfxSource.volume = Random.Range(0.8f, 1.2f);
+            sfxSource.pitch = Random.Range(0.2f, 0.8f);
+            sfxSource.volume = Random.Range(0.4f, 0.6f);
             sfxSource.PlayOneShot(gunClip);
-            sfxSource.pitch = 1f;
-            sfxSource.volume = 1f;
         }
     }
 
     public void PlayVoiceLineRandom()
     {
         int rand = Random.Range(1, voiceLines.Count);
-        sfxSource.PlayOneShot(voiceLines[rand]);
+	voiceSfxSource.volume = 0.7f;
+        voiceSfxSource.PlayOneShot(voiceLines[rand]);
     }
 
     public void PlayVoiceLineIndex(int index)
     {
-        sfxSource.PlayOneShot(voiceLines[index]);
+	voiceSfxSource.volume = 0.7f;
+        voiceSfxSource.PlayOneShot(voiceLines[index]);
     }
 }
