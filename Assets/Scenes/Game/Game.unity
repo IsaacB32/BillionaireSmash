@@ -10851,6 +10851,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   offset: {x: 0, y: 0, z: -10}
   smoothSpeed: 0.125
+--- !u!114 &389331352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4537540378547091094, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+  m_PrefabInstance: {fileID: 2441438938525727457}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &433895035
 GameObject:
   m_ObjectHideFlags: 0
@@ -10943,7 +10954,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -11085,6 +11096,7 @@ MonoBehaviour:
   storyCanvas: {fileID: 1599806978}
   highscoreText: {fileID: 2441438938525727460}
   scoreText: {fileID: 2441438938525727459}
+  healthText: {fileID: 389331352}
   damageMaterial: {fileID: 2100000, guid: 7f2e4ca7874dff74d810629d3dde218a, type: 2}
 --- !u!4 &805309224
 Transform:
@@ -41919,7 +41931,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -73717,7 +73729,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -74240,6 +74252,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1206078249575587881, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206078249575587881, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -40
+      objectReference: {fileID: 0}
     - target: {fileID: 1944954183484136138, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -74390,7 +74410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7770639804115541603, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -30
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 8080753665542901615, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_Sprite

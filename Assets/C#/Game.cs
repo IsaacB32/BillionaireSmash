@@ -40,6 +40,7 @@ public class Game : MonoBehaviour
     [Header("Game Score Text")]
     [SerializeField] private TextMeshProUGUI highscoreText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI healthText;
     private int score = 0;
 
     [Header("Misc")]
@@ -78,6 +79,8 @@ public class Game : MonoBehaviour
             float playerHealthPercent = Instance.player.currentHealth / Instance.player.maxHealth;
             float target = Mathf.Lerp(0f, 3f, 1f - playerHealthPercent);
             damageMaterial.SetFloat("_VignetteIntensity", target);
+
+            healthText.text = $"{Instance.player.currentHealth}";
         }
     }
     
