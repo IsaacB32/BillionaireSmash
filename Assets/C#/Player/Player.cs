@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private PlayerPowerups _playerPowerups;
     [SerializeField] private GameObject _explodePrefab;
     [SerializeField] private TextMeshProUGUI healthtext;
+    private HurtFlash hurtFlash;
     
     private Rigidbody2D _rigidbody2D;
     private Vector2 _move_direction;
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
         _defaultFireTimer = _fireTimerInterval;
         healthtext.text = current_health.ToString();
         _dashForce = _defaultDashForce;
+        hurtFlash = GetComponentInChildren<HurtFlash>();
     }
 
     #region Input
@@ -206,6 +208,7 @@ public class Player : MonoBehaviour
     {
         if (!_canBeHurt) return;
         
+        hurtFlash.Flash();
         current_health--;
         healthtext.text = current_health.ToString();
         Game.Instance.audioManager.PlayPlayerHit();
