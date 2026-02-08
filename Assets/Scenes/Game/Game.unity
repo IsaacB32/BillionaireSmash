@@ -41712,6 +41712,81 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &865901106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 865901107}
+  - component: {fileID: 865901109}
+  - component: {fileID: 865901108}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &865901107
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865901106}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 958477059}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 20}
+  m_SizeDelta: {x: 290, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &865901108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865901106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -6724901840263831054, guid: 56a86a63cd56f284b9d4bece334a98f3, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 16
+--- !u!222 &865901109
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865901106}
+  m_CullTransparentMesh: 1
 --- !u!1 &869670002
 GameObject:
   m_ObjectHideFlags: 0
@@ -41857,8 +41932,8 @@ MonoBehaviour:
   spawnInterval: 0.5
   maxEnemies: 500
   eliteWeight: 0.01
-  innerRadius: 10
-  outerRadius: 15
+  innerRadius: 20
+  outerRadius: 30
   glopPrefab: {fileID: 8930690588533065364, guid: 69df0ee3bdbb23e43bf3954bf9509a90, type: 3}
   klopPrefab: {fileID: -6375662029191245197, guid: 8646fa293209db84784e4a340b773d6b, type: 3}
   glopWeight: 0.7
@@ -41879,6 +41954,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &958477059 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8658155618300362824, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+  m_PrefabInstance: {fileID: 2441438938525727457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1035240213
 GameObject:
   m_ObjectHideFlags: 0
@@ -75081,6 +75161,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -195
       objectReference: {fileID: 0}
+    - target: {fileID: 1717955099787220551, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717955099787220551, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717955099787220551, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 1944954183484136138, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -75186,6 +75278,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: _textSpeed
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: _nextButton
       value: 
       objectReference: {fileID: 1290067705}
@@ -75200,7 +75296,7 @@ PrefabInstance:
         only one billionaire remains on earth
 
         his
-        name: jonathan capitalist'
+        name: <color=green>jonathan capitalist</color>'
       objectReference: {fileID: 0}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: 'sentences.Array.data[1]'
@@ -75208,28 +75304,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: 'sentences.Array.data[2]'
-      value: 'then he created the money monsters
+      value: 'then he created the money monsters,
 
-        creatures made entirly
+        creatures made entirely
         out of money'
       objectReference: {fileID: 0}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: 'sentences.Array.data[3]'
-      value: 'the money monsters took over earth
+      value: 'the money monsters took over earth,
 
-        allowing john to buy all
-        the land
+        allowing john to seize
+        all property
 
-        with plans to build an <color=yellow>ai</color> data center'
+        with plans to build many <color=yellow>ai</color> data
+        centers'
       objectReference: {fileID: 0}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: 'sentences.Array.data[4]'
-      value: "as a rural farmer you don't care \nbut now John is coming for your
-        land\nyou have to fight back to survive"
+      value: 'now John is coming for your farm,
+
+        and you have to fight back
+        to survive'
       objectReference: {fileID: 0}
     - target: {fileID: 1963401131718467100, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: 'sentences.Array.data[5]'
-      value: things are about to get ugly
+      value: <color=red>things are about to get ugly</color>
       objectReference: {fileID: 0}
     - target: {fileID: 2048683517751141243, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -75375,6 +75474,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 156.92499
       objectReference: {fileID: 0}
+    - target: {fileID: 6572229645943201643, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572229645943201643, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572229645943201643, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572229645943201643, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6634162268349300031, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -75474,6 +75589,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7746721617505253032, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1415998256}
+    - targetCorrespondingSourceObject: {fileID: 8658155618300362824, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 865901107}
     - targetCorrespondingSourceObject: {fileID: 1661280693724039821, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
       insertIndex: 0
       addedObject: {fileID: 2060077431}
