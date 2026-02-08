@@ -20,12 +20,23 @@ public class Bullet : MonoBehaviour
     private float _defaultSpeed;
     private float _defaultSize;
     private int _defaultPierce;
+    private TrailRenderer _trailRenderer;
+    
+    [SerializeField] private Material whiteMat;
+
+    void Awake()
+    {
+        _trailRenderer = GetComponent<TrailRenderer>();
+    }
     
     #region Pool
     public void Init(Gun gub)
     {
         _gun = gub;
         _timer = maxLifeTime;
+        
+        _trailRenderer.enabled = false;
+        _trailRenderer.Clear();
 
         speed = _gun.GetStats().speed;
         transform.localScale = _gun.GetStats().size * Vector3.one;
@@ -60,6 +71,11 @@ public class Bullet : MonoBehaviour
     {
         _timer -= Time.deltaTime;
         if (_timer <= 0f) Release();
+
+        if (maxLifeTime - _timer > 0.05f)
+        {
+            _trailRenderer.enabled = true;
+        } 
         
         transform.position += transform.right * speed * Time.deltaTime * 10;
     }
@@ -73,7 +89,7 @@ public class Bullet : MonoBehaviour
             ChainAttack(other.collider);
             ExplodeAttack();
             Enemy e = other.gameObject.GetComponent<Enemy>();
-            if (!e.isDying)
+            if (!e.isDying && --e.currentStats.health <= 0)
             {
                 e.isDying = true;
                 Game.Instance.StartCoroutine(e.Die());

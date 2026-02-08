@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GlopDefault
   m_EditorClassIdentifier: Assembly-CSharp::C_.ScriptableObjects.EnemyData
   enemyName: Glop
-  health: 10
+  health: -143
   speed: 3
   spriteColor: {r: 1, g: 1, b: 1, a: 1}
   scale: 5

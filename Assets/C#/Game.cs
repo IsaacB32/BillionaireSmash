@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
@@ -34,6 +36,7 @@ public class Game : MonoBehaviour
     public AudioManager audioManager;
     public TextReader textReader;
     public CameraShake2D cameraShake;
+    public TransitionController transition;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
@@ -170,7 +173,7 @@ public class Game : MonoBehaviour
         SwitchGameState(GameState.Menu);
         Instance.audioManager.PlayClick();
         damageMaterial.SetFloat("_VignetteIntensity", 0.0f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        transition.ResetGame();
     }
     
     public void StartGame()
