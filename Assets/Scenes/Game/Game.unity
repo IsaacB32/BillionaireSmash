@@ -168,6 +168,7 @@ MonoBehaviour:
   playerHitClip: {fileID: 8300000, guid: 7a54b492c0711f54da4904783698b2eb, type: 3}
   powerupClip: {fileID: 8300000, guid: f89734ece3430234ca8f93484f42d776, type: 3}
   gunClip: {fileID: 8300000, guid: 01ef5113bf2c3ad41b46e8cd29f40cdc, type: 3}
+  dieClip: {fileID: 8300000, guid: d507d33be93987c4292b385cc12d423d, type: 3}
   voiceLines:
   - {fileID: 8300000, guid: 09ed3567c0d6773cf891f7804d9aae30, type: 3}
   - {fileID: 8300000, guid: 639af7fba7cf272228fbb361b37f7243, type: 3}

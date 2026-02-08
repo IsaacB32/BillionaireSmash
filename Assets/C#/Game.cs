@@ -164,9 +164,17 @@ public class Game : MonoBehaviour
             HighScore.Instance.NewHighScore(score);
         }
         scoreText.text = score.ToString();
+        healthText.text = "0";
 
         Time.timeScale = 0f;
         
+        Instance.audioManager.PlayPlayerDie();
+        Instance.StartCoroutine(GameOverVO());
+    }
+
+    private IEnumerator GameOverVO()
+    {
+        yield return new WaitForSecondsRealtime(2f);
         Instance.audioManager.PlayVoiceLineIndex(0);
     }
 

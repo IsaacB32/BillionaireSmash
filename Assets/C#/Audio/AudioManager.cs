@@ -31,6 +31,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerHitClip;
     public AudioClip powerupClip;
     public AudioClip gunClip;
+    public AudioClip dieClip;
 
     [Header("Voice Lines")]
     public List<AudioClip> voiceLines;
@@ -190,6 +191,11 @@ public class AudioManager : MonoBehaviour
             sfxSource.volume = Random.Range(0.6f, 0.7f);
             sfxSource.PlayOneShot(gunClip);
         }
+    }
+
+    public void PlayPlayerDie()
+    {
+        if (dieClip) sfxSource.PlayOneShot(dieClip);
     }
 
     public void PlayVoiceLineRandom()
