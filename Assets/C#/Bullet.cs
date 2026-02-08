@@ -32,6 +32,7 @@ public class Bullet : MonoBehaviour
         _pierceCounter = _gun.GetStats().pierce;
         _chain = _gun.GetStats().chain;
         _explode = _gun.GetStats().explode;
+        Game.Instance.audioManager.PlayGunFire();
     }
 
     private void Release()

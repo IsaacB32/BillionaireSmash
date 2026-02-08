@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip moneyPickupClip;
     public AudioClip playerHitClip;
     public AudioClip powerupClip;
+    public AudioClip gunClip;
 
     [Header("Voice Lines")]
     public List<AudioClip> voiceLines;
@@ -90,6 +91,11 @@ public class AudioManager : MonoBehaviour
     public void PlayPowerUp()
     {
         if (powerupClip) sfxSource.PlayOneShot(powerupClip);
+    }
+
+    public void PlayGunFire()
+    {
+        if (gunClip) sfxSource.PlayOneShot(gunClip);
     }
 
     public void PlayVoiceLineRandom()
