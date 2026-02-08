@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletPowerup
   type: 1
   powerup_name: Chain Shot
-  icon: {fileID: -8859753483893574024, guid: 288b00069c259d537b8e207222812a87, type: 3}
+  icon: {fileID: -3266714264308652972, guid: 7e252e27a5a6b634b9a4186a9d903a2a, type: 3}
   description: continue the chaos
   stats:
     size: 0

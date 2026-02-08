@@ -20,8 +20,11 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _canBeHurt = true;
     [SerializeField] private float _dashTime = 0.05f;
     [SerializeField] private float _defaultDashForce = 2f;
+    [SerializeField] private float _defaultDashCooldown = 1f;
     private float _dashForce;
     private float _dashMultiplier = 1f;
+    private float _dashCooldown;
+    private bool _canDash = true;
     
     [Header("References")]
     [SerializeField] private GameObject _indicator;
@@ -62,6 +65,7 @@ public class Player : MonoBehaviour
         healthtext.text = current_health.ToString();
         _dashForce = _defaultDashForce;
         hurtFlash = GetComponentInChildren<HurtFlash>();
+        _dashCooldown = _defaultDashCooldown;
     }
 
     #region Input
@@ -115,12 +119,21 @@ public class Player : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _canDash)
         {
+            StartCoroutine(DashCooldown());
+            
             _dashMultiplier = _dashForce;
             StartCoroutine(Invincible(_dashTime));
             Invoke(nameof(EndDash), _dashTime);
         }
+    }
+
+    private IEnumerator DashCooldown()
+    {
+        _canDash = false;
+        yield return new WaitForSeconds(_dashCooldown);
+        _canDash = true;
     }
 
     private void EndDash()
@@ -160,15 +173,17 @@ public class Player : MonoBehaviour
         _playerPowerups.AttachPowerup(p);
     }
     
-    public void SetUpgradeStats(float newSpeed, int newHealth, float newDash, float newDashTime)
+    public void SetUpgradeStats(float newSpeed, int newHealth, float newDash, float newDashTime, float newCooldown)
     {
         if (newSpeed != 0) movement_speed += newSpeed;
         IncreaseHealth(newHealth);
 
-        if (newDash != 0) _dashForce = newDash;
-        if (newDashTime != 0) _dashTime = newDashTime;
+        if (newDash != 0) _dashForce += newDash;
+        if (newDashTime != 0) _dashTime += newDashTime;
+        if (newCooldown != 0) _dashCooldown -= newCooldown;
 
         movement_speed = Mathf.Clamp(movement_speed, 0.8f, 100f);
+        _dashCooldown = Mathf.Clamp(_dashCooldown, 0.2f, 2f);
     }
 
     public void UpgradeBullets(BulletStats stats)

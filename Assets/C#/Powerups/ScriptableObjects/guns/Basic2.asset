@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerup
   type: 2
   powerup_name: Secret Lover
-  icon: {fileID: 8863435804276653119, guid: 89c0522ecad495fe2b28a87d462102c4, type: 3}
+  icon: {fileID: -4809769895592193836, guid: b33dc9e47a38cc94c9a5cddb062f026a, type: 3}
   description: the classic is back with faster fire speed
   style: 0
   rateFire: 0.1

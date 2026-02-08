@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerup
   type: 2
   powerup_name: Quad Gun
-  icon: {fileID: 5088029276271775234, guid: 4b69ba680ef9ab3a7b000a025b58f5c6, type: 3}
+  icon: {fileID: -3754092876434446086, guid: 0e0f89e1bb19ff34d8065f47f5033a74, type: 3}
   description: cover your six, and your nine, and your three
   style: 2
   rateFire: 0.2

@@ -30,18 +30,18 @@ public class TextReader : MonoBehaviour
 
    public void ReadCharacter(string sentence)
    {
-      _text.firstVisibleCharacter = 0;
+      _text.maxVisibleCharacters = 0;
       _text.text = sentence;
       StartCoroutine(ReadSentence(sentence.Length));
    }
 
    IEnumerator ReadSentence(int length)
    {
-      yield return new WaitForSeconds(1f);
+      yield return new WaitForSeconds(.56f);
       
-      while (_text.firstVisibleCharacter < length)
+      while (_text.maxVisibleCharacters < length)
       {
-         _text.firstVisibleCharacter++;
+         _text.maxVisibleCharacters++;
          yield return new WaitForSeconds(_textSpeed);
       }
 
@@ -55,8 +55,8 @@ public class TextReader : MonoBehaviour
       if (_index >= sentences.Length)
       {
          //start game
-         Game.Instance.StartGame();
          CutsceneController.Instance.DisableCutscene();
+         Game.Instance.StartGame();
       }
       else ReadCharacter(sentences[_index]);
       _nextButton.SetActive(false);

@@ -163,12 +163,15 @@ public class Game : MonoBehaviour
             storyCanvas.interactable = true;
             LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
             Instance.audioManager.PlayClick();
+            
+            mainMenuCanvas.interactable = false;
+            mainMenuCanvas.blocksRaycasts = false;
+            UnityEngine.Cursor.visible = false;
 
             textReader.BeginReading();
         }
         else
         {
-            storyCanvas.alpha = 0f;
             storyCanvas.blocksRaycasts = false;
             storyCanvas.interactable = false;
             
