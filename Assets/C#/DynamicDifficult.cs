@@ -40,7 +40,7 @@ public class DynamicDifficult : MonoBehaviour
         _totalKilled++;
         if (_enemiesKilled >= _killedForPowerup)
         {
-            Game.Instance.powerup.ShowPowerupChoices();
+            StartCoroutine(Game.Instance.powerup.ShowPowerupChoices());
             _enemiesKilled = 0;
             IncreaseLevel();
         }
