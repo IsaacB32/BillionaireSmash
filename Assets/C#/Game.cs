@@ -87,7 +87,9 @@ public class Game : MonoBehaviour
             }
 
             float playerHealthPercent = Instance.player.currentHealth / Instance.player.maxHealth;
-            float target = Mathf.Lerp(0f, 3f, 1f - playerHealthPercent);
+            const float startThreshold = 0.4f;
+            float t = Mathf.InverseLerp(startThreshold, 0f, playerHealthPercent);
+            float target = Mathf.Lerp(0f, 3f, t);
             damageMaterial.SetFloat("_VignetteIntensity", target);
 
             healthText.text = $"{Instance.player.currentHealth}";

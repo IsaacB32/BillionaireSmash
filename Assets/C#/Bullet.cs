@@ -43,7 +43,6 @@ public class Bullet : MonoBehaviour
         _pierceCounter = _gun.GetStats().pierce;
         _chain = _gun.GetStats().chain;
         _explode = _gun.GetStats().explode;
-        Game.Instance.audioManager.PlayGunFire();
     }
 
     private void Release()
@@ -131,5 +130,6 @@ public class Bullet : MonoBehaviour
         Explode e = o.GetComponent<Explode>();
         o.transform.localScale = Vector3.one * _explode;
         e.ExplodeBomb(_explode);
+        Game.Instance.audioManager.PlayExplosion();
     }
 }

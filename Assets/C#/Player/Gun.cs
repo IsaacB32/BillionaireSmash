@@ -75,6 +75,8 @@ public class Gun : MonoBehaviour
    public void Fire()
    {
       if (Game.Instance.state != Game.GameState.Playing) return;
+      Game.Instance.audioManager.PlayGunFire();
+
       _FireMethod.Invoke();
    }
    
@@ -86,6 +88,8 @@ public class Gun : MonoBehaviour
    
    public void CreateBullet(Vector3 pos, Quaternion rot)
    {
+      if (Game.Instance.state != Game.GameState.Playing) return;
+
       Bullet bullet = _pool.Get();
       bullet.transform.position = pos;
       bullet.transform.rotation = rot;
