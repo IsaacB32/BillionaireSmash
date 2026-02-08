@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -52,7 +53,10 @@ public class Game : MonoBehaviour
 
         state = GameState.Menu;
         Time.timeScale = 1f;
-        
+    }
+
+    private void Start()
+    {
         highscoreText.text = HighScore.Instance.GetScore().ToString();
     }
 

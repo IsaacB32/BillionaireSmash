@@ -17,7 +17,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float _fireTimerInterval = 0.1f;
     private float _defaultFireTimer;
     [SerializeField] private float _invincibleTime = 0.33f;
-    private bool _canBeHurt = true;
+    [SerializeField] private bool _canBeHurt = true;
+    [SerializeField] private float _dashTime = 0.05f;
+    [SerializeField] private float _defaultDashForce = 2f;
+    private float _dashForce;
+    private float _dashMultiplier = 1f;
     
     [Header("References")]
     [SerializeField] private GameObject _indicator;
@@ -55,6 +59,7 @@ public class Player : MonoBehaviour
         _playerPowerups = GetComponent<PlayerPowerups>();
         _defaultFireTimer = _fireTimerInterval;
         healthtext.text = current_health.ToString();
+        _dashForce = _defaultDashForce;
     }
 
     #region Input
@@ -105,13 +110,28 @@ public class Player : MonoBehaviour
             _gun.FireEnded();
         }
     }
+
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _dashMultiplier = _dashForce;
+            StartCoroutine(Invincible(_dashTime));
+            Invoke(nameof(EndDash), _dashTime);
+        }
+    }
+
+    private void EndDash()
+    {
+        _dashMultiplier = 1;
+    }
     #endregion
 
     private void FixedUpdate()
     {
         if (_freeze || Game.Instance.state != Game.GameState.Playing) return;
         
-        _rigidbody2D.linearVelocity = _move_direction * movement_speed * Time.deltaTime * 50;
+        _rigidbody2D.linearVelocity = _move_direction * movement_speed * Time.deltaTime * 50 * _dashMultiplier;
         Rotate();
         
         if (_move_direction == Vector2.zero)  movementState = PlayerState.Idle;
@@ -138,10 +158,13 @@ public class Player : MonoBehaviour
         _playerPowerups.AttachPowerup(p);
     }
     
-    public void SetUpgradeStats(float newSpeed, int newHealth)
+    public void SetUpgradeStats(float newSpeed, int newHealth, float newDash, float newDashTime)
     {
         if (newSpeed != 0) movement_speed += newSpeed;
         IncreaseHealth(newHealth);
+
+        if (newDash != 0) _dashForce = newDash;
+        if (newDashTime != 0) _dashTime = newDashTime;
 
         movement_speed = Mathf.Clamp(movement_speed, 0.8f, 100f);
     }
@@ -186,13 +209,13 @@ public class Player : MonoBehaviour
         current_health--;
         healthtext.text = current_health.ToString();
         Game.Instance.audioManager.PlayPlayerHit();
-        StartCoroutine(Invincible());
+        StartCoroutine(Invincible(_invincibleTime));
     }
 
-    IEnumerator Invincible()
+    IEnumerator Invincible(float time)
     {
         _canBeHurt = false;
-        yield return new WaitForSeconds(_invincibleTime);
+        yield return new WaitForSeconds(time);
         _canBeHurt = true;
     }
 }
