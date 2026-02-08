@@ -11319,7 +11319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22abc09619509ce2b8de20a95e82f0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DynamicDifficult
-  startingKilledForPowerup: 100
+  startingKilledForPowerup: 60
   startingEnemySpawnRate: 0.5
 --- !u!1 &854640614
 GameObject:
