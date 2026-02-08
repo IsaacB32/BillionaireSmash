@@ -19,9 +19,9 @@ public class Game : MonoBehaviour
         state = s;
         if (state != GameState.Playing)
         {
-            cursor.HideCursor();
+            gameCursor.HideCursor();
         }
-        else cursor.ShowCursor();
+        else gameCursor.ShowCursor();
     }
     
     public static Game Instance { get; private set; }
@@ -33,7 +33,6 @@ public class Game : MonoBehaviour
     public DynamicDifficult difficult;
     public AudioManager audioManager;
     public TextReader textReader;
-    public Cursor cursor;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
