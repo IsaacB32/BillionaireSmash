@@ -1477,7 +1477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8960128164171816311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3166,13 +3166,85 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1363184736117822374, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 301.5633
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363184736117822374, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000032187
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162572972433808381, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: _textSpeed
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162572972433808381, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: sentences.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162572972433808381, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: 'sentences.Array.data[0]'
+      value: 'the year is 2027
+
+        only one billionaire remains on earth
+
+        his
+        name: jonathan capitalist
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162572972433808381, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: 'sentences.Array.data[1]'
+      value: "with only a small amount of his money \nhe solved world hunger"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162572972433808381, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: 'sentences.Array.data[2]'
+      value: 'he then created the money monsters
+
+        creatures made entirely
+        out of money'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162572972433808381, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: 'sentences.Array.data[3]'
+      value: 'the money monsters took over earth
+
+        allowing john to buy all
+        the land
+
+        with plans to build an <color=yellow>ai</color> data center'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162572972433808381, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: 'sentences.Array.data[4]'
+      value: "as a rural farmer you don't care \nbut now John is coming for your
+        land\nyou have to fight back to survive"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162572972433808381, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: 'sentences.Array.data[5]'
+      value: things are about to get ugly
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169513945603149242, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169513945603149242, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169513945603149242, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5511717286106297810, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
       propertyPath: m_Name
       value: Story
       objectReference: {fileID: 0}
     - target: {fileID: 5511717286106297810, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775989233318795914, guid: c16ff3714460bbffcbc30279323c6504, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

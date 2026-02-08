@@ -11,8 +11,7 @@ public class Explode : MonoBehaviour
         foreach (Collider2D enemy in enemies)
         {
             Enemy e = enemy.GetComponent<Enemy>();
-            e.currentStats.health -= 2;
-            if (!e.isDying && e.currentStats.health <= 0) StartCoroutine(e.Die());
+            if (!e.isDying && e.DecreaseHealth(2) <= 0) StartCoroutine(e.Die());
         }
         Invoke(nameof(WaitDeath), _lifetime);
     }

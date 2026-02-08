@@ -17,6 +17,13 @@ public class Enemy : MonoBehaviour
     public EnemyData currentStats;
     private float _health;
 
+    public float DecreaseHealth(float value)
+    {
+        _health -= value;
+        return _health;
+    }
+    public float GetHealth() {return _health;}
+
     private float _currentTtl;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
