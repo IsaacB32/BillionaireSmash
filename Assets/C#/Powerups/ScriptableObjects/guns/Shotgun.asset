@@ -18,5 +18,5 @@ MonoBehaviour:
   description: look ma! three bullets
   rarity: 100
   style: 1
-  rateFire: 0.19
+  rateFire: 0.22
   chargeGrowthRate: 2.3
