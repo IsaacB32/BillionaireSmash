@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletPowerup
   type: 1
   powerup_name: Huge Bullets
-  icon: {fileID: 0}
+  icon: {fileID: -2310915623682594744, guid: 6b0b12e1087141545aaf46a9ef335723, type: 3}
   description: might break the game
   stats:
-    size: 0.1
-    speed: 0.2
+    size: 0.5
+    speed: -0.5
     pierce: 0
     fire: 0
     electric: 0

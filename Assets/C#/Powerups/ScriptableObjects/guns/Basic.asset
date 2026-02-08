@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunPowerup
   type: 2
   powerup_name: Farmer's Lover
-  icon: {fileID: 0}
+  icon: {fileID: -4809769895592193836, guid: b33dc9e47a38cc94c9a5cddb062f026a, type: 3}
   description: 'your basic default gun '
   style: 0
   rateFire: 0

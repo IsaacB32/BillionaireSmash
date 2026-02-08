@@ -14,7 +14,7 @@ public class PowerupManager : MonoBehaviour
         {
             p.AssignPowerup(ChoosePowerup());
         }
-        Game.Instance.Pause();
+        Game.Instance.Freeze();
     }
 
     private Powerup ChoosePowerup()
@@ -39,7 +39,7 @@ public class PowerupManager : MonoBehaviour
 
     public void Hide()
     {
-        Game.Instance.Unpause();
+        Game.Instance.Unfreeze();
         _powerupUI.SetActive(false);
     }
 }

@@ -107,8 +107,6 @@ public class Enemy : MonoBehaviour
         while (elapsed < deathDuration)
         {
             elapsed += Time.deltaTime;
-            float percent = elapsed / deathDuration;
-
             transform.Translate(knockbackDir * knockbackForce * Time.deltaTime);
 
             _spriteRenderer.color = (Mathf.FloorToInt(elapsed * 20) % 2 == 0) ? Color.white : Color.red;
@@ -120,5 +118,6 @@ public class Enemy : MonoBehaviour
         Game.Instance.player.money += _currentStats.value;
         Game.Instance.UpdateMoneyUI(Game.Instance.player.money);
         Game.Instance.enemyManager.Release(this);
+        Game.Instance.audioManager.PlayEnemyHit();
     }
 }

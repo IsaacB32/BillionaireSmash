@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletPowerup
   type: 1
   powerup_name: Explode
-  icon: {fileID: 0}
+  icon: {fileID: 6431222391550867542, guid: 5686407dd47772548bc58d0650c34c0a, type: 3}
   description: increase the explosion radius
   stats:
     size: 0

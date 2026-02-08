@@ -1,52 +1,74 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3339790036709870932
+--- !u!1 &6153759645244600824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1219182192484573312}
+  - component: {fileID: 8853963516448999866}
+  m_Layer: 0
+  m_Name: BloodSplat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1219182192484573312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6153759645244600824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4296755058949023671}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8853963516448999866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6153759645244600824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9e6ef8fb0f952018657ca9918a4e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloodSplat
+  _lifetime: 11
+--- !u!1001 &6265815681178835130
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1219182192484573312}
     m_Modifications:
     - target: {fileID: -2253911629886400664, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
       propertyPath: m_Name
       value: blood-splat
-      objectReference: {fileID: 0}
-    - target: {fileID: -2253911629886400664, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1160356261127867848, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3626916397498700004, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 6824389730134608851, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
-    - target: {fileID: 3626916397498700004, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7878350319992209165, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.637
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -83,26 +105,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 110747846946955731}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: -8435245712485981826, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
---- !u!1 &5683874814784494140 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
-  m_PrefabInstance: {fileID: 3339790036709870932}
+--- !u!4 &4296755058949023671 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 21df266bbdb48517cb23f5c51063bcc3, type: 3}
+  m_PrefabInstance: {fileID: 6265815681178835130}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &110747846946955731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5683874814784494140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff9e6ef8fb0f952018657ca9918a4e36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BloodSplat
-  _lifetime: 10

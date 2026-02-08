@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,18 +26,26 @@ public class Game : MonoBehaviour
     public Player player;
     public PowerupManager powerup;
     public DynamicDifficult difficult;
+    public AudioManager audioManager;
+    public TextReader textReader;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
-    
-    [Header("Powerup")]
-    [SerializeField] private int _killedForPowerup = 20;
 
     [Header("Canvas Groups")]
     [SerializeField] private CanvasGroup mainMenuCanvas;
     [SerializeField] private CanvasGroup pauseMenuCanvas;
     [SerializeField] private CanvasGroup gameOverCanvas;
+    [SerializeField] private CanvasGroup storyCanvas;
+    
+    [Header("Game Score Text")]
+    [SerializeField] private TextMeshProUGUI highscoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    private int score = 0;
 
+    private float _voiceLineInterval = 20f;
+    private float _voiceLineTimer = 0f;
+    
     public GameState state { private set; get; }
 
     void Awake()
@@ -48,13 +57,27 @@ public class Game : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    private void Start()
+    {
+        highscoreText.text = HighScore.Instance.GetScore().ToString();
+    }
+
     void Update()
     {
-
+        if (state == GameState.Playing)
+        {
+            _voiceLineTimer += Time.deltaTime;
+            if (_voiceLineTimer >= _voiceLineInterval)
+            {
+                Instance.audioManager.PlayVoiceLineRandom();
+                _voiceLineTimer = 0f;
+            }
+        }
     }
     
     public void UpdateMoneyUI(int val)
     {
+        score = val;
         moneyTextUI.text = $"${val}";
     }
 
@@ -62,6 +85,8 @@ public class Game : MonoBehaviour
     {
         SwitchGameState(GameState.Paused);
 
+        Instance.audioManager.PlayClick();
+        
         pauseMenuCanvas.alpha = 100f;
         pauseMenuCanvas.interactable = true;
         pauseMenuCanvas.blocksRaycasts = true;
@@ -69,13 +94,15 @@ public class Game : MonoBehaviour
         UnityEngine.Cursor.visible = true;
         gameCursor.gameObject.SetActive(false);
         
-        Time.timeScale = 0;
+        Freeze();
     }
 
     public void Unpause()
     {
         SwitchGameState(GameState.Playing);
 
+        Instance.audioManager.PlayClick();
+        
         pauseMenuCanvas.alpha = 0f;
         pauseMenuCanvas.interactable = false;
         pauseMenuCanvas.blocksRaycasts = false;
@@ -83,9 +110,20 @@ public class Game : MonoBehaviour
         UnityEngine.Cursor.visible = false;
         gameCursor.gameObject.SetActive(true);
         
-        Time.timeScale = 1;
+        Unfreeze();
     }
 
+    public void Freeze()
+    {
+        SwitchGameState(GameState.Paused);
+        Time.timeScale = 0;
+    }
+
+    public void Unfreeze()
+    {
+        SwitchGameState(GameState.Playing);
+        Time.timeScale = 1;
+    }
     public void GameOver()
     {
         state = GameState.Lose;
@@ -97,25 +135,61 @@ public class Game : MonoBehaviour
         UnityEngine.Cursor.visible = true;
         gameCursor.gameObject.SetActive(false);
 
+        if (score > HighScore.Instance.GetScore())
+        {
+            highscoreText.text = score.ToString();
+            HighScore.Instance.NewHighScore(score);
+        }
+        scoreText.text = score.ToString();
+
         Time.timeScale = 0f;
+        
+        Instance.audioManager.PlayVoiceLineIndex(0);
     }
 
     public void Restart()
     {
         state = GameState.Menu;
+        Instance.audioManager.PlayClick();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
     public void StartGame()
     {
-        state = GameState.Playing;
+        if (CutsceneController.Instance.GetCutscene())
+        {
+            storyCanvas.alpha = 1f;
+            storyCanvas.blocksRaycasts = true;
+            storyCanvas.interactable = true;
+            LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
+            Instance.audioManager.PlayClick();
+            
+            mainMenuCanvas.interactable = false;
+            mainMenuCanvas.blocksRaycasts = false;
+            UnityEngine.Cursor.visible = false;
 
-        LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
-        UnityEngine.Cursor.visible = false;
+            textReader.BeginReading();
+        }
+        else
+        {
+            storyCanvas.blocksRaycasts = false;
+            storyCanvas.interactable = false;
+            
+            state = GameState.Playing;
+            
+            Instance.audioManager.PlayClick();
+            LeanTween.alphaCanvas(mainMenuCanvas, 0f, 0.5f);
+            LeanTween.alphaCanvas(storyCanvas, 0f, 0.5f);
+            mainMenuCanvas.interactable = false;
+            mainMenuCanvas.blocksRaycasts = false;
+            UnityEngine.Cursor.visible = false;
+            StartCoroutine(Instance.audioManager.PlayMusic());
+        }
     }
 
     public void QuitGame()
     {
+        Instance.audioManager.PlayClick();
         Application.Quit();
     }
 }
