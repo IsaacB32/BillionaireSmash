@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CutsceneController : MonoBehaviour
@@ -16,4 +17,10 @@ public class CutsceneController : MonoBehaviour
    public bool GetCutscene() { return _playCutscene; }
    
    public bool GetInstructions() { return _showInstruction; }
+
+   private void OnApplicationQuit()
+   {
+      _playCutscene = true;
+      _showInstruction = true;
+   }
 }
