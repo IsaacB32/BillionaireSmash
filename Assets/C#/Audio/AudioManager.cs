@@ -187,7 +187,7 @@ public class AudioManager : MonoBehaviour
         if (gunClip)
         {
             sfxSource.pitch = Random.Range(0.2f, 0.8f);
-            sfxSource.volume = Random.Range(0.7f, 0.6f);
+            sfxSource.volume = Random.Range(0.6f, 0.7f);
             sfxSource.PlayOneShot(gunClip);
         }
     }

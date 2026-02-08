@@ -112,9 +112,10 @@ public class Player : MonoBehaviour
 
     public void FireGun(InputAction.CallbackContext context)
     {
+        if (Game.Instance.state != Game.GameState.Playing) return;
+        
         if (Game.Instance.state == Game.GameState.Paused)
         {
-        	Game.Instance.audioManager.PlayGunFire();
             _holdingFire = false;
             return;
         }
