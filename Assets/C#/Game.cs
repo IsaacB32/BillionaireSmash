@@ -41,8 +41,12 @@ public class Game : MonoBehaviour
     [Header("Game Score Text")]
     [SerializeField] private TextMeshProUGUI highscoreText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI healthText;
     private int score = 0;
 
+    [Header("Misc")]
+    public Material damageMaterial;
+    
     private float _voiceLineInterval = 20f;
     private float _voiceLineTimer = 0f;
     
@@ -72,6 +76,12 @@ public class Game : MonoBehaviour
                 Instance.audioManager.PlayVoiceLineRandom();
                 _voiceLineTimer = 0f;
             }
+
+            float playerHealthPercent = Instance.player.currentHealth / Instance.player.maxHealth;
+            float target = Mathf.Lerp(0f, 3f, 1f - playerHealthPercent);
+            damageMaterial.SetFloat("_VignetteIntensity", target);
+
+            healthText.text = $"{Instance.player.currentHealth}";
         }
     }
     

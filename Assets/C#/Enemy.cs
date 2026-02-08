@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float maxTtl = 5f;
     [SerializeField] private float distanceThreshold = 0.5f;
     
-    private EnemyData _currentStats;
+    public EnemyData currentStats;
     private float _health;
 
     private float _currentTtl;
@@ -43,12 +43,12 @@ public class Enemy : MonoBehaviour
     
     public void Initialize(bool isElite)
     {
-        _currentStats = isElite ? eliteData : normalData;
+        currentStats = isElite ? eliteData : normalData;
         if (isElite) _spriteRenderer.sortingOrder++;
         
-        _health = _currentStats.health;
-        _spriteRenderer.color = _currentStats.spriteColor;
-        transform.localScale = Vector3.one * _currentStats.scale;
+        _health = currentStats.health;
+        _spriteRenderer.color = currentStats.spriteColor;
+        transform.localScale = Vector3.one * currentStats.scale;
     }
 
     void FixedUpdate()
@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         
         Vector2 separation = ComputeSeparation();
         Vector2 moveDir = ((Vector2)_playerTransform.position - _rb.position).normalized;
-        Vector2 finalVelocity = (moveDir + separation).normalized * _currentStats.speed;
+        Vector2 finalVelocity = (moveDir + separation).normalized * currentStats.speed;
         _rb.MovePosition(_rb.position + finalVelocity * Time.fixedDeltaTime);
 
         if (Vector3.Distance(transform.position, Game.Instance.player.transform.position) < distanceThreshold && !isDying)
@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
         }
 
         Game.Instance.difficult.IncreaseEnemyKilled();
-        Game.Instance.player.money += _currentStats.value;
+        Game.Instance.player.money += currentStats.value;
         Game.Instance.UpdateMoneyUI(Game.Instance.player.money);
         Game.Instance.enemyManager.Release(this);
         Game.Instance.audioManager.PlayEnemyHit();

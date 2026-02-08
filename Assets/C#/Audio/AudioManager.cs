@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicLoopASource;
     public AudioSource musicLoopBSource;
     public AudioSource sfxSource;
+    public AudioSource heartBeatSource;
+    public AudioSource breathingSource;
 
     [Header("Music")]
     public AudioClip introMusic;
@@ -29,6 +31,31 @@ public class AudioManager : MonoBehaviour
 
     [Header("Voice Lines")]
     public List<AudioClip> voiceLines;
+
+    [Header("Settings")]
+    public float healthEffectsStartThreshold = 0.5f;
+    public float healthEffectsMaxThreshold = 0.10f;
+    
+    void Update()
+    {
+        float healthPercent = Game.Instance.player.currentHealth / Game.Instance.player.maxHealth;
+        
+        float intensity = Mathf.InverseLerp(healthEffectsStartThreshold, healthEffectsMaxThreshold, healthPercent);
+
+        heartBeatSource.volume = intensity;
+        breathingSource.volume = intensity;
+        
+        if (intensity <= 0 && heartBeatSource.isPlaying)
+        {
+            heartBeatSource.Pause();
+            breathingSource.Pause();
+        }
+        else if (intensity > 0 && !heartBeatSource.isPlaying)
+        {
+            heartBeatSource.Play();
+            breathingSource.Play();
+        }
+    }
     
     public IEnumerator PlayMusic()
     {
@@ -96,7 +123,14 @@ public class AudioManager : MonoBehaviour
 
     public void PlayGunFire()
     {
-        if (gunClip) sfxSource.PlayOneShot(gunClip);
+        if (gunClip)
+        {
+            sfxSource.pitch = Random.Range(0.8f, 1.2f);
+            sfxSource.volume = Random.Range(0.8f, 1.2f);
+            sfxSource.PlayOneShot(gunClip);
+            sfxSource.pitch = 1f;
+            sfxSource.volume = 1f;
+        }
     }
 
     public void PlayVoiceLineRandom()
