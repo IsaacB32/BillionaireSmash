@@ -21,7 +21,7 @@ public class TextReader : MonoBehaviour
       _text = GetComponent<TextMeshProUGUI>();
    }
 
-   private void BeginReading()
+   public void BeginReading()
    {
       _index = 0;
       _nextButton.SetActive(false);
@@ -30,16 +30,18 @@ public class TextReader : MonoBehaviour
 
    public void ReadCharacter(string sentence)
    {
-      _text.firstVisibleCharacter = 0;
+      _text.maxVisibleCharacters = 0;
       _text.text = sentence;
       StartCoroutine(ReadSentence(sentence.Length));
    }
 
    IEnumerator ReadSentence(int length)
    {
-      while (_text.firstVisibleCharacter < length)
+      yield return new WaitForSeconds(.56f);
+      
+      while (_text.maxVisibleCharacters < length)
       {
-         _text.firstVisibleCharacter++;
+         _text.maxVisibleCharacters++;
          yield return new WaitForSeconds(_textSpeed);
       }
 
@@ -48,11 +50,13 @@ public class TextReader : MonoBehaviour
 
    public void NextSentence()
    {
+      Game.Instance.audioManager.PlayClick();
       _index++;
       if (_index >= sentences.Length)
       {
          //start game
          CutsceneController.Instance.DisableCutscene();
+         Game.Instance.StartGame();
       }
       else ReadCharacter(sentences[_index]);
       _nextButton.SetActive(false);

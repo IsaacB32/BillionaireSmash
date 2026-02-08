@@ -8,4 +8,5 @@ public class StatPowerup : Powerup
     public float speed;
     [Tooltip("make the dash faster")] public int dashForce;
     [Tooltip("make the dash longer, also increases invicibility")] public float dashTime;
+    [Tooltip("how long between dashes")] public float dashCooldown;
 }
