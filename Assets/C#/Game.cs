@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -29,14 +30,12 @@ public class Game : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
-    
-    [Header("Powerup")]
-    [SerializeField] private int _killedForPowerup = 20;
 
     [Header("Canvas Groups")]
     [SerializeField] private CanvasGroup mainMenuCanvas;
     [SerializeField] private CanvasGroup pauseMenuCanvas;
     [SerializeField] private CanvasGroup gameOverCanvas;
+    [SerializeField] private CanvasGroup storyCanvas;
     
     [Header("Game Score Text")]
     [SerializeField] private TextMeshProUGUI highscoreText;
@@ -55,7 +54,10 @@ public class Game : MonoBehaviour
 
         state = GameState.Menu;
         Time.timeScale = 1f;
-        
+    }
+
+    private void Start()
+    {
         highscoreText.text = HighScore.Instance.GetScore().ToString();
     }
 

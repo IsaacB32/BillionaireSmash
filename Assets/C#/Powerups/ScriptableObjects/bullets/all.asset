@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletPowerup
   type: 1
   powerup_name: Everything
-  icon: {fileID: 0}
+  icon: {fileID: 5581570879927488125, guid: c1b730d1f6d23b2ee9624c2dca75fcab, type: 3}
   description: little bit of every upgrade, because why not
   stats:
     size: 0.05

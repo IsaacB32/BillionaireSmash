@@ -249,6 +249,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 838b62a4-597d-4e75-a89f-c21dd8e00826
     m_ActionName: 'Player/Pause[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7737912999549790717}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d74d29ab-66c5-4ee4-b0e4-fd393ef82593
+    m_ActionName: 'Player/Dash[/Keyboard/shift,/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: 
@@ -269,8 +285,10 @@ MonoBehaviour:
   movement_speed: 10
   money: 0
   current_health: 2
-  _fireTimerInterval: 0.17
+  _fireTimerInterval: 0.2
   _invincibleTime: 0.33
+  _dashTime: 0.5
+  _defaultDashForce: 5
   _indicator: {fileID: 6577049706342153276}
   _explodePrefab: {fileID: 6872828568711100598, guid: 339cc0d0af7774ee38b65374efc9f021, type: 3}
   healthtext: {fileID: 0}
@@ -343,7 +361,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -541,7 +559,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5579532029164595072}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

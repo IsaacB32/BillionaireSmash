@@ -18,7 +18,7 @@ public class PlayerPowerups : MonoBehaviour
         {
             case PowerupType.StatBoost:
                 StatPowerup sp = (StatPowerup)p;
-                _player.SetUpgradeStats(sp.speed,sp.health);
+                _player.SetUpgradeStats(sp.speed,sp.health, sp.dashForce, sp.dashTime);
                 break;
             case PowerupType.BulletModifer:
                 BulletPowerup bp = (BulletPowerup)p;
