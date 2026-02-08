@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9e6ef8fb0f952018657ca9918a4e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BloodSplat
-  _lifetime: 11
+  maxTtl: 60
+  fadeDuration: 1
 --- !u!1001 &6265815681178835130
 PrefabInstance:
   m_ObjectHideFlags: 0

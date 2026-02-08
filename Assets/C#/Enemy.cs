@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
         Vector2 knockbackDir = (transform.position - _playerTransform.position).normalized;
         float knockbackForce = 2f;
 
-        Instantiate(_splat, transform.position, Quaternion.identity);
+        Game.Instance.enemyManager.CreateSplatter(transform.position);
 
         float elapsed = 0f;
         while (elapsed < deathDuration)
@@ -136,7 +136,7 @@ public class Enemy : MonoBehaviour
         }
 
         Game.Instance.difficulty.OnEnemyKilled();
-        Game.Instance.enemyManager.Release(this);
+        Game.Instance.enemyManager.ReleaseEnemy(this);
         Game.Instance.audioManager.PlayEnemyHit();
         Game.Instance.cameraShake.AddLightShake();
     }

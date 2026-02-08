@@ -162,7 +162,8 @@ public class Player : MonoBehaviour
         
         if (_move_direction == Vector2.zero)  movementState = PlayerState.Idle;
 
-        if (_holdingFire)
+        // change it back if you guys don't like it
+        //if (_holdingFire)  
         {
             if (_fireTimer >= _fireTimerInterval)
             {

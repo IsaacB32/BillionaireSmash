@@ -42120,6 +42120,7 @@ MonoBehaviour:
   outerRadius: 30
   glopPrefab: {fileID: 8930690588533065364, guid: 69df0ee3bdbb23e43bf3954bf9509a90, type: 3}
   klopPrefab: {fileID: -6375662029191245197, guid: 8646fa293209db84784e4a340b773d6b, type: 3}
+  splatPrefab: {fileID: 8853963516448999866, guid: 80fb7b3d1a25546d0b4f8d5df3abc8f6, type: 3}
   glopWeight: 0.7
   objectPoolDefaultCapacity: 100
   objectPoolMaxCapacity: 500

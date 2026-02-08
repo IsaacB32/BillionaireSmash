@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 using UnityEngine.Pool;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
@@ -18,6 +18,7 @@ public class EnemyManager : MonoBehaviour
     [Header("Object Pooler")]
     [SerializeField] private Enemy glopPrefab;
     [SerializeField] private Enemy klopPrefab;
+    [SerializeField] private BloodSplat splatPrefab;
     [SerializeField, Range(0f, 1f)] private float glopWeight = 0.7f;
     
     [SerializeField] private int objectPoolDefaultCapacity = 100;
@@ -27,10 +28,11 @@ public class EnemyManager : MonoBehaviour
     private int _activeEnemies = 0;
     private IObjectPool<Enemy> _poolA;
     private IObjectPool<Enemy> _poolB;
+    private IObjectPool<BloodSplat> _splatPool;
     
-    IObjectPool<Enemy> CreatePool(Enemy prefab)
+    IObjectPool<T> CreatePool<T>(T prefab) where T : Component
     {
-        return new ObjectPool<Enemy>(
+        return new ObjectPool<T>(
             () => Instantiate(prefab),
             e => e.gameObject.SetActive(true),
             e => e.gameObject.SetActive(false),
@@ -45,6 +47,7 @@ public class EnemyManager : MonoBehaviour
     {
         _poolA = CreatePool(glopPrefab);
         _poolB = CreatePool(klopPrefab);
+        _splatPool = CreatePool(splatPrefab);
     }
     
     void Update()
@@ -93,18 +96,33 @@ public class EnemyManager : MonoBehaviour
         return Game.Instance.player.transform.position +
                new Vector3((float)(Math.Cos(theta) * dist), (float)(Math.Sin(theta) * dist), 0f);
     }
+
+    public void CreateSplatter(Vector2 pos)
+    {
+        BloodSplat splat = _splatPool.Get();
+        
+        splat.Init();
+        
+        splat.transform.position = pos;
+    }
     #endregion
     
     #region ObjectPoolerMethods
     
-    public void Release(Enemy enemy)
+    public void ReleaseEnemy(Enemy enemy)
     {
         if (!enemy.gameObject.activeSelf) return;
         {
             enemy.ReleaseToPool();
             _activeEnemies--;
         }
-    } 
+    }
+
+    public void ReleaseBloodSplat(BloodSplat splat)
+    {
+        if (!splat.gameObject.activeSelf) return;
+        _splatPool.Release(splat);
+    }
     
     #endregion
 }
