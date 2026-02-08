@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     [Header("Properties")]
     public float movement_speed = 10f;
     public int money;
-    public int current_health = 2;
+    public float maxHealth = 100f;
+    public float currentHealth;
     [SerializeField] private float _fireTimerInterval = 0.1f;
     private float _defaultFireTimer;
     [SerializeField] private float _invincibleTime = 0.33f;
@@ -31,8 +32,7 @@ public class Player : MonoBehaviour
     private PlayerAnimations _animations;
     private Gun _gun;
     private PlayerPowerups _playerPowerups;
-    [SerializeField] private GameObject _explodePrefab;
-    [SerializeField] private TextMeshProUGUI healthtext;
+    [SerializeField] private GameObject _explodePrefab; 
     private HurtFlash hurtFlash;
     
     private Rigidbody2D _rigidbody2D;
@@ -62,7 +62,6 @@ public class Player : MonoBehaviour
         _gun = GetComponentInChildren<Gun>();
         _playerPowerups = GetComponent<PlayerPowerups>();
         _defaultFireTimer = _fireTimerInterval;
-        healthtext.text = current_health.ToString();
         _dashForce = _defaultDashForce;
         hurtFlash = GetComponentInChildren<HurtFlash>();
         _dashCooldown = _defaultDashCooldown;
@@ -161,7 +160,7 @@ public class Player : MonoBehaviour
             else _fireTimer += Time.deltaTime;
         }
 
-        if (current_health < 1)
+        if (currentHealth < 1)
         {
             Game.Instance.GameOver();
         }
@@ -204,8 +203,8 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag("Enemy")) return;
-        DecreaseHealth();
-        if (current_health <= 0)
+        DecreaseHealth(other.gameObject.GetComponent<Enemy>());
+        if (currentHealth <= 0)
         {
             Game.Instance.GameOver();
         }
@@ -215,17 +214,17 @@ public class Player : MonoBehaviour
     public void IncreaseHealth(int h)
     {
         if (h == 0) return;
-        current_health += h;
-        healthtext.text = current_health.ToString();
+        currentHealth += h;
     }
 
-    public void DecreaseHealth()
+
+    public void DecreaseHealth(Enemy e)
     {
         if (!_canBeHurt) return;
         
+        currentHealth = Mathf.Clamp(currentHealth - e.currentStats.value * 2, 0, maxHealth);
+        
         hurtFlash.Flash();
-        current_health--;
-        healthtext.text = current_health.ToString();
         Game.Instance.audioManager.PlayPlayerHit();
         StartCoroutine(Invincible(_invincibleTime));
     }
