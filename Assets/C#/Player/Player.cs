@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public enum PlayerState {
     Idle,
@@ -14,6 +13,7 @@ public class Player : MonoBehaviour
     [Header("Properties")]
     public float movement_speed = 10f;
     public int money;
+    public int current_health = 2;
     public float maxHealth = 100f;
     public float currentHealth;
     [SerializeField] private float _fireTimerInterval = 0.1f;
@@ -22,8 +22,11 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _canBeHurt = true;
     [SerializeField] private float _dashTime = 0.05f;
     [SerializeField] private float _defaultDashForce = 2f;
+    [SerializeField] private float _defaultDashCooldown = 1f;
     private float _dashForce;
     private float _dashMultiplier = 1f;
+    private float _dashCooldown;
+    private bool _canDash = true;
     
     [Header("References")]
     [SerializeField] private GameObject _indicator;
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
     private Gun _gun;
     private PlayerPowerups _playerPowerups;
     [SerializeField] private GameObject _explodePrefab;
+    [SerializeField] private TextMeshProUGUI healthtext;
     private HurtFlash hurtFlash;
     
     private Rigidbody2D _rigidbody2D;
@@ -60,9 +64,10 @@ public class Player : MonoBehaviour
         _gun = GetComponentInChildren<Gun>();
         _playerPowerups = GetComponent<PlayerPowerups>();
         _defaultFireTimer = _fireTimerInterval;
+        healthtext.text = current_health.ToString();
         _dashForce = _defaultDashForce;
         hurtFlash = GetComponentInChildren<HurtFlash>();
-        currentHealth = maxHealth;
+        _dashCooldown = _defaultDashCooldown;
     }
 
     #region Input
@@ -116,12 +121,21 @@ public class Player : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _canDash)
         {
+            StartCoroutine(DashCooldown());
+            
             _dashMultiplier = _dashForce;
             StartCoroutine(Invincible(_dashTime));
             Invoke(nameof(EndDash), _dashTime);
         }
+    }
+
+    private IEnumerator DashCooldown()
+    {
+        _canDash = false;
+        yield return new WaitForSeconds(_dashCooldown);
+        _canDash = true;
     }
 
     private void EndDash()
@@ -149,7 +163,7 @@ public class Player : MonoBehaviour
             else _fireTimer += Time.deltaTime;
         }
 
-        if (currentHealth < 1)
+        if (current_health < 1)
         {
             Game.Instance.GameOver();
         }
@@ -161,15 +175,17 @@ public class Player : MonoBehaviour
         _playerPowerups.AttachPowerup(p);
     }
     
-    public void SetUpgradeStats(float newSpeed, int newHealth, float newDash, float newDashTime)
+    public void SetUpgradeStats(float newSpeed, int newHealth, float newDash, float newDashTime, float newCooldown)
     {
         if (newSpeed != 0) movement_speed += newSpeed;
         IncreaseHealth(newHealth);
 
-        if (newDash != 0) _dashForce = newDash;
-        if (newDashTime != 0) _dashTime = newDashTime;
+        if (newDash != 0) _dashForce += newDash;
+        if (newDashTime != 0) _dashTime += newDashTime;
+        if (newCooldown != 0) _dashCooldown -= newCooldown;
 
         movement_speed = Mathf.Clamp(movement_speed, 0.8f, 100f);
+        _dashCooldown = Mathf.Clamp(_dashCooldown, 0.2f, 2f);
     }
 
     public void UpgradeBullets(BulletStats stats)
@@ -203,6 +219,7 @@ public class Player : MonoBehaviour
         if (h == 0) return;
         currentHealth += h;
     }
+
 
     public void DecreaseHealth(Enemy e)
     {
