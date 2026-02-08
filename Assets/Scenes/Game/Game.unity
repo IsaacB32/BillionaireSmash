@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &21124758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8213827714711245933, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+  m_PrefabInstance: {fileID: 1919725682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &62238473
 GameObject:
   m_ObjectHideFlags: 0
@@ -11401,8 +11406,8 @@ MonoBehaviour:
   lateGrowth: 0.15
   levelText: {fileID: 1014796096}
   startingSpawnInterval: 0.5
-  minSpawnInterval: 0.07
-  spawnCurveStrength: 0.44
+  minSpawnInterval: 0.03
+  spawnCurveStrength: 0.45
 --- !u!1 &854640614
 GameObject:
   m_ObjectHideFlags: 0
@@ -44037,12 +44042,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3905154834726305216, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: charge
+      value: 
+      objectReference: {fileID: 21124758}
+    - target: {fileID: 3905154834726305216, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: pistle
+      value: 
+      objectReference: {fileID: 1960644653}
+    - target: {fileID: 3905154834726305216, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: pistol
+      value: 
+      objectReference: {fileID: 1960644653}
+    - target: {fileID: 3905154834726305216, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: shotgun
+      value: 
+      objectReference: {fileID: 2069379524}
+    - target: {fileID: 5179584723766747670, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6055519660961968011, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: m_DefaultActionMap
       value: df70fa95-8a34-4494-b137-73ab6b9c7d37
       objectReference: {fileID: 0}
     - target: {fileID: 6824389931822443590, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
       propertyPath: stats.explode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905972372973405618, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213827714711245933, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -50668,6 +50701,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1960644653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7905972372973405618, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+  m_PrefabInstance: {fileID: 1919725682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2019713376
 GameObject:
   m_ObjectHideFlags: 0
@@ -74359,6 +74397,11 @@ Transform:
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 1782688479861871714, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}
   m_PrefabInstance: {fileID: 2441438938525727457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2069379524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5179584723766747670, guid: 7df439d2122eeee238e5910d614c9e58, type: 3}
+  m_PrefabInstance: {fileID: 1919725682}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2099076814
 GameObject:

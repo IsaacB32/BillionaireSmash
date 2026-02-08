@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
   speed: 1.5
   maxLifeTime: 2
-  _chainRadius: 6
+  _chainRadius: 8
   whiteMat: {fileID: 2100000, guid: f3c48084ca414c1469e378ce1b70103a, type: 2}
 --- !u!212 &5293938462546623083
 SpriteRenderer:

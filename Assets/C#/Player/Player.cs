@@ -205,6 +205,7 @@ public class Player : MonoBehaviour
 
     public void UpgradeGun(GunStyleType gunType, float rateFire, float growthRate)
     {
+        _animations.SwitchGunArt(gunType);
         _gun.SwitchActiveStyle(gunType, growthRate);
         _fireTimerInterval = rateFire == 0 ? _defaultFireTimer : rateFire;
     }

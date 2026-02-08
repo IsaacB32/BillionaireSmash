@@ -11,8 +11,8 @@ public class DynamicDifficulty : MonoBehaviour
 
     [Header("Enemy Spawning")]
     [SerializeField] private float startingSpawnInterval = 0.5f;
-    [SerializeField] private float minSpawnInterval = 0.15f;
-    [SerializeField] private float spawnCurveStrength = 0.35f;
+    [SerializeField] private float minSpawnInterval = 0.03f;
+    [SerializeField] private float spawnCurveStrength = 0.42f;
 
     private int level = 1;
     private int killsThisLevel;
