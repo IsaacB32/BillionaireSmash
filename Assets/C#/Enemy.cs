@@ -119,5 +119,6 @@ public class Enemy : MonoBehaviour
         Game.Instance.UpdateMoneyUI(Game.Instance.player.money);
         Game.Instance.enemyManager.Release(this);
         Game.Instance.audioManager.PlayEnemyHit();
+        Game.Instance.cameraShake.AddLightShake();
     }
 }

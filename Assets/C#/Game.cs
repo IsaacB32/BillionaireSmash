@@ -33,6 +33,7 @@ public class Game : MonoBehaviour
     public DynamicDifficult difficult;
     public AudioManager audioManager;
     public TextReader textReader;
+    public CameraShake2D cameraShake;
 
     [SerializeField] private TextMeshProUGUI moneyTextUI;
     [SerializeField] private Cursor gameCursor;
@@ -143,6 +144,8 @@ public class Game : MonoBehaviour
     {
         SwitchGameState(GameState.Lose);
 
+        Game.Instance.cameraShake.PlayExtreme();
+            
         LeanTween.alphaCanvas(gameOverCanvas, 100f, 0.5f);
         gameOverCanvas.interactable = true;
         gameOverCanvas.blocksRaycasts = true;
@@ -166,6 +169,7 @@ public class Game : MonoBehaviour
     {
         SwitchGameState(GameState.Menu);
         Instance.audioManager.PlayClick();
+        damageMaterial.SetFloat("_VignetteIntensity", 0.0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
