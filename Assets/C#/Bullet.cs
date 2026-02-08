@@ -128,7 +128,7 @@ public class Bullet : MonoBehaviour
         if (_explode == 0) return;
         GameObject o = Instantiate(Game.Instance.player.GetExplode(), transform.position, Quaternion.identity);
         Explode e = o.GetComponent<Explode>();
-        o.transform.localScale = Vector3.one * _explode;
+        o.transform.localScale = Vector3.one * (_explode * 0.4f);
         e.ExplodeBomb(_explode);
         Game.Instance.audioManager.PlayExplosion();
     }
