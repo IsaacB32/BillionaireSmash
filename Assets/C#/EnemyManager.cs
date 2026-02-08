@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.Pool;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
@@ -13,19 +14,24 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float eliteWeight = 0.1f;
     [SerializeField] private float innerRadius;
     [SerializeField] private float outerRadius;
-
+    
     [Header("Object Pooler")]
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Enemy glopPrefab;
+    [SerializeField] private Enemy klopPrefab;
+    [SerializeField, Range(0f, 1f)] private float glopWeight = 0.7f;
+    
     [SerializeField] private int objectPoolDefaultCapacity = 100;
     [SerializeField] private int objectPoolMaxCapacity = 500;
 
     private float _spawnTimer = 0f;
     private int _activeEnemies = 0;
-    private IObjectPool<Enemy> _pool;
+    private IObjectPool<Enemy> _poolA;
+    private IObjectPool<Enemy> _poolB;
     
-    void Awake() {
-        _pool = new ObjectPool<Enemy>(
-            () => Instantiate(enemyPrefab).GetComponent<Enemy>(),
+    IObjectPool<Enemy> CreatePool(Enemy prefab)
+    {
+        return new ObjectPool<Enemy>(
+            () => Instantiate(prefab),
             e => e.gameObject.SetActive(true),
             e => e.gameObject.SetActive(false),
             e => Destroy(e.gameObject),
@@ -33,6 +39,12 @@ public class EnemyManager : MonoBehaviour
             objectPoolDefaultCapacity,
             objectPoolMaxCapacity
         );
+    }
+    
+    void Awake()
+    {
+        _poolA = CreatePool(glopPrefab);
+        _poolB = CreatePool(klopPrefab);
     }
     
     void Update()
@@ -56,13 +68,18 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
-        Enemy enemy = _pool.Get();
+        bool useA = Random.value < glopWeight;
+        IObjectPool<Enemy> pool = useA ? _poolA : _poolB;
+        
+        Enemy enemy = pool.Get();
 
         bool isElite = Random.value < eliteWeight;
         enemy.Initialize(isElite);
         
         Vector2 spawnPos = GetRandomPointInDonut(innerRadius, outerRadius);
         enemy.transform.position = spawnPos;
+        
+        enemy.SetOwningPool(pool); 
         
         _activeEnemies++;
     }
@@ -80,9 +97,9 @@ public class EnemyManager : MonoBehaviour
     
     public void Release(Enemy enemy)
     {
-        if (enemy.gameObject.activeSelf && _pool != null)
+        if (!enemy.gameObject.activeSelf) return;
         {
-            _pool.Release(enemy);
+            enemy.ReleaseToPool();
             _activeEnemies--;
         }
     } 

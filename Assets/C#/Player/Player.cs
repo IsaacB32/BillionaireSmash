@@ -220,6 +220,7 @@ public class Player : MonoBehaviour
         }
         if (!_isKnockedBack) StartCoroutine(Knockback(other.transform));
         StartCoroutine(FlashColor());
+        Game.Instance.cameraShake.PlayModerate();
     }
     
     private IEnumerator Knockback(Transform other)
