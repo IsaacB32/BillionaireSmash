@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Transform _playerTransform;
     private Rigidbody2D _rb;
+
+    private ParticleSystem _particleSystem;
     
     IObjectPool<Enemy> _owningPool;
     
@@ -43,6 +45,7 @@ public class Enemy : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody2D>();
+        _particleSystem = GetComponentInChildren<ParticleSystem>();
     }
     
     void OnEnable()
@@ -137,6 +140,8 @@ public class Enemy : MonoBehaviour
 
             yield return null;
         }
+
+        if (currentStats.isElite) _spriteRenderer.color = Color.red;
         
         Game.Instance.audioManager.PlayEnemyHit();
         Game.Instance.cameraShake.AddLightShake();
@@ -149,6 +154,11 @@ public class Enemy : MonoBehaviour
         return _health;
     }
 
+    public void PlayParticles(Vector3 rot)
+    {
+        _particleSystem.gameObject.transform.localRotation = Quaternion.Euler(rot.x, rot.y, rot.z + 90);
+        _particleSystem.Play();
+    }
     
     
 }

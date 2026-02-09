@@ -11,5 +11,6 @@ namespace C_.ScriptableObjects
         public float scale = 1f;
         public int value;
         public GameObject dropPrefab;
+        public bool isElite;
     }
 }

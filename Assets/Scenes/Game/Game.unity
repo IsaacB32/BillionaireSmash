@@ -11406,8 +11406,8 @@ MonoBehaviour:
   lateGrowth: 0.15
   levelText: {fileID: 1014796096}
   startingSpawnInterval: 0.5
-  minSpawnInterval: 0.04
-  spawnCurveStrength: 0.5
+  minSpawnInterval: 0.01
+  spawnCurveStrength: 0.7
   _enemyStatBoostRate: 3
 --- !u!1 &854640614
 GameObject:
@@ -74478,8 +74478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49adc425a957d3f58b81bfce83ce1329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneController
-  _playCutscene: 1
-  _showInstruction: 1
+  _playCutscene: 0
+  _showInstruction: 0
 --- !u!1 &2103524033 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2361393911207759033, guid: 1b99990ea6506c934b42cf97045a87fa, type: 3}

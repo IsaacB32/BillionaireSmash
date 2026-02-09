@@ -26,8 +26,8 @@ public class DynamicDifficulty : MonoBehaviour
     {
         if (level % _enemyStatBoostRate == 0)
         {
-            health += 1;
-            speed += 0.7f;
+            health += (level > 15) ? (level > 28) ? 3 : 2 : 1;
+            speed += 0.8f;
         }
         return (speed, health);
     } 

@@ -99,6 +99,7 @@ public class Bullet : MonoBehaviour
                 e.isDying = true;
                 Game.Instance.StartCoroutine(e.Die());
             }
+            e.PlayParticles(transform.localEulerAngles);
         }
         if (_chain == 0 && hit && --_pierceCounter < 0) Release();
     }
