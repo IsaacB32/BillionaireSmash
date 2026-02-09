@@ -152,6 +152,11 @@ public class Player : MonoBehaviour
     {
         _dashMultiplier = 1;
     }
+
+    public void HackAttack(InputAction.CallbackContext context)
+    {
+        Game.Instance.difficulty.RaiseMaxLevel();
+    } 
     #endregion
 
     private void FixedUpdate()

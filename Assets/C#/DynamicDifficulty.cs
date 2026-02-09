@@ -87,6 +87,16 @@ public class DynamicDifficulty : MonoBehaviour
     {
         levelText.text = $"Level {level}";
     }
+    
+    public void RaiseMaxLevel()
+    {
+        level = 999;
+        killsThisLevel = 0;
+        
+        RecalculateLevelData();
+        ApplySpawnRate();
+        UpdateLevelText();
+    }
 
     #if UNITY_EDITOR
     private void OnValidate()

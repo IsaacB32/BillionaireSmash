@@ -19,3 +19,4 @@ MonoBehaviour:
   scale: 15
   value: 50
   dropPrefab: {fileID: 8450258830059616762, guid: 737079864a626884a8adfb992df76bd0, type: 3}
+  isElite: 1
